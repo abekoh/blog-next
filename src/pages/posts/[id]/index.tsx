@@ -25,6 +25,8 @@ const Page: NextPage<PageProps> = (props) => {
     return <div>Loading...</div>;
   }
 
+  const body = post.isHtml ? post.bodyHtml : post.body;
+
   return (
     <>
       <nav>
@@ -34,10 +36,10 @@ const Page: NextPage<PageProps> = (props) => {
         <header>
           <h1>{post.title}</h1>
         </header>
-        {post.body && (
+        {body && (
           <article
             dangerouslySetInnerHTML={{
-              __html: post.isHtml ? post.bodyHtml : post.body,
+              __html: body,
             }}
           />
         )}
