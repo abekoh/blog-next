@@ -1,5 +1,6 @@
 const yaml = require("js-yaml");
 const fs = require("fs");
+const marked = require("marked");
 
 const escape = (str) => {
   // return `"${str.replace(/"/g, '\\"').replace(/\n/g, "\\n")}"`;
@@ -34,7 +35,7 @@ class Post {
     const lineList = [];
     lineList.push(this.fileName.replace(/^(.*)\.md$/, "$1"));
     lineList.push(escape(this.metaData.title));
-    lineList.push(escape(this.body));
+    lineList.push(escape(marked(this.body)));
     lineList.push(escape(this.metaData.categories.join(",")));
     lineList.push(escape(this.metaData.tags.join(",")));
     lineList.push(this.metaData.date.toISOString());
