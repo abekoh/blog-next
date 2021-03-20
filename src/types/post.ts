@@ -1,10 +1,10 @@
 import { ContentResponse, ListContentsResponse } from "./api";
 import { TagResponse } from "./tag";
 
-export type BlogListResponse = ListContentsResponse<BlogListResponse>;
+export type PostListResponse = ListContentsResponse<PostResponse>;
 
-export type BlogResponse = ContentResponse<{
+export type PostResponse = ContentResponse<{
   title?: string;
   body?: string;
   tags?: TagResponse[];
-}
+}>;
