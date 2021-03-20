@@ -37,7 +37,7 @@ const Page: NextPage<PageProps> = (props) => {
         {post.body && (
           <article
             dangerouslySetInnerHTML={{
-              __html: post.isHtml ? post.htmlBody : post.body,
+              __html: post.isHtml ? post.bodyHtml : post.body,
             }}
           />
         )}
