@@ -2,7 +2,20 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 
 const escape = (str) => {
-  return `"${str.replace(/"/g, '\\"').replace(/\n/g, "\\n")}"`;
+  // return `"${str.replace(/"/g, '\\"').replace(/\n/g, "\\n")}"`;
+  // return `"${str.replace(/"/g, '\\"')}"`;
+  return `"${str.replace(/"/g, '""')}"`;
+};
+
+const createMapFromCsv = (csvFilePath) => {
+  const file = fs.readFileSync(csvFilePath, { encoding: "utf-8" });
+  const lines = file.split("\n");
+  const map = new Map();
+  lines.forEach((line) => {
+    const splitted = line.split(",");
+    map[splitted[1]] = splitted[0];
+  });
+  return map;
 };
 
 class Post {
@@ -26,6 +39,18 @@ class Post {
     lineList.push(escape(this.metaData.tags.join(",")));
     lineList.push(this.metaData.date.toISOString());
     return lineList.join(",");
+  }
+
+  updateTagsWithMap(map) {
+    const newTags = this.metaData.tags.map((tag) => map[tag]);
+    this.metaData.tags = newTags;
+  }
+
+  updateCategoriesWithMap(map) {
+    const newCategories = this.metaData.categories.map(
+      (category) => map[category]
+    );
+    this.metaData.categories = newCategories;
   }
 
   get tags() {
@@ -56,18 +81,20 @@ const bodies = [];
 const categories = new Set();
 const tags = new Set();
 
+const categoryMap = createMapFromCsv("migration/categories.csv");
+const tagMap = createMapFromCsv("migration/tags.csv");
+
 fileNames.forEach((fileName) => {
   const filePath = `${basePath}/${fileName.name}`;
   const content = fs.readFileSync(filePath, { encoding: "utf-8" });
   const post = new Post(fileName.name, content);
+  post.updateCategoriesWithMap(categoryMap);
+  post.updateTagsWithMap(tagMap);
   bodies.push(post.toCsvLine());
-  post.categories.forEach((category) => categories.add(category));
-  post.tags.forEach((tag) => tags.add(tag));
+  // post.categories.forEach((category) => categories.add(category));
+  // post.tags.forEach((tag) => tags.add(tag));
 });
 
-console.log(categories);
-console.log(tags);
-
 new CsvFile(bodies).save("migration/bodies.csv");
-new CsvFile(categories).save("migration/categories.csv");
-new CsvFile(tags).save("migration/tags.csv");
+// new CsvFile(categories).save("migration/categories.csv");
+// new CsvFile(tags).save("migration/tags.csv");
