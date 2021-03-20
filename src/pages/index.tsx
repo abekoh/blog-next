@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
-import { SSL_OP_TLS_BLOCK_PADDING_BUG } from "node:constants";
 
 import { PostListResponse } from "../types/post";
 import { SiteDataResponse } from "../types/siteData";
