@@ -25,7 +25,7 @@ const Page: NextPage<PageProps> = (props) => {
     return <div>Loading...</div>;
   }
 
-  const body = post.isHtml ? post.bodyHtml : post.body;
+  const body = post.isHtml ? post.htmlBody : post.body;
 
   return (
     <>

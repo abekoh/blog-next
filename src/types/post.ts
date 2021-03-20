@@ -6,7 +6,7 @@ export type PostListResponse = ListContentsResponse<PostResponse>;
 export type PostResponse = ContentResponse<{
   title: string;
   body?: string;
-  bodyHtml: string;
+  htmlBody: string;
   isHtml?: boolean;
   tags?: TagResponse[];
 }>;
