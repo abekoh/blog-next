@@ -35,7 +35,11 @@ const Page: NextPage<PageProps> = (props) => {
           <h1>{post.title}</h1>
         </header>
         {post.body && (
-          <article dangerouslySetInnerHTML={{ __html: post.body }} />
+          <article
+            dangerouslySetInnerHTML={{
+              __html: post.isHtml ? post.htmlBody : post.body,
+            }}
+          />
         )}
       </main>
     </>
@@ -58,7 +62,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   try {
     const post = await client.v1.posts._id(id).$get({
       query: {
-        fields: "id,title,body",
+        fields: "id,title,body,htmlBody,isHtml",
       },
     });
     return {

@@ -35,7 +35,9 @@ class Post {
     const lineList = [];
     lineList.push(this.fileName.replace(/^(.*)\.md$/, "$1"));
     lineList.push(escape(this.metaData.title));
+    lineList.push("");
     lineList.push(escape(marked(this.body)));
+    lineList.push(true);
     lineList.push(escape(this.metaData.categories.join(",")));
     lineList.push(escape(this.metaData.tags.join(",")));
     lineList.push(this.metaData.date.toISOString());
