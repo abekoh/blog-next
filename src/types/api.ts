@@ -11,7 +11,7 @@ export type ContentResponse<T> = {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
-};
+} & T;
 
 export type GetListContentsQuery = {
   draftKey?: string;
