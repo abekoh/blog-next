@@ -4,12 +4,14 @@ import { Methods as Methods0 } from './v1/about'
 import { Methods as Methods1 } from './v1/posts'
 import { Methods as Methods2 } from './v1/posts/_id@string'
 import { Methods as Methods3 } from './v1/sitedata'
+import { Methods as Methods4 } from './v1/tags'
 
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const prefix = (baseURL === undefined ? '' : baseURL).replace(/\/$/, '')
   const PATH0 = '/v1/about'
   const PATH1 = '/v1/posts'
   const PATH2 = '/v1/sitedata'
+  const PATH3 = '/v1/tags'
   const GET = 'GET'
 
   return {
@@ -49,6 +51,14 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
           fetch<Methods3['get']['resBody']>(prefix, PATH2, GET, option).json().then(r => r.body),
         $path: (option?: { method?: 'get'; query: Methods3['get']['query'] }) =>
           `${prefix}${PATH2}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
+      },
+      tags: {
+        get: (option?: { query?: Methods4['get']['query'], config?: T }) =>
+          fetch<Methods4['get']['resBody']>(prefix, PATH3, GET, option).json(),
+        $get: (option?: { query?: Methods4['get']['query'], config?: T }) =>
+          fetch<Methods4['get']['resBody']>(prefix, PATH3, GET, option).json().then(r => r.body),
+        $path: (option?: { method?: 'get'; query: Methods4['get']['query'] }) =>
+          `${prefix}${PATH3}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
       }
     }
   }
