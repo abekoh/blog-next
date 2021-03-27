@@ -8,8 +8,12 @@ import {
 } from 'next';
 import Link from 'next/link';
 
-import { PostListResponse } from '../../types/post';
-import { client } from '../../utils/api';
+import { Pagenation } from '../../../../components/Pagenation';
+import { PostListResponse } from '../../../../types/post';
+import { client } from '../../../../utils/api';
+import { strToInteger } from '../../../../utils/isNumber';
+
+const PER_PAGE = 10;
 
 type StaticProps = {
   postList: PostListResponse;
@@ -33,6 +37,7 @@ const Page: NextPage<PageProps> = (props) => {
           ))}
         </ul>
       </section>
+      <Pagenation perPageCount={PER_PAGE} totalCount={postList.totalCount} />
     </main>
   );
 };
@@ -44,12 +49,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+export const getStaticProps: GetStaticProps<StaticProps> = async ({
+  params,
+}) => {
+  if (!params?.page || typeof params.page !== 'string') {
+    throw new Error('Error: invalid page number');
+  }
+  const offset = strToInteger(params.page);
+  if (!offset) {
+    throw new Error('Error: invalid page number');
+  }
   const postList = await client.v1.posts.$get({
     query: {
       fields: 'id,title',
       orders: '-publishedAt',
-      limit: 10,
+      limit: PER_PAGE,
+      offset: offset,
     },
   });
   return {
