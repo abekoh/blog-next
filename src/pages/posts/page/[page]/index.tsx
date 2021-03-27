@@ -8,7 +8,7 @@ import {
 } from 'next';
 import Link from 'next/link';
 
-import { Pagenation } from '../../../../components/Pagenation';
+import Pagenation from '../../../../components/molecules/Pagenation';
 import { PostListResponse } from '../../../../types/post';
 import { client } from '../../../../utils/api';
 import { strToInteger } from '../../../../utils/isNumber';

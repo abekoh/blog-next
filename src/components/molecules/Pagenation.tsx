@@ -7,7 +7,7 @@ type Props = {
   totalCount: number;
 };
 
-export const Pagenation: React.FC<Props> = ({ perPageCount, totalCount }) => {
+const Pagenation: React.FC<Props> = ({ perPageCount, totalCount }) => {
   const range = (start: number, end: number) =>
     [...Array(end - start + 1)].map((_, i) => start + i);
   return (
@@ -22,3 +22,5 @@ export const Pagenation: React.FC<Props> = ({ perPageCount, totalCount }) => {
     </ul>
   );
 };
+
+export default Pagenation;
