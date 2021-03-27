@@ -18,7 +18,7 @@ const Page: NextPage<PageProps> = (props) => {
     <main>
       <h1>{siteData.title}</h1>
       <section>
-        <h2>ブログ一覧</h2>
+        <h2>最近の投稿</h2>
         <ul>
           {postList.contents.map((post) => (
             <li key={post.id}>
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     query: { fields: 'title' },
   });
   const postListPromise = client.v1.posts.$get({
-    query: { fields: 'id,title', orders: '-publishedAt' },
+    query: { fields: 'id,title', orders: '-publishedAt', limit: 5 },
   });
   const [siteData, postList] = await Promise.all([
     siteDataPromise,
