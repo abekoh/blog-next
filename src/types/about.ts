@@ -1,4 +1,4 @@
-import { ContentResponse } from './api';
+import { ContentResponse, ListContentsResponse } from './api';
 
 export type AboutListResponse = ListContentsResponse<AboutResponse>;
 

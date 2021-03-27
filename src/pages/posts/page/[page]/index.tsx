@@ -55,8 +55,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
   if (!params?.page || typeof params.page !== 'string') {
     throw new Error('Error: invalid page number');
   }
-  const offset = strToInteger(params.page);
-  if (!offset) {
+  const page = strToInteger(params.page);
+  if (!page) {
     throw new Error('Error: invalid page number');
   }
   const postList = await client.v1.posts.$get({
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
       fields: 'id,title',
       orders: '-publishedAt',
       limit: PER_PAGE,
-      offset: offset,
+      offset: (page - 1) * PER_PAGE,
     },
   });
   return {
