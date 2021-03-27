@@ -40,7 +40,11 @@ const Page: NextPage<PageProps> = (props) => {
           ))}
         </ul>
       </section>
-      <Pagenation perPageCount={PER_PAGE} totalCount={postList.totalCount} />
+      <Pagenation
+        perPageCount={PER_PAGE}
+        totalCount={postList.totalCount}
+        prefix={`/tags/${tag.id}/page/`}
+      />
     </main>
   );
 };

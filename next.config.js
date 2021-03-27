@@ -14,6 +14,10 @@ module.exports = {
         source: '/posts',
         destination: '/posts/page/1',
       },
+      {
+        source: '/tags/:tagid',
+        destination: '/tags/:tagid/page/1',
+      },
     ];
   },
 };
