@@ -49,7 +49,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     query: {
       fields: 'id,title',
       orders: '-publishedAt',
-      limit: 10
+
+      limit: 10,
     },
   });
   return {
