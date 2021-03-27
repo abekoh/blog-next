@@ -1,9 +1,9 @@
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import Link from "next/link";
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import Link from 'next/link';
 
-import { PostListResponse } from "../types/post";
-import { SiteDataResponse } from "../types/siteData";
-import { client } from "../utils/api";
+import { PostListResponse } from '../types/post';
+import { SiteDataResponse } from '../types/siteData';
+import { client } from '../utils/api';
 
 type StaticProps = {
   siteData: SiteDataResponse;
@@ -35,10 +35,10 @@ const Page: NextPage<PageProps> = (props) => {
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const siteDataPromise = client.v1.sitedata.$get({
-    query: { fields: "title" },
+    query: { fields: 'title' },
   });
   const postListPromise = client.v1.posts.$get({
-    query: { fields: "id,title", orders: "-publishedAt" },
+    query: { fields: 'id,title', orders: '-publishedAt' },
   });
   const [siteData, postList] = await Promise.all([
     siteDataPromise,

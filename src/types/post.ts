@@ -1,5 +1,5 @@
-import { ContentResponse, ListContentsResponse } from "./api";
-import { TagResponse } from "./tag";
+import { ContentResponse, ListContentsResponse } from './api';
+import { TagResponse } from './tag';
 
 export type PostListResponse = ListContentsResponse<PostResponse>;
 

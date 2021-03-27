@@ -1,6 +1,6 @@
-const yaml = require("js-yaml");
-const fs = require("fs");
-const marked = require("marked");
+const yaml = require('js-yaml');
+const fs = require('fs');
+const marked = require('marked');
 
 const escape = (str) => {
   // return `"${str.replace(/"/g, '\\"').replace(/\n/g, "\\n")}"`;
@@ -9,11 +9,11 @@ const escape = (str) => {
 };
 
 const createMapFromCsv = (csvFilePath) => {
-  const file = fs.readFileSync(csvFilePath, { encoding: "utf-8" });
-  const lines = file.split("\n");
+  const file = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+  const lines = file.split('\n');
   const map = new Map();
   lines.forEach((line) => {
-    const splitted = line.split(",");
+    const splitted = line.split(',');
     map[splitted[1]] = splitted[0];
   });
   return map;
@@ -26,22 +26,22 @@ class Post {
   }
 
   parse(content) {
-    const splitted = content.split("\n---\n");
+    const splitted = content.split('\n---\n');
     this.metaData = yaml.load(splitted[0]);
     this.body = splitted[1];
   }
 
   toCsvLine() {
     const lineList = [];
-    lineList.push(this.fileName.replace(/^(.*)\.md$/, "$1"));
+    lineList.push(this.fileName.replace(/^(.*)\.md$/, '$1'));
     lineList.push(escape(this.metaData.title));
-    lineList.push("");
+    lineList.push('');
     lineList.push(escape(marked(this.body)));
     lineList.push(true);
-    lineList.push(escape(this.metaData.categories.join(",")));
-    lineList.push(escape(this.metaData.tags.join(",")));
+    lineList.push(escape(this.metaData.categories.join(',')));
+    lineList.push(escape(this.metaData.tags.join(',')));
     lineList.push(this.metaData.date.toISOString());
-    return lineList.join(",");
+    return lineList.join(',');
   }
 
   updateTagsWithMap(map) {
@@ -51,7 +51,7 @@ class Post {
 
   updateCategoriesWithMap(map) {
     const newCategories = this.metaData.categories.map(
-      (category) => map[category]
+      (category) => map[category],
     );
     this.metaData.categories = newCategories;
   }
@@ -71,12 +71,12 @@ class CsvFile {
   }
 
   save(outputPath) {
-    const data = Array.from(this.lines).join("\n");
+    const data = Array.from(this.lines).join('\n');
     fs.writeFileSync(outputPath, data);
   }
 }
 
-const basePath = "/home/abekoh/src/github.com/abekoh/blog/content/post";
+const basePath = '/home/abekoh/src/github.com/abekoh/blog/content/post';
 
 const fileNames = fs.readdirSync(basePath, { withFileTypes: true });
 
@@ -84,12 +84,12 @@ const bodies = [];
 const categories = new Set();
 const tags = new Set();
 
-const categoryMap = createMapFromCsv("migration/categories.csv");
-const tagMap = createMapFromCsv("migration/tags.csv");
+const categoryMap = createMapFromCsv('migration/categories.csv');
+const tagMap = createMapFromCsv('migration/tags.csv');
 
 fileNames.forEach((fileName) => {
   const filePath = `${basePath}/${fileName.name}`;
-  const content = fs.readFileSync(filePath, { encoding: "utf-8" });
+  const content = fs.readFileSync(filePath, { encoding: 'utf-8' });
   const post = new Post(fileName.name, content);
   post.updateCategoriesWithMap(categoryMap);
   post.updateTagsWithMap(tagMap);
@@ -98,6 +98,6 @@ fileNames.forEach((fileName) => {
   // post.tags.forEach((tag) => tags.add(tag));
 });
 
-new CsvFile(bodies).save("migration/bodies.csv");
+new CsvFile(bodies).save('migration/bodies.csv');
 // new CsvFile(categories).save("migration/categories.csv");
 // new CsvFile(tags).save("migration/tags.csv");

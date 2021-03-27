@@ -16,6 +16,7 @@ export type ContentResponse<T> = {
 export type GetListContentsQuery = {
   draftKey?: string;
   limit?: number;
+  offset?: number;
   orders?: string;
   q?: string;
   fields?: string;

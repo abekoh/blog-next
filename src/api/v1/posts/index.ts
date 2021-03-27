@@ -1,5 +1,5 @@
-import { GetListContentsQuery } from "../../../types/api";
-import { PostListResponse } from "../../../types/post";
+import { GetListContentsQuery } from '../../../types/api';
+import { PostListResponse } from '../../../types/post';
 
 export type Methods = {
   get: {

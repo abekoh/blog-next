@@ -1,10 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import Link from "next/link";
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next';
+import Link from 'next/link';
 
-import { PostListResponse } from "../../types/post";
-import { client } from "../../utils/api";
+import { PostListResponse } from '../../types/post';
+import { client } from '../../utils/api';
 
 type StaticProps = {
   postList: PostListResponse;
@@ -32,9 +37,20 @@ const Page: NextPage<PageProps> = (props) => {
   );
 };
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    fallback: 'blocking',
+    paths: [],
+  };
+};
+
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postList = await client.v1.posts.$get({
-    query: { fields: "id,title", orders: "-publishedAt" },
+    query: {
+      fields: 'id,title',
+      orders: '-publishedAt',
+      limit: 10
+    },
   });
   return {
     props: { postList },

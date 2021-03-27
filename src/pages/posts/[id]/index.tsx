@@ -3,13 +3,13 @@ import {
   GetStaticProps,
   InferGetServerSidePropsType,
   NextPage,
-} from "next";
-import { useRouter } from "next/dist/client/router";
-import Link from "next/link";
+} from 'next';
+import { useRouter } from 'next/dist/client/router';
+import Link from 'next/link';
 
-import { PostResponse } from "../../../types/post";
-import { client } from "../../../utils/api";
-import { toStringId } from "../../../utils/toStringId";
+import { PostResponse } from '../../../types/post';
+import { client } from '../../../utils/api';
+import { toStringId } from '../../../utils/toStringId';
 
 type StaticProps = {
   post: PostResponse;
@@ -50,7 +50,7 @@ const Page: NextPage<PageProps> = (props) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
     paths: [],
   };
 };
@@ -58,13 +58,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   const { params } = context;
   if (!params?.id) {
-    throw new Error("Error: not found");
+    throw new Error('Error: not found');
   }
   const id = toStringId(params.id);
   try {
     const post = await client.v1.posts._id(id).$get({
       query: {
-        fields: "id,title,body,htmlBody,isHtml",
+        fields: 'id,title,body,htmlBody,isHtml',
       },
     });
     return {
