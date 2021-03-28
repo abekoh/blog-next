@@ -1,4 +1,7 @@
+import React from 'react';
+
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import Link from 'next/link';
 
 import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
@@ -11,16 +14,16 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = ({ tagList }) => {
   return (
-    <main>
-      <section>
-        <h1>タグ一覧</h1>
-        <ul>
-          {tagList.contents.map((tag) => (
-            <li key={tag.id}>{tag.name}</li>
-          ))}
-        </ul>
-      </section>
-    </main>
+    <section>
+      <h1>タグ一覧</h1>
+      <ul>
+        {tagList.contents.map((tag) => (
+          <li key={tag.id}>
+            <Link href={`/tags/${tag.id}`}>{tag.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

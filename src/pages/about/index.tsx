@@ -12,14 +12,12 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = ({ aboutList }) => {
   return (
-    <main>
-      <section>
-        <h1>About</h1>
-        {aboutList.contents.map((about) => (
-          <About key={about.id} title={about.title} body={about.body} />
-        ))}
-      </section>
-    </main>
+    <section>
+      <h1>About</h1>
+      {aboutList.contents.map((about) => (
+        <About key={about.id} title={about.title} body={about.body} />
+      ))}
+    </section>
   );
 };
 

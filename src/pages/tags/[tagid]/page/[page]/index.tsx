@@ -27,7 +27,7 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 const Page: NextPage<PageProps> = (props) => {
   const { tag, postList } = props;
   return (
-    <main>
+    <>
       <section>
         <h2>{tag.name}の記事一覧</h2>
         <ul>
@@ -45,7 +45,7 @@ const Page: NextPage<PageProps> = (props) => {
         totalCount={postList.totalCount}
         prefix={`/tags/${tag.id}/page/`}
       />
-    </main>
+    </>
   );
 };
 

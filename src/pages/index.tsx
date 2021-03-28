@@ -15,21 +15,18 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 const Page: NextPage<PageProps> = (props) => {
   const { siteData, postList } = props;
   return (
-    <main>
-      <h1>{siteData.title}</h1>
-      <section>
-        <h2>最近の投稿</h2>
-        <ul>
-          {postList.contents.map((post) => (
-            <li key={post.id}>
-              <Link href={`/posts/${post.id}`}>
-                <a>{post.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+    <section>
+      <h2>最近の投稿</h2>
+      <ul>
+        {postList.contents.map((post) => (
+          <li key={post.id}>
+            <Link href={`/posts/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

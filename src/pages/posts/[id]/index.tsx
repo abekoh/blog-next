@@ -5,7 +5,6 @@ import {
   NextPage,
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
 
 import Post from '../../../components/organisms/Post';
 import { PostResponse } from '../../../types/post';
@@ -28,14 +27,7 @@ const Page: NextPage<PageProps> = (props) => {
 
   const body = post.isHtml ? post.htmlBody : post.body;
 
-  return (
-    <>
-      <nav>
-        <Link href="/">Home</Link>
-      </nav>
-      <main>{body && <Post title={post.title} body={body} />}</main>
-    </>
-  );
+  return <section>{body && <Post title={post.title} body={body} />}</section>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
