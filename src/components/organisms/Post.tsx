@@ -5,7 +5,7 @@ type Props = {
   body: string;
 };
 
-const About: React.FC<Props> = ({ title, body }) => {
+const Post: React.FC<Props> = ({ title, body }) => {
   return (
     <>
       <header>
@@ -20,4 +20,4 @@ const About: React.FC<Props> = ({ title, body }) => {
   );
 };
 
-export default About;
+export default Post;

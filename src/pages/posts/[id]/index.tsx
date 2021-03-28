@@ -7,6 +7,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
+import Post from '../../../components/organisms/Post';
 import { PostResponse } from '../../../types/post';
 import { client } from '../../../utils/api';
 import { toStringId } from '../../../utils/toStringId';
@@ -32,18 +33,7 @@ const Page: NextPage<PageProps> = (props) => {
       <nav>
         <Link href="/">Home</Link>
       </nav>
-      <main>
-        <header>
-          <h1>{post.title}</h1>
-        </header>
-        {body && (
-          <article
-            dangerouslySetInnerHTML={{
-              __html: body,
-            }}
-          />
-        )}
-      </main>
+      <main>{body && <Post title={post.title} body={body} />}</main>
     </>
   );
 };
