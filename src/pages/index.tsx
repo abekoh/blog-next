@@ -13,7 +13,7 @@ type StaticProps = {
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = (props) => {
-  const { siteData, postList } = props;
+  const { postList } = props;
   return (
     <section>
       <h2>最近の投稿</h2>
