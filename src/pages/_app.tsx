@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
-import { Head } from 'next/document';
+import Head from 'next/head';
 
 import Layout from '../components/templates/Layout';
-import { themeOptions } from './theme';
+import theme from './theme';
 
 // サイトデータ情報、いずれはmicroCMSから取れるようにしたい
 const siteData = {
@@ -28,7 +28,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={themeOptions}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
           <Component {...pageProps} />
