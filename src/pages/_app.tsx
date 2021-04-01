@@ -6,7 +6,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import Layout from '../components/templates/Layout';
-import theme from './theme';
+import theme from '../theme/theme';
 
 // サイトデータ情報、いずれはmicroCMSから取れるようにしたい
 const siteData = {
