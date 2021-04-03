@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { AppBar, makeStyles, MenuItem, MenuList } from '@material-ui/core';
+import { AppBar, Grid, makeStyles } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Link from 'next/link';
+
+import Link from '../utils/Link';
 
 const useStyles = makeStyles((theme) => ({
-  titleLink: {
-    textDecoration: 'none',
-  },
   title: {
     color: theme.palette.text.primary,
   },
-  menuList: {
-    display: 'flex',
+  tab: {
+    color: theme.palette.text.primary,
   },
 }));
 
@@ -22,28 +20,43 @@ type Props = {
 };
 const Header: React.FC<Props> = ({ blogTitle }) => {
   const classes = useStyles();
+  const tabList = [
+    {
+      label: 'About',
+      link: '/about',
+    },
+    {
+      label: 'Posts',
+      link: '/posts',
+    },
+    {
+      label: 'Tags',
+      link: '/tags',
+    },
+  ];
   return (
     <header>
       <AppBar position="static">
         <Toolbar>
           <Link href={`/`}>
-            <a className={classes.titleLink}>
-              <Typography component="h1" variant="h5" className={classes.title}>
-                {blogTitle}
-              </Typography>
-            </a>
+            <Typography
+              component="h1"
+              variant="h5"
+              noWrap
+              className={classes.title}
+            >
+              {blogTitle}
+            </Typography>
           </Link>
-          <MenuList className={classes.menuList}>
-            <Link href={`/about`}>
-              <MenuItem>About</MenuItem>
-            </Link>
-            <Link href={`/posts`}>
-              <MenuItem>Posts</MenuItem>
-            </Link>
-            <Link href={`/tags`}>
-              <MenuItem>Tags</MenuItem>
-            </Link>
-          </MenuList>
+          <Grid container justifyContent="flex-end" spacing={2}>
+            {tabList.map(({ label, link }) => (
+              <Grid item key={label}>
+                <Link href={link}>
+                  <Typography className={classes.tab}>{label}</Typography>
+                </Link>
+              </Grid>
+            ))}
+          </Grid>
         </Toolbar>
       </AppBar>
     </header>
