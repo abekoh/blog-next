@@ -1,6 +1,5 @@
 import { createMuiTheme } from '@material-ui/core';
 import { blue, indigo } from '@material-ui/core/colors';
-
 const theme = createMuiTheme({
   palette: {
     primary: blue,
@@ -27,7 +26,12 @@ const theme = createMuiTheme({
           flex: 1,
         },
         a: {
-          textDecoration: 'none',
+          textDecoration: `underline dotted ${blue[200]}`,
+          textUnderlinePosition: 'under',
+          color: 'unset',
+          '&:hover': {
+            textDecorationColor: blue[500],
+          },
         },
       },
     },
