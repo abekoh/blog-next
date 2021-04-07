@@ -8,10 +8,10 @@ import Link from '../utils/Link';
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
   },
   tab: {
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
   },
 }));
 

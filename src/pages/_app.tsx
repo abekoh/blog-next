@@ -10,7 +10,7 @@ import theme from '../theme/theme';
 
 // サイトデータ情報、いずれはmicroCMSから取れるようにしたい
 const siteData = {
-  title: 'abekoh\'s tech note',
+  title: "abekoh's tech note",
   author: 'abekoh',
   copyright: '© 2019 abekoh',
 };
@@ -26,7 +26,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
