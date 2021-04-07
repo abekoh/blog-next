@@ -2,10 +2,17 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
+// https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
-  article: {
+  title: {
+    fontSize: '2.2rem',
+  },
+  body: {
+    '& h2': {
+      fontSize: '2rem',
+    },
     '& p': {
-      color: theme.palette.text.primary,
+      ...theme.typography.body,
     },
   },
 }));
@@ -20,10 +27,10 @@ const Post: React.FC<Props> = ({ title, body }) => {
   return (
     <>
       <header>
-        <h2>{title}</h2>
+        <h1 className={classes.title}>{title}</h1>
       </header>
       <article
-        className={classes.article}
+        className={classes.body}
         dangerouslySetInnerHTML={{
           __html: body,
         }}
