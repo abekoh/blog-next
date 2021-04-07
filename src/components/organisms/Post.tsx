@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.h3,
   },
   body: {
-    ...theme.typography.body,
+    ...theme.typography.body1,
     '& h1': {
       ...theme.typography.h3,
     },
@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     },
     '& h4': {
       ...theme.typography.h6,
-    },
-    '& h5': {
-      ...theme.typography.h7,
     },
     '& img': {
       maxWidth: '100%',
