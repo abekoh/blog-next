@@ -17,6 +17,15 @@ const theme = createMuiTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        'html, #__next': {
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        },
+        main: {
+          flex: 1,
+        },
         a: {
           textDecoration: 'none',
         },

@@ -17,20 +17,6 @@ const Layout: React.FC<Props> = ({ children, blogTitle, copyright }) => {
         <Container maxWidth="md">{children}</Container>
       </main>
       <Footer copyright={copyright} />
-      <style jsx global>
-        {`
-          html,
-          #__next {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-          main {
-            flex: 1;
-          }
-        `}
-      </style>
     </>
   );
 };
