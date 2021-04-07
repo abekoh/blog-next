@@ -3,13 +3,13 @@ import { blue, indigo } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: blue,
-    second: indigo,
+    secondary: indigo,
     mode: 'light',
   },
   typography: {
     fontFamily:
       "'Roboto', 'Noto Sans JP', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif",
-    body: {
+    body1: {
       fontSize: '1.1rem',
     },
   },
