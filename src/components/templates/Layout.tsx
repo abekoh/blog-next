@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { makeStyles } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -13,7 +13,9 @@ const Layout: React.FC<Props> = ({ children, blogTitle, copyright }) => {
   return (
     <>
       <Header blogTitle={blogTitle} />
-      <main>{children}</main>
+      <main>
+        <Container maxWidth="md">{children}</Container>
+      </main>
       <Footer copyright={copyright} />
       <style jsx global>
         {`

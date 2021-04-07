@@ -5,14 +5,12 @@ import { makeStyles } from '@material-ui/core';
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
   title: {
-    fontSize: '2.2rem',
+    ...theme.typography.h3,
   },
   body: {
+    ...theme.typography.body,
     '& h2': {
-      fontSize: '2rem',
-    },
-    '& p': {
-      ...theme.typography.body,
+      ...theme.typography.h4,
     },
   },
 }));
