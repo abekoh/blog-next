@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core';
+import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
 import { TagResponse } from '../../types/tag';
@@ -49,6 +50,9 @@ const Post: React.FC<Props> = ({
   tags,
 }) => {
   const classes = useStyles();
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <article>
       <header>
