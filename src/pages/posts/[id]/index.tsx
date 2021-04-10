@@ -27,7 +27,11 @@ const Page: NextPage<PageProps> = (props) => {
 
   const body = post.isHtml ? post.htmlBody : post.body;
 
-  return <section>{body && <Post title={post.title} body={body} />}</section>;
+  return (
+    <section>
+      {body && post.title && <Post title={post.title} body={body} />}
+    </section>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -46,7 +50,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   try {
     const post = await client.v1.posts._id(id).$get({
       query: {
-        fields: 'id,title,body,htmlBody,isHtml',
+        fields: 'id,title,body,htmlBody,isHtml,tags,categories,publishedAt',
       },
     });
     return {
