@@ -30,14 +30,16 @@ const useStyles = makeStyles((theme) => ({
 type Props = {
   title: string;
   body: string;
+  publishedAt: Date;
 };
 
-const Post: React.FC<Props> = ({ title, body }) => {
+const Post: React.FC<Props> = ({ title, body, publishedAt }) => {
   const classes = useStyles();
   return (
     <>
       <header>
         <h1 className={classes.title}>{title}</h1>
+        <h2>{publishedAt}</h2>
       </header>
       <article
         className={classes.body}

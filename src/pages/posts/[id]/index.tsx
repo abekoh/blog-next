@@ -29,7 +29,9 @@ const Page: NextPage<PageProps> = (props) => {
 
   return (
     <section>
-      {body && post.title && <Post title={post.title} body={body} />}
+      {body && post.title && post.publishedAt && (
+        <Post title={post.title} body={body} publishedAt={post.publishedAt} />
+      )}
     </section>
   );
 };
