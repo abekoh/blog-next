@@ -23,7 +23,7 @@ const TagList: React.FC<Props> = ({ tags }) => {
         <Box key={tag.id} mx={0.5}>
           <Link href={`/tags/${tag.id}`} className={classes.tag}>
             <Chip
-              icon={<Icon className="devicon-java-plain"></Icon>}
+              icon={tag.icon ? <Icon className={tag.icon}></Icon> : undefined}
               label={tag.name}
               clickable
             />
