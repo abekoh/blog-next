@@ -8,7 +8,7 @@ import {
 } from 'next';
 import Link from 'next/link';
 
-import Pagenation from '../../../../../components/molecules/Pagenation';
+import PaginationLinks from '../../../../../components/molecules/PagenationLinks';
 import { PostListResponse } from '../../../../../types/post';
 import { TagResponse } from '../../../../../types/tag';
 import { client } from '../../../../../utils/api';
@@ -18,6 +18,7 @@ import { toStringId } from '../../../../../utils/toStringId';
 const PER_PAGE = 10;
 
 type StaticProps = {
+  currentPage: number;
   tag: TagResponse;
   postList: PostListResponse;
 };
@@ -25,7 +26,7 @@ type StaticProps = {
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = (props) => {
-  const { tag, postList } = props;
+  const { currentPage, tag, postList } = props;
   return (
     <>
       <section>
@@ -40,9 +41,9 @@ const Page: NextPage<PageProps> = (props) => {
           ))}
         </ul>
       </section>
-      <Pagenation
-        perPageCount={PER_PAGE}
-        totalCount={postList.totalCount}
+      <PaginationLinks
+        currentPage={currentPage}
+        totalPage={Math.ceil(postList.totalCount / PER_PAGE)}
         prefix={`/tags/${tag.id}/page/`}
       />
     </>
@@ -86,7 +87,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
   });
   const [tag, postList] = await Promise.all([tagPromise, postListPromise]);
   return {
-    props: { tag, postList },
+    props: { currentPage: page, tag, postList },
     revalidate: 60,
   };
 };

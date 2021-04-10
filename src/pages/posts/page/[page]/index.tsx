@@ -8,7 +8,7 @@ import {
 } from 'next';
 import Link from 'next/link';
 
-import Pagenation from '../../../../components/molecules/Pagenation';
+import PaginationLinks from '../../../../components/molecules/PagenationLinks';
 import { PostListResponse } from '../../../../types/post';
 import { client } from '../../../../utils/api';
 import { strToInteger } from '../../../../utils/isNumber';
@@ -16,13 +16,13 @@ import { strToInteger } from '../../../../utils/isNumber';
 const PER_PAGE = 10;
 
 type StaticProps = {
+  currentPage: number;
   postList: PostListResponse;
 };
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Page: NextPage<PageProps> = (props) => {
-  const { postList } = props;
+const Page: NextPage<PageProps> = ({ currentPage, postList }) => {
   return (
     <>
       <section>
@@ -37,9 +37,9 @@ const Page: NextPage<PageProps> = (props) => {
           ))}
         </ul>
       </section>
-      <Pagenation
-        perPageCount={PER_PAGE}
-        totalCount={postList.totalCount}
+      <PaginationLinks
+        currentPage={currentPage}
+        totalPage={Math.ceil(postList.totalCount / PER_PAGE)}
         prefix={`/posts/page/`}
       />
     </>
@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
     },
   });
   return {
-    props: { postList },
+    props: { currentPage: page, postList },
     revalidate: 60,
   };
 };
