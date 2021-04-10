@@ -2,6 +2,9 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
+import { CategoryResponse } from '../../types/category';
+import { TagResponse } from '../../types/tag';
+
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -31,15 +34,33 @@ type Props = {
   title: string;
   body: string;
   publishedAt: Date;
+  categories: CategoryResponse[];
+  tags: TagResponse[];
 };
 
-const Post: React.FC<Props> = ({ title, body, publishedAt }) => {
+const Post: React.FC<Props> = ({
+  title,
+  body,
+  publishedAt,
+  categories,
+  tags,
+}) => {
   const classes = useStyles();
   return (
     <>
       <header>
         <h1 className={classes.title}>{title}</h1>
         <h2>{publishedAt}</h2>
+        <ul>
+          {tags.map((tag) => (
+            <li key={tag.id}>{tag.name}</li>
+          ))}
+        </ul>
+        <ul>
+          {categories.map((category) => (
+            <li key={category.id}>{category.name}</li>
+          ))}
+        </ul>
       </header>
       <article
         className={classes.body}

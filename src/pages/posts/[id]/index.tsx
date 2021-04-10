@@ -30,7 +30,13 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <section>
       {body && post.title && post.publishedAt && (
-        <Post title={post.title} body={body} publishedAt={post.publishedAt} />
+        <Post
+          title={post.title}
+          body={body}
+          publishedAt={post.publishedAt}
+          categories={post.categories || []}
+          tags={post.tags || []}
+        />
       )}
     </section>
   );
