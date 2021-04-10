@@ -22,9 +22,7 @@ const CategoryList: React.FC<Props> = ({ categories }) => {
     <Box display="flex" flexDirection="row" p={1}>
       {categories.map((category) => (
         <Box key={category.id} mx={0.5}>
-          <Link href={`/tags/${category.id}`} className={classes.category}>
-            <Chip label={category.name} clickable />
-          </Link>
+          <Chip label={category.name}  />
         </Box>
       ))}
     </Box>
