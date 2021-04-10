@@ -22,7 +22,7 @@ const TagList: React.FC<Props> = ({ tags }) => {
       {tags.map((tag) => (
         <Box key={tag.id} mx={0.5}>
           <Link href={`/tags/${tag.id}`} className={classes.tag}>
-            <Chip label={tag.name} clickable />
+            <Chip label={tag.name} color="secondary" clickable />
           </Link>
         </Box>
       ))}
