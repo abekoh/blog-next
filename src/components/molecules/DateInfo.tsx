@@ -1,10 +1,9 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 import { dateToString } from '../../utils/dateToString';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   dateIcon: {
     color: grey[500],
   },

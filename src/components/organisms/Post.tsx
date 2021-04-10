@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { Typography, Box, makeStyles, Paper } from '@material-ui/core';
+import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
 import { TagResponse } from '../../types/tag';
-import CategoryList from '../molecules/CategoryList';
 import DateInfo from '../molecules/DateInfo';
 import TagList from '../molecules/TagList';
 

@@ -3,7 +3,7 @@ import { Box, Chip, Icon, makeStyles } from '@material-ui/core';
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   tag: {
     '&:hover': {
       textDecoration: 'none',

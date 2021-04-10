@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, AppBar, Avatar, Grid, makeStyles } from '@material-ui/core';
+import { AppBar, Box, Grid, makeStyles } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
