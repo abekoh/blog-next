@@ -5,11 +5,11 @@ import { TagResponse } from './tag';
 export type PostListResponse = ListContentsResponse<PostResponse>;
 
 export type PostResponse = ContentResponse<{
-  title: string;
+  title?: string;
   body?: string;
-  htmlBody: string;
-  isHtml: boolean;
+  htmlBody?: string;
+  isHtml?: boolean;
   categories?: CategoryResponse[];
   tags?: TagResponse[];
-  publishedAt: Date;
+  publishedAt?: Date;
 }>;
