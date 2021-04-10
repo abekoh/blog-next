@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: '100%',
     },
     '& code': {
+      // ref: https://github.com/ocodia/okaidia-prismjs-theme/blob/master/okaidia.css
+      textShadow: '0px 1px rgba(0,0,0,0.3)',
       fontFamily: "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
       color: '#f8f8f2',
       backgroundColor: '#272822',
