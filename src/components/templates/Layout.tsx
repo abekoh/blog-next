@@ -14,7 +14,7 @@ const Layout: React.FC<Props> = ({ children, blogTitle, copyright }) => {
     <>
       <Header blogTitle={blogTitle} />
       <main>
-        <Container maxWidth="md">{children}</Container>
+        <Container maxWidth="lg">{children}</Container>
       </main>
       <Footer copyright={copyright} />
     </>

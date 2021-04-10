@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Icon } from '@material-ui/core';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -73,7 +74,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
   const tagId = toStringId(params.tagid);
   const tagPromise = client.v1.tags._id(tagId).$get({
     query: {
-      fields: 'id,name,icon',
+      fields: 'id,name',
     },
   });
   const postListPromise = client.v1.posts.$get({

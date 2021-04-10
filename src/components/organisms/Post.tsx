@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Typography, Box, makeStyles } from '@material-ui/core';
+import { Typography, Box, makeStyles, Paper } from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
@@ -11,7 +11,10 @@ import TagList from '../molecules/TagList';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
-  title: {},
+  paper: {
+    padding: '0.5rem 1.8rem',
+    margin: '1rem 0',
+  },
   body: {
     ...theme.typography.body1,
     '& h1': {
@@ -27,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       ...theme.typography.h6,
     },
     '& img': {
-      maxWidth: '100%',
+      maxWidth: '80%',
     },
     '& code': {
       // ref: https://github.com/ocodia/okaidia-prismjs-theme/blob/master/okaidia.css
@@ -59,23 +62,25 @@ const Post: React.FC<Props> = ({ title, body, publishedAt, tags }) => {
     Prism.highlightAll();
   }, []);
   return (
-    <article>
-      <header>
-        <Box marginTop={4} marginBottom={4}>
-          <DateInfo publishedAt={publishedAt} />
-          <Typography variant="h3" className={classes.title}>
-            {title}
-          </Typography>
-          <TagList tags={tags} />
-        </Box>
-      </header>
-      <section
-        className={classes.body}
-        dangerouslySetInnerHTML={{
-          __html: body,
-        }}
-      ></section>
-    </article>
+    <Paper className={classes.paper}>
+      <article>
+        <header>
+          <Box marginTop={4} marginBottom={4}>
+            <DateInfo publishedAt={publishedAt} />
+            <Typography variant="h3" className={classes.title}>
+              {title}
+            </Typography>
+            <TagList tags={tags} />
+          </Box>
+        </header>
+        <section
+          className={classes.body}
+          dangerouslySetInnerHTML={{
+            __html: body,
+          }}
+        ></section>
+      </article>
+    </Paper>
   );
 };
 
