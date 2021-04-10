@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { makeStyles } from '@material-ui/core';
+import { Typography, Box, makeStyles } from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
@@ -11,9 +11,7 @@ import TagList from '../molecules/TagList';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
-  title: {
-    ...theme.typography.h3,
-  },
+  title: {},
   body: {
     ...theme.typography.body1,
     '& h1': {
@@ -55,13 +53,7 @@ type Props = {
   tags: TagResponse[];
 };
 
-const Post: React.FC<Props> = ({
-  title,
-  body,
-  publishedAt,
-  categories,
-  tags,
-}) => {
+const Post: React.FC<Props> = ({ title, body, publishedAt, tags }) => {
   const classes = useStyles();
   useEffect(() => {
     Prism.highlightAll();
@@ -69,10 +61,13 @@ const Post: React.FC<Props> = ({
   return (
     <article>
       <header>
-        <h1 className={classes.title}>{title}</h1>
-        <DateInfo publishedAt={publishedAt} />
-        <TagList tags={tags} />
-        <CategoryList categories={categories} />
+        <Box marginTop={4} marginBottom={4}>
+          <DateInfo publishedAt={publishedAt} />
+          <Typography variant="h3" className={classes.title}>
+            {title}
+          </Typography>
+          <TagList tags={tags} />
+        </Box>
       </header>
       <section
         className={classes.body}
