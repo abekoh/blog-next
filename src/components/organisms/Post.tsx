@@ -4,7 +4,9 @@ import { makeStyles } from '@material-ui/core';
 
 import { CategoryResponse } from '../../types/category';
 import { TagResponse } from '../../types/tag';
+import CategoryList from '../molecules/CategoryList';
 import DateInfo from '../molecules/DateInfo';
+import TagList from '../molecules/TagList';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
@@ -52,16 +54,8 @@ const Post: React.FC<Props> = ({
       <header>
         <h1 className={classes.title}>{title}</h1>
         <DateInfo publishedAt={publishedAt} />
-        <ul>
-          {tags.map((tag) => (
-            <li key={tag.id}>{tag.name}</li>
-          ))}
-        </ul>
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id}>{category.name}</li>
-          ))}
-        </ul>
+        <TagList tags={tags} />
+        <CategoryList categories={categories} />
       </header>
       <section
         className={classes.body}
