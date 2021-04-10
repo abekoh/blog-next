@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 
 import { CategoryResponse } from '../../types/category';
 import { TagResponse } from '../../types/tag';
+import DateInfo from '../molecules/DateInfo';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
@@ -47,10 +48,10 @@ const Post: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
   return (
-    <>
+    <article>
       <header>
         <h1 className={classes.title}>{title}</h1>
-        <h2>{publishedAt}</h2>
+        <DateInfo publishedAt={publishedAt} />
         <ul>
           {tags.map((tag) => (
             <li key={tag.id}>{tag.name}</li>
@@ -62,13 +63,13 @@ const Post: React.FC<Props> = ({
           ))}
         </ul>
       </header>
-      <article
+      <section
         className={classes.body}
         dangerouslySetInnerHTML={{
           __html: body,
         }}
-      />
-    </>
+      ></section>
+    </article>
   );
 };
 
