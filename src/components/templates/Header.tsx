@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppBar, Grid, makeStyles } from '@material-ui/core';
+import { Box, AppBar, Avatar, Grid, makeStyles } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -39,14 +39,20 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
       <AppBar position="static">
         <Toolbar>
           <Link href={`/`}>
-            <Typography
-              component="h1"
-              variant="h5"
-              noWrap
-              className={classes.title}
-            >
-              {blogTitle}
-            </Typography>
+            <Box display="flex" alignItems="flex-end">
+              {/* <Avatar
+                src="https://images.microcms-assets.io/assets/4f79e018736547879adf5670ebeaccc3/cd1895f87fd642538b8bec820745d1b0/avater.png"
+                variant="square"
+              /> */}
+              <Typography
+                component="h1"
+                variant="h5"
+                noWrap
+                className={classes.title}
+              >
+                {blogTitle}
+              </Typography>
+            </Box>
           </Link>
           <Grid container justifyContent="flex-end" spacing={2}>
             {tabList.map(({ label, link }) => (
