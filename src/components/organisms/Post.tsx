@@ -31,6 +31,17 @@ const useStyles = makeStyles((theme) => ({
     '& img': {
       maxWidth: '100%',
     },
+    '& code': {
+      fontFamily: "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+      color: '#f8f8f2',
+      backgroundColor: '#272822',
+      border: 'solid 0.2em #272822',
+      borderRadius: '0.3em',
+    },
+    '& pre code': {
+      // codeのみに適用したCSSを解除
+      all: 'unset',
+    },
   },
 }));
 
