@@ -1,4 +1,4 @@
-import { Box, Chip, makeStyles } from '@material-ui/core';
+import { Box, Chip, Icon, makeStyles } from '@material-ui/core';
 
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';
@@ -22,7 +22,11 @@ const TagList: React.FC<Props> = ({ tags }) => {
       {tags.map((tag) => (
         <Box key={tag.id} mx={0.5}>
           <Link href={`/tags/${tag.id}`} className={classes.tag}>
-            <Chip label={tag.name} clickable />
+            <Chip
+              icon={<Icon className="devicon-java-plain"></Icon>}
+              label={tag.name}
+              clickable
+            />
           </Link>
         </Box>
       ))}
