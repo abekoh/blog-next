@@ -15,21 +15,22 @@ const PaginationLinks: React.FC<Props> = ({
   totalPage,
   prefix,
 }) => {
-  const isShown = totalPage > 1;
   return (
-    isShown && (
-      <Pagination
-        page={currentPage}
-        count={totalPage}
-        renderItem={(item) => (
-          <PaginationItem
-            component={Link}
-            href={`${prefix}${item.page}`}
-            {...item}
-          />
-        )}
-      />
-    )
+    <>
+      {totalPage > 1 && (
+        <Pagination
+          page={currentPage}
+          count={totalPage}
+          renderItem={(item) => (
+            <PaginationItem
+              component={Link}
+              href={`${prefix}${item.page}`}
+              {...item}
+            />
+          )}
+        />
+      )}
+    </>
   );
 };
 

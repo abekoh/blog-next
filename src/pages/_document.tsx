@@ -26,6 +26,10 @@ class Document extends NextDocument<void> {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.10.1/devicon.min.css"
+          ></link>
         </Head>
         <body>
           <Main />
