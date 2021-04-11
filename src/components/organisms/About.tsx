@@ -1,4 +1,24 @@
+import { makeStyles, Typography, Paper } from '@material-ui/core';
 import React from 'react';
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: '1.8rem',
+    margin: '1rem 0',
+  },
+  body: {
+    ...theme.typography.body1,
+    '& h1': {
+      ...theme.typography.h4,
+    },
+    '& h2': {
+      ...theme.typography.h5,
+    },
+    '& img': {
+      maxWidth: '80%',
+    },
+  },
+}))
 
 type Props = {
   title: string;
@@ -6,17 +26,19 @@ type Props = {
 };
 
 const About: React.FC<Props> = ({ title, body }) => {
+  const classes = useStyles()
   return (
-    <>
+    <Paper className={classes.paper}>
       <header>
-        <h2>{title}</h2>
+        <Typography variant="h4">{title}</Typography>
       </header>
-      <article
+      <section
+        className={classes.body}
         dangerouslySetInnerHTML={{
           __html: body,
         }}
       />
-    </>
+    </Paper>
   );
 };
 
