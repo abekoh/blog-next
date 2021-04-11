@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: '80%',
     },
   },
-}))
+}));
 
 type Props = {
   title: string;
@@ -27,7 +27,7 @@ type Props = {
 };
 
 const About: React.FC<Props> = ({ title, body }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <Paper className={classes.paper}>
       <header>

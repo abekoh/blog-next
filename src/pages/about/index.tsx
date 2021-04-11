@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 

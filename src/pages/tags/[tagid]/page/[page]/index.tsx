@@ -33,7 +33,9 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <>
       <Head>
-        <title>Posts of {tag.name} - {siteData.title}</title>
+        <title>
+          Posts of {tag.name} - {siteData.title}
+        </title>
       </Head>
       <section>
         <PageTitle title={`Posts of ${tag.name}`} />

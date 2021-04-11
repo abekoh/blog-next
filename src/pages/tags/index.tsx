@@ -2,7 +2,6 @@ import React from 'react';
 
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import PageTitle from '../../components/molecules/PageTitle';
 import TagList from '../../components/molecules/TagList';

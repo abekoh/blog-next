@@ -1,11 +1,8 @@
-import { Typography } from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import Link from 'next/link';
 
 import PageTitle from '../components/molecules/PageTitle';
 import PostCardList from '../components/organisms/PostCardList';
 import { PostListResponse } from '../types/post';
-import { SiteDataResponse } from '../types/siteData';
 import { client } from '../utils/api';
 
 type StaticProps = {

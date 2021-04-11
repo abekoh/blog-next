@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { Typography, Box, makeStyles, Paper } from '@material-ui/core';
+import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
 import { TagResponse } from '../../types/tag';
-import CategoryList from '../molecules/CategoryList';
 import DateInfo from '../molecules/DateInfo';
 import TagList from '../molecules/TagList';
 
@@ -64,8 +63,10 @@ const Post: React.FC<Props> = ({ title, body, publishedAt, tags }) => {
         <header>
           <Box marginTop={4} marginBottom={4}>
             <DateInfo publishedAt={publishedAt} />
-            <Typography variant="h3" my={1}>{title}</Typography>
-            <TagList tags={tags} linkable={true}/>
+            <Typography variant="h3" my={1}>
+              {title}
+            </Typography>
+            <TagList tags={tags} linkable={true} />
           </Box>
         </header>
         <section

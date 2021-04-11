@@ -1,21 +1,17 @@
-import { makeStyles, Typography } from "@material-ui/core";
-
-const useStyles = makeStyles(() => ({
-    title: {
-    }
-}));
+import { Typography } from '@material-ui/core';
 
 type Props = {
-    title: string;
+  title: string;
 };
 
 const PageTitle: React.FC<Props> = ({ title }) => {
-    const classes = useStyles();
-    return (
-        <>
-            <Typography variant="h4" m={1.5} >{title}</Typography>
-        </>
-    );
+  return (
+    <>
+      <Typography variant="h4" m={1.5}>
+        {title}
+      </Typography>
+    </>
+  );
 };
 
 export default PageTitle;

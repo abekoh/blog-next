@@ -1,6 +1,4 @@
-import { FunctionComponent } from 'react';
-
-import { Box, Chip, Grid, Icon, makeStyles } from '@material-ui/core';
+import { Chip, Grid, Icon, makeStyles } from '@material-ui/core';
 
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';
@@ -18,13 +16,18 @@ type Props = {
   linkable?: boolean;
 };
 
-const TagChip: React.FC<{ tag: TagResponse, linkable: boolean }> = ({ tag, linkable }) => {
-  return <Chip
-    icon={tag.icon ? <Icon className={tag.icon}></Icon> : undefined}
-    label={tag.name}
-    clickable={linkable}
-  />
-}
+const TagChip: React.FC<{ tag: TagResponse; linkable: boolean }> = ({
+  tag,
+  linkable,
+}) => {
+  return (
+    <Chip
+      icon={tag.icon ? <Icon className={tag.icon}></Icon> : undefined}
+      label={tag.name}
+      clickable={linkable}
+    />
+  );
+};
 
 const TagList: React.FC<Props> = ({ tags, linkable = false }) => {
   const classes = useStyles();
@@ -32,12 +35,13 @@ const TagList: React.FC<Props> = ({ tags, linkable = false }) => {
     <Grid container direction="row" my={1} spacing={1}>
       {tags.map((tag) => (
         <Grid item key={tag.id}>
-          {linkable ?
+          {linkable ? (
             <Link href={`/tags/${tag.id}`} className={classes.tag}>
               <TagChip tag={tag} linkable={true} />
-            </Link> :
+            </Link>
+          ) : (
             <TagChip tag={tag} linkable={false} />
-          }
+          )}
         </Grid>
       ))}
     </Grid>
