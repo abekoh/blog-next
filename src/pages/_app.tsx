@@ -40,6 +40,15 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
         <title>{siteData.title}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="theme-color" content={theme.palette.primary.light} />
+        <meta
+          name="msapplication-TileColor"
+          content={theme.palette.primary.light}
+        />
+        <link
+          rel="mask-icon"
+          href="/favicons/safari-pinned-tab.svg"
+          color={theme.palette.primary.light}
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
