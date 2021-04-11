@@ -1,5 +1,7 @@
+import { Typography } from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Link from 'next/link';
+import PageTitle from '../components/molecules/PageTitle';
 
 import { PostListResponse } from '../types/post';
 import { SiteDataResponse } from '../types/siteData';
@@ -16,7 +18,7 @@ const Page: NextPage<PageProps> = (props) => {
   const { postList } = props;
   return (
     <section>
-      <h2>最近の投稿</h2>
+      <PageTitle title="Recent Posts"/>
       <ul>
         {postList.contents.map((post) => (
           <li key={post.id}>

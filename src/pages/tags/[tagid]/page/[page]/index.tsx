@@ -16,6 +16,7 @@ import { strToInteger } from '../../../../../utils/isNumber';
 import { toStringId } from '../../../../../utils/toStringId';
 import Head from 'next/head';
 import { siteData } from '../../../../../data/site';
+import PageTitle from '../../../../../components/molecules/PageTitle';
 
 const PER_PAGE = 10;
 
@@ -35,7 +36,7 @@ const Page: NextPage<PageProps> = (props) => {
         <title>Posts of {tag.name} - {siteData.title}</title>
       </Head>
       <section>
-        <h2>Posts of {tag.name}</h2>
+        <PageTitle title={`Posts of ${tag.name}`} />
         <ul>
           {postList.contents.map((post) => (
             <li key={post.id}>

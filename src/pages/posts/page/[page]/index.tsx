@@ -14,6 +14,7 @@ import { client } from '../../../../utils/api';
 import { strToInteger } from '../../../../utils/isNumber';
 import Head from 'next/head';
 import { siteData } from '../../../../data/site';
+import PageTitle from '../../../../components/molecules/PageTitle';
 
 const PER_PAGE = 10;
 
@@ -32,7 +33,7 @@ const Page: NextPage<PageProps> = ({ currentPage, postList }) => {
         <title>Posts - {siteData.title}</title>
       </Head>
       <section>
-        <h2>Posts</h2>
+        <PageTitle title="Posts"/>
         <ul>
           {postList.contents.map((post) => (
             <li key={post.id}>

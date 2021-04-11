@@ -7,6 +7,7 @@ import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
 import { siteData } from '../../data/site';
 import Head from 'next/head';
+import PageTitle from '../../components/molecules/PageTitle';
 
 type StaticProps = {
   tagList: TagListResponse;
@@ -21,7 +22,7 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
         <title>Tags - {siteData.title}</title>
       </Head>
       <section>
-        <h1>Tags</h1>
+        <PageTitle title="Tags"/>
         <ul>
           {tagList.contents.map((tag) => (
             <li key={tag.id}>
