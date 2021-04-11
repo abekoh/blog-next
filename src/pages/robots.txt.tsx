@@ -1,17 +1,15 @@
 import { GetServerSidePropsContext } from 'next';
 
-import { generateSitemapXml } from '../utils/generateSitemapXml';
+const APP_HOST = process.env.HOST || '';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getServerSideProps = async ({
   res,
 }: GetServerSidePropsContext) => {
-  const xml = await generateSitemapXml(); // xmlコードを生成する処理（後で書く）
-
+  const text = `User-Agent:* Disallow: Sitemap:${APP_HOST}/sitemap.xml`;
   res.statusCode = 200;
-  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate'); // 24時間のキャッシュ
-  res.setHeader('Content-Type', 'text/xml');
-  res.end(xml);
+  res.setHeader('Content-Type', 'text/plain');
+  res.end(text);
 
   return {
     props: {},
