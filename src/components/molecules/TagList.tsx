@@ -18,9 +18,9 @@ type Props = {
 const TagList: React.FC<Props> = ({ tags }) => {
   const classes = useStyles();
   return (
-    <Box display="flex" flexDirection="row" p={1}>
+    <Box display="flex" flexDirection="row" my={1}>
       {tags.map((tag) => (
-        <Box key={tag.id} mx={0.5}>
+        <Box key={tag.id} mr={0.5}>
           <Link href={`/tags/${tag.id}`} className={classes.tag}>
             <Chip
               icon={tag.icon ? <Icon className={tag.icon}></Icon> : undefined}

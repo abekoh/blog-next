@@ -64,7 +64,7 @@ const Post: React.FC<Props> = ({ title, body, publishedAt, tags }) => {
         <header>
           <Box marginTop={4} marginBottom={4}>
             <DateInfo publishedAt={publishedAt} />
-            <Typography variant="h3">{title}</Typography>
+            <Typography variant="h3" my={1}>{title}</Typography>
             <TagList tags={tags} />
           </Box>
         </header>
