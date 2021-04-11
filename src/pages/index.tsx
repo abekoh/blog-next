@@ -9,7 +9,6 @@ import { SiteDataResponse } from '../types/siteData';
 import { client } from '../utils/api';
 
 type StaticProps = {
-  siteData: SiteDataResponse;
   postList: PostListResponse;
 };
 
@@ -28,18 +27,15 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const siteDataPromise = client.v1.sitedata.$get({
-    query: { fields: 'title' },
+  const postList = await client.v1.posts.$get({
+    query: {
+      fields: 'id,title,publishedAt,tags',
+      orders: '-publishedAt',
+      limit: 4,
+    },
   });
-  const postListPromise = client.v1.posts.$get({
-    query: { fields: 'id,title,publishedAt,tags', orders: '-publishedAt', limit: 4 },
-  });
-  const [siteData, postList] = await Promise.all([
-    siteDataPromise,
-    postListPromise,
-  ]);
   return {
-    props: { siteData, postList },
+    props: { postList },
     revalidate: 60,
   };
 };
