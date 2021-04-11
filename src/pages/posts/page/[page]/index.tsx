@@ -16,6 +16,7 @@ import Head from 'next/head';
 import { siteData } from '../../../../data/site';
 import PageTitle from '../../../../components/molecules/PageTitle';
 import PostCard from '../../../../components/molecules/PostCard';
+import PostCardList from '../../../../components/organisms/PostCardList';
 
 const PER_PAGE = 10;
 
@@ -35,9 +36,7 @@ const Page: NextPage<PageProps> = ({ currentPage, postList }) => {
       </Head>
       <section>
         <PageTitle title="Posts" />
-        {postList.contents.map((post) => {
-          return post.title && <PostCard id={post.id} title={post.title} publishedAt={post.publishedAt} tags={post.tags || []} />
-        })}
+        <PostCardList posts={postList.contents} />
       </section>
       <PaginationLinks
         currentPage={currentPage}
