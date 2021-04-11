@@ -17,19 +17,17 @@ const PaginationLinks: React.FC<Props> = ({
 }) => {
   return (
     <>
-      {totalPage > 1 && (
-        <Pagination
-          page={currentPage}
-          count={totalPage}
-          renderItem={(item) => (
-            <PaginationItem
-              component={Link}
-              href={`${prefix}${item.page}`}
-              {...item}
-            />
-          )}
-        />
-      )}
+      <Pagination
+        page={currentPage}
+        count={totalPage}
+        renderItem={(item) => (
+          <PaginationItem
+            component={Link}
+            href={`${prefix}${item.page}`}
+            {...item}
+          />
+        )}
+      />
     </>
   );
 };
