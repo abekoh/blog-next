@@ -5,10 +5,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import PageTitle from '../../components/molecules/PageTitle';
+import TagList from '../../components/molecules/TagList';
 import { siteData } from '../../data/site';
 import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
-import TagList from '../../components/molecules/TagList';
 
 type StaticProps = {
   tagList: TagListResponse;
