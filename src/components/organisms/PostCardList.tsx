@@ -26,7 +26,7 @@ const PostCardList: React.FC<Props> = ({ posts, pickuped = false }) => {
         <Grid container spacing={1} justifyContent="flex=start">
             {posts.map((post) => {
                 return post.title && (
-                    <Grid item {...gridItemProp}>
+                    <Grid item key={post.id} {...gridItemProp}>
                         <PostCard id={post.id} title={post.title} publishedAt={post.publishedAt} tags={post.tags || []} />
                     </Grid>)
             })}
