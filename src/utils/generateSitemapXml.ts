@@ -4,7 +4,9 @@ import { client } from './api';
 
 const APP_HOST = process.env.HOST || '';
 
-const EXTRA_PATHS = ['/', '/posts', '/about', '/tags'];
+const LATEST_UPDATED_PATHS = ['/', '/posts'];
+
+const EXTRA_PATHS = ['/about', '/tags'];
 
 export const generateSitemapXml: () => Promise<string> = async () => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>`;
@@ -38,6 +40,19 @@ export const generateSitemapXml: () => Promise<string> = async () => {
     xml += `
       <url>
         <loc>${APP_HOST}/tags/${tag.id}</loc>
+      </url>
+    `;
+  });
+
+  const latestLastMod =
+    postList.contents.length > 0
+      ? `<lastmod>${postList.contents[0].publishedAt}</lastmod>`
+      : undefined;
+  LATEST_UPDATED_PATHS.forEach((path: string) => {
+    xml += `
+      <url>
+        <loc>${APP_HOST}${path}</loc>
+        ${latestLastMod}
       </url>
     `;
   });
