@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     query: { fields: 'title' },
   });
   const postListPromise = client.v1.posts.$get({
-    query: { fields: 'id,title,publishedAt,tags', orders: '-publishedAt', limit: 3 },
+    query: { fields: 'id,title,publishedAt,tags', orders: '-publishedAt', limit: 4 },
   });
   const [siteData, postList] = await Promise.all([
     siteDataPromise,
