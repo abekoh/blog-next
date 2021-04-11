@@ -1,11 +1,11 @@
 import { createMuiTheme } from '@material-ui/core';
-import { blue, indigo } from '@material-ui/core/colors';
+import { blue, deepPurple, purple } from '@material-ui/core/colors';
 
 // defaults: https://next.material-ui.com/customization/default-theme/#main-content
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: indigo,
+    primary: deepPurple,
+    secondary: purple,
     mode: 'light',
   },
   typography: {
