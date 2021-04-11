@@ -7,13 +7,7 @@ import Head from 'next/head';
 
 import Layout from '../components/templates/Layout';
 import theme from '../theme/theme';
-
-// サイトデータ情報、いずれはmicroCMSから取れるようにしたい
-const siteData = {
-  title: "abekoh's tech note",
-  author: 'abekoh',
-  copyright: '© 2019 abekoh',
-};
+import { siteData } from '../data/site';
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -26,6 +20,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+        <title></title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
