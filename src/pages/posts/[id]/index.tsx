@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Alert, Box, Button, Typography } from '@material-ui/core';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -10,12 +11,11 @@ import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 
 import Post from '../../../components/organisms/Post';
+import Link from '../../../components/utils/Link';
 import { siteData } from '../../../data/site';
 import { PostResponse } from '../../../types/post';
 import { client } from '../../../utils/api';
 import { toStringId } from '../../../utils/toStringId';
-import { Alert, Box, Button, Typography } from '@material-ui/core';
-import Link from '../../../components/utils/Link';
 
 type StaticProps = {
   post: PostResponse;
