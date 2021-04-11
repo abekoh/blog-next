@@ -15,6 +15,7 @@ import { strToInteger } from '../../../../utils/isNumber';
 import Head from 'next/head';
 import { siteData } from '../../../../data/site';
 import PageTitle from '../../../../components/molecules/PageTitle';
+import PostCard from '../../../../components/molecules/PostCard';
 
 const PER_PAGE = 10;
 
@@ -33,16 +34,10 @@ const Page: NextPage<PageProps> = ({ currentPage, postList }) => {
         <title>Posts - {siteData.title}</title>
       </Head>
       <section>
-        <PageTitle title="Posts"/>
-        <ul>
-          {postList.contents.map((post) => (
-            <li key={post.id}>
-              <Link href={`/posts/${post.id}`}>
-                <a>{post.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PageTitle title="Posts" />
+        {postList.contents.map((post) => {
+          return post.title && <PostCard id={post.id} title={post.title} publishedAt={post.publishedAt} tags={post.tags || []} />
+        })}
       </section>
       <PaginationLinks
         currentPage={currentPage}
@@ -72,7 +67,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
   }
   const postList = await client.v1.posts.$get({
     query: {
-      fields: 'id,title',
+      fields: 'id,title,publishedAt,tags',
       orders: '-publishedAt',
       limit: PER_PAGE,
       offset: (page - 1) * PER_PAGE,
