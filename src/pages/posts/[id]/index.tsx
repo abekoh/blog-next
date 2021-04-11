@@ -5,8 +5,11 @@ import {
   NextPage,
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
+import Head from 'next/head';
+import React from 'react';
 
 import Post from '../../../components/organisms/Post';
+import { siteData } from '../../../data/site';
 import { PostResponse } from '../../../types/post';
 import { client } from '../../../utils/api';
 import { toStringId } from '../../../utils/toStringId';
@@ -28,17 +31,22 @@ const Page: NextPage<PageProps> = (props) => {
   const body = post.isHtml ? post.htmlBody : post.body;
 
   return (
-    <section>
-      {body && post.title && post.publishedAt && (
-        <Post
-          title={post.title}
-          body={body}
-          publishedAt={post.publishedAt}
-          categories={post.categories || []}
-          tags={post.tags || []}
-        />
-      )}
-    </section>
+    <>
+      <Head>
+        <title>{post.title} - {siteData.title}</title>
+      </Head>
+      <section>
+        {body && post.title && post.publishedAt && (
+          <Post
+            title={post.title}
+            body={body}
+            publishedAt={post.publishedAt}
+            categories={post.categories || []}
+            tags={post.tags || []}
+          />
+        )}
+      </section>
+    </>
   );
 };
 

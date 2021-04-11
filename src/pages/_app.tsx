@@ -20,7 +20,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title></title>
+        <title>{siteData.title}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>

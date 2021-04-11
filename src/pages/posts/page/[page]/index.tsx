@@ -12,6 +12,8 @@ import PaginationLinks from '../../../../components/molecules/PagenationLinks';
 import { PostListResponse } from '../../../../types/post';
 import { client } from '../../../../utils/api';
 import { strToInteger } from '../../../../utils/isNumber';
+import Head from 'next/head';
+import { siteData } from '../../../../data/site';
 
 const PER_PAGE = 10;
 
@@ -23,10 +25,14 @@ type StaticProps = {
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = ({ currentPage, postList }) => {
+  const totalPage = Math.ceil(postList.totalCount / PER_PAGE);
   return (
     <>
+      <Head>
+        <title>Posts - {siteData.title}</title>
+      </Head>
       <section>
-        <h2>投稿一覧</h2>
+        <h2>Posts</h2>
         <ul>
           {postList.contents.map((post) => (
             <li key={post.id}>
@@ -39,7 +45,7 @@ const Page: NextPage<PageProps> = ({ currentPage, postList }) => {
       </section>
       <PaginationLinks
         currentPage={currentPage}
-        totalPage={Math.ceil(postList.totalCount / PER_PAGE)}
+        totalPage={totalPage}
         prefix={`/posts/page/`}
       />
     </>

@@ -1,6 +1,8 @@
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import Head from 'next/head';
 
 import About from '../../components/organisms/About';
+import { siteData } from '../../data/site';
 import { AboutListResponse } from '../../types/about';
 import { client } from '../../utils/api';
 
@@ -12,12 +14,17 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = ({ aboutList }) => {
   return (
-    <section>
-      <h1>About</h1>
-      {aboutList.contents.map((about) => (
-        <About key={about.id} title={about.title} body={about.body} />
-      ))}
-    </section>
+    <>
+      <Head>
+        <title>About - {siteData.title}</title>
+      </Head>
+      <section>
+        <h1>About</h1>
+        {aboutList.contents.map((about) => (
+          <About key={about.id} title={about.title} body={about.body} />
+        ))}
+      </section>
+    </>
   );
 };
 

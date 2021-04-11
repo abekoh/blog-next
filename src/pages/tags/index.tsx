@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
+import { siteData } from '../../data/site';
+import Head from 'next/head';
 
 type StaticProps = {
   tagList: TagListResponse;
@@ -14,16 +16,21 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = ({ tagList }) => {
   return (
-    <section>
-      <h1>タグ一覧</h1>
-      <ul>
-        {tagList.contents.map((tag) => (
-          <li key={tag.id}>
-            <Link href={`/tags/${tag.id}`}>{tag.name}</Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <Head>
+        <title>Tags - {siteData.title}</title>
+      </Head>
+      <section>
+        <h1>Tags</h1>
+        <ul>
+          {tagList.contents.map((tag) => (
+            <li key={tag.id}>
+              <Link href={`/tags/${tag.id}`}>{tag.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 };
 

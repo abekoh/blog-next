@@ -14,6 +14,8 @@ import { TagResponse } from '../../../../../types/tag';
 import { client } from '../../../../../utils/api';
 import { strToInteger } from '../../../../../utils/isNumber';
 import { toStringId } from '../../../../../utils/toStringId';
+import Head from 'next/head';
+import { siteData } from '../../../../../data/site';
 
 const PER_PAGE = 10;
 
@@ -29,8 +31,11 @@ const Page: NextPage<PageProps> = (props) => {
   const { currentPage, tag, postList } = props;
   return (
     <>
+      <Head>
+        <title>Posts of {tag.name} - {siteData.title}</title>
+      </Head>
       <section>
-        <h2>{tag.name}の記事一覧</h2>
+        <h2>Posts of {tag.name}</h2>
         <ul>
           {postList.contents.map((post) => (
             <li key={post.id}>
