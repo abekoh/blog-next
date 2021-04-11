@@ -1,7 +1,10 @@
 import { PostResponse } from '../types/post';
+import { TagResponse } from '../types/tag';
 import { client } from './api';
 
-const appHost = process.env.HOST || '';
+const APP_HOST = process.env.HOST || '';
+
+const EXTRA_PATHS = ['/', '/posts', '/about', '/tags'];
 
 export const generateSitemapXml: () => Promise<string> = async () => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>`;
@@ -11,15 +14,38 @@ export const generateSitemapXml: () => Promise<string> = async () => {
     query: {
       fields: 'id,publishedAt',
       orders: '-publishedAt',
+      limit: 200, // FIXME: totalページングでとる
     },
   });
-  const [postList] = await Promise.all([postsPromise]);
+  const tagsPromise = client.v1.tags.$get({
+    query: {
+      fields: 'id',
+      limit: 1000, // FIXME: totalページングでとる
+    },
+  });
+  const [postList, tagList] = await Promise.all([postsPromise, tagsPromise]);
+
   postList.contents.forEach((post: PostResponse) => {
     xml += `
       <url>
-        <loc>${appHost}/posts/${post.id}</loc>
+        <loc>${APP_HOST}/posts/${post.id}</loc>
         <lastmod>${post.publishedAt}</lastmod>
-        <changefreq>weekly</changefreq>
+      </url>
+    `;
+  });
+
+  tagList.contents.forEach((tag: TagResponse) => {
+    xml += `
+      <url>
+        <loc>${APP_HOST}/tags/${tag.id}</loc>
+      </url>
+    `;
+  });
+
+  EXTRA_PATHS.forEach((path: string) => {
+    xml += `
+      <url>
+        <loc>${APP_HOST}${path}</loc>
       </url>
     `;
   });
