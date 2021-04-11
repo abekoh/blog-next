@@ -23,8 +23,8 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
         <title>Tags - {siteData.title}</title>
       </Head>
       <section>
-        <PageTitle title="Tags"/>
-        <TagList tags={tagList.contents} linkable={true}/>
+        <PageTitle title="Tags" />
+        <TagList tags={tagList.contents} linkable={true} />
       </section>
     </>
   );
@@ -32,7 +32,7 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const tagList = await client.v1.tags.$get({
-    query: { fields: 'id,name,icon', limit: 100 },
+    query: { fields: 'id,name,icon', limit: 100, orders: 'name' },
   });
   return {
     props: { tagList },

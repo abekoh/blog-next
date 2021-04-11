@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 
-import { Box, Chip, Icon, makeStyles } from '@material-ui/core';
+import { Box, Chip, Grid, Icon, makeStyles } from '@material-ui/core';
 
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';
@@ -29,18 +29,18 @@ const TagChip: React.FC<{ tag: TagResponse, linkable: boolean }> = ({ tag, linka
 const TagList: React.FC<Props> = ({ tags, linkable = false }) => {
   const classes = useStyles();
   return (
-    <Box display="flex" flexDirection="row" my={1}>
+    <Grid container direction="row" my={1} spacing={1}>
       {tags.map((tag) => (
-        <Box key={tag.id} mr={0.5}>
+        <Grid item key={tag.id}>
           {linkable ?
             <Link href={`/tags/${tag.id}`} className={classes.tag}>
               <TagChip tag={tag} linkable={true} />
             </Link> :
             <TagChip tag={tag} linkable={false} />
           }
-        </Box>
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 };
 
