@@ -13,7 +13,7 @@ type Props = {
 
 const PostCardList: React.FC<Props> = ({ posts, pickuped = false }) => {
     const classes = useStyles();
-    const gridItemProp: { xs?: GridSize, md?: GridSize } = pickuped ? { xs: 12, md: 6 } : { xs: 12 };
+    const gridItemProp: { xs?: GridSize, md?: GridSize } = pickuped ? { xs: 6, md: 6 } : { xs: 12 };
     return <>
         <Grid container spacing={1} direction="column" justifyContent="center">
             {posts.map((post) => {

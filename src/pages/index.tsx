@@ -3,6 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Link from 'next/link';
 
 import PageTitle from '../components/molecules/PageTitle';
+import PostCardList from '../components/organisms/PostCardList';
 import { PostListResponse } from '../types/post';
 import { SiteDataResponse } from '../types/siteData';
 import { client } from '../utils/api';
@@ -18,15 +19,9 @@ const Page: NextPage<PageProps> = (props) => {
   const { postList } = props;
   return (
     <section>
-      <PageTitle title="Recent Posts"/>
+      <PageTitle title="Recent Posts" />
       <ul>
-        {postList.contents.map((post) => (
-          <li key={post.id}>
-            <Link href={`/posts/${post.id}`}>
-              <a>{post.title}</a>
-            </Link>
-          </li>
-        ))}
+        <PostCardList posts={postList.contents} pickuped={true} />
       </ul>
     </section>
   );
@@ -37,7 +32,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     query: { fields: 'title' },
   });
   const postListPromise = client.v1.posts.$get({
-    query: { fields: 'id,title', orders: '-publishedAt', limit: 5 },
+    query: { fields: 'id,title,publishedAt,tags', orders: '-publishedAt', limit: 3 },
   });
   const [siteData, postList] = await Promise.all([
     siteDataPromise,
