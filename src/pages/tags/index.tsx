@@ -8,6 +8,7 @@ import PageTitle from '../../components/molecules/PageTitle';
 import { siteData } from '../../data/site';
 import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
+import TagList from '../../components/molecules/TagList';
 
 type StaticProps = {
   tagList: TagListResponse;
@@ -23,13 +24,7 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
       </Head>
       <section>
         <PageTitle title="Tags"/>
-        <ul>
-          {tagList.contents.map((tag) => (
-            <li key={tag.id}>
-              <Link href={`/tags/${tag.id}`}>{tag.name}</Link>
-            </li>
-          ))}
-        </ul>
+        <TagList tags={tagList.contents} linkable={true}/>
       </section>
     </>
   );
@@ -37,7 +32,7 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const tagList = await client.v1.tags.$get({
-    query: { fields: 'id,name' },
+    query: { fields: 'id,name,icon', limit: 100 },
   });
   return {
     props: { tagList },
