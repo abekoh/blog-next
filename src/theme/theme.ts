@@ -1,5 +1,7 @@
 import { createMuiTheme } from '@material-ui/core';
 import { blue, indigo } from '@material-ui/core/colors';
+
+// defaults: https://next.material-ui.com/customization/default-theme/#main-content
 const theme = createMuiTheme({
   palette: {
     primary: blue,
@@ -9,9 +11,6 @@ const theme = createMuiTheme({
   typography: {
     fontFamily:
       "'Roboto', 'Noto Sans JP', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif",
-    body1: {
-      fontSize: '1.1rem',
-    },
   },
   components: {
     MuiCssBaseline: {

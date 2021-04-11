@@ -18,15 +18,12 @@ const useStyles = makeStyles((theme) => ({
   body: {
     ...theme.typography.body1,
     '& h1': {
-      ...theme.typography.h3,
-    },
-    '& h2': {
       ...theme.typography.h4,
     },
-    '& h3': {
+    '& h2': {
       ...theme.typography.h5,
     },
-    '& h4': {
+    '& h3': {
       ...theme.typography.h6,
     },
     '& img': {
