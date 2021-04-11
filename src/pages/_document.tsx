@@ -3,6 +3,8 @@ import React from 'react';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
+import { GA_TRACKING_ID } from '../utils/gtag';
+
 class Document extends NextDocument<void> {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   render() {
@@ -30,6 +32,24 @@ class Document extends NextDocument<void> {
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.10.1/devicon.min.css"
           ></link>
+          {GA_TRACKING_ID && (
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              ></script>
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', '${GA_TRACKING_ID}');`,
+                }}
+              ></script>
+            </>
+          )}
         </Head>
         <body>
           <Main />
