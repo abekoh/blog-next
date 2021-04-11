@@ -7,11 +7,9 @@ import {
   NextPage,
 } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import PaginationLinks from '../../../../components/molecules/PagenationLinks';
 import PageTitle from '../../../../components/molecules/PageTitle';
-import PostCard from '../../../../components/molecules/PostCard';
 import PostCardList from '../../../../components/organisms/PostCardList';
 import { siteData } from '../../../../data/site';
 import { PostListResponse } from '../../../../types/post';
