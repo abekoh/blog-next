@@ -14,7 +14,8 @@ import { siteData } from '../../../data/site';
 import { PostResponse } from '../../../types/post';
 import { client } from '../../../utils/api';
 import { toStringId } from '../../../utils/toStringId';
-import { Alert, Box } from '@material-ui/core';
+import { Alert, Box, Button, Typography } from '@material-ui/core';
+import Link from '../../../components/utils/Link';
 
 type StaticProps = {
   post: PostResponse;
@@ -41,7 +42,12 @@ const Page: NextPage<PageProps> = (props) => {
       </Head>
       {draftKey && (
         <Box my={1}>
-          <Alert severity="info">プレビューモードで表示中</Alert>
+          <Alert severity="info">
+            <Typography variant="body1">プレビューモードで表示中</Typography>
+            <Link href={`/api/exit-preview?id=${post.id}`}>
+              <Button variant="outlined">プレビューを解除</Button>
+            </Link>
+          </Alert>
         </Box>
       )}
       <section>
@@ -72,16 +78,18 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     throw new Error('Error: not found');
   }
   const id = toStringId(params.id);
-  const draftKey = previewData?.drafyKey;
+  const draftKey = previewData?.draftKey
+    ? { draftKey: previewData.draftKey }
+    : {};
   try {
     const post = await client.v1.posts._id(id).$get({
       query: {
         fields: 'id,title,body,htmlBody,isHtml,tags,categories,publishedAt',
-        draftKey,
+        ...draftKey,
       },
     });
     return {
-      props: { post, draftKey },
+      props: { post, ...draftKey },
       revalidate: 60,
     };
   } catch (e) {
