@@ -44,6 +44,7 @@ export const generateSitemapXml: () => Promise<string> = async () => {
     `;
   });
 
+  // FIXME: 最終更新日修正
   const latestLastMod =
     postList.contents.length > 0
       ? `<lastmod>${postList.contents[0].publishedAt}</lastmod>`
