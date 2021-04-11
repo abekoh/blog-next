@@ -11,6 +11,7 @@ import Link from 'next/link';
 
 import PaginationLinks from '../../../../../components/molecules/PagenationLinks';
 import PageTitle from '../../../../../components/molecules/PageTitle';
+import PostCardList from '../../../../../components/organisms/PostCardList';
 import { siteData } from '../../../../../data/site';
 import { PostListResponse } from '../../../../../types/post';
 import { TagResponse } from '../../../../../types/tag';
@@ -39,15 +40,7 @@ const Page: NextPage<PageProps> = (props) => {
       </Head>
       <section>
         <PageTitle title={`Posts of ${tag.name}`} />
-        <ul>
-          {postList.contents.map((post) => (
-            <li key={post.id}>
-              <Link href={`/posts/${post.id}`}>
-                <a>{post.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PostCardList posts={postList.contents} />
       </section>
       <PaginationLinks
         currentPage={currentPage}
@@ -86,7 +79,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
   });
   const postListPromise = client.v1.posts.$get({
     query: {
-      fields: 'id,title',
+      fields: 'id,title,publishedAt,tags',
       orders: '-publishedAt',
       limit: PER_PAGE,
       offset: (page - 1) * PER_PAGE,
