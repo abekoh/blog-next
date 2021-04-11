@@ -12,7 +12,7 @@ type Props = {
 const PostCardList: React.FC<Props> = ({ posts }) => {
     const classes = useStyles();
     return <>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} direction="column" justifyContent="center">
             {posts.map((post) => {
                 return post.title && (
                     <Grid item xs={12}>
