@@ -22,6 +22,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
       <Head>
         <title>{siteData.title}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta name="theme-color" content={theme.palette.primary.light}/>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
