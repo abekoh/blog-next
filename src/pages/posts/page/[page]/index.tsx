@@ -6,17 +6,17 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 
 import PaginationLinks from '../../../../components/molecules/PagenationLinks';
-import { PostListResponse } from '../../../../types/post';
-import { client } from '../../../../utils/api';
-import { strToInteger } from '../../../../utils/isNumber';
-import Head from 'next/head';
-import { siteData } from '../../../../data/site';
 import PageTitle from '../../../../components/molecules/PageTitle';
 import PostCard from '../../../../components/molecules/PostCard';
 import PostCardList from '../../../../components/organisms/PostCardList';
+import { siteData } from '../../../../data/site';
+import { PostListResponse } from '../../../../types/post';
+import { client } from '../../../../utils/api';
+import { strToInteger } from '../../../../utils/isNumber';
 
 const PER_PAGE = 10;
 

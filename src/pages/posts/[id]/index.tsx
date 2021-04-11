@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -6,7 +8,6 @@ import {
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
-import React from 'react';
 
 import Post from '../../../components/organisms/Post';
 import { siteData } from '../../../data/site';

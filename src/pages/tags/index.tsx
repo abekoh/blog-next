@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 
+import PageTitle from '../../components/molecules/PageTitle';
+import { siteData } from '../../data/site';
 import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
-import { siteData } from '../../data/site';
-import Head from 'next/head';
-import PageTitle from '../../components/molecules/PageTitle';
 
 type StaticProps = {
   tagList: TagListResponse;

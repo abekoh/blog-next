@@ -1,5 +1,6 @@
-import { Box, Chip, Icon, makeStyles } from '@material-ui/core';
 import { FunctionComponent } from 'react';
+
+import { Box, Chip, Icon, makeStyles } from '@material-ui/core';
 
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';

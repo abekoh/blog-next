@@ -6,8 +6,8 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import Layout from '../components/templates/Layout';
-import theme from '../theme/theme';
 import { siteData } from '../data/site';
+import theme from '../theme/theme';
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
