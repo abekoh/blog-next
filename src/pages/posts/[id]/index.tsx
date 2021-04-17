@@ -15,6 +15,7 @@ import Link from '../../../components/utils/Link';
 import { siteData } from '../../../data/site';
 import { PostResponse } from '../../../types/post';
 import { client } from '../../../utils/api';
+import { generateJsonld } from '../../../utils/jsonld';
 import { toStringId } from '../../../utils/toStringId';
 
 type StaticProps = {
@@ -39,6 +40,18 @@ const Page: NextPage<PageProps> = (props) => {
         <title>
           {post.title} - {siteData.title}
         </title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: generateJsonld([
+              {
+                type: 'Article',
+                headline: post.title,
+                datePublished: post.publishedAt,
+              },
+            ]),
+          }}
+        />
       </Head>
       {draftKey && (
         <Box my={1}>
