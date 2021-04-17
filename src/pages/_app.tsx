@@ -38,6 +38,8 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
     <>
       <Head>
         <title>{siteData.title}</title>
+        <meta property="og:site_name" content={siteData.title} />
+        <meta property="og:locale" content="ja_JP" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="theme-color" content={theme.palette.primary.light} />
         <meta

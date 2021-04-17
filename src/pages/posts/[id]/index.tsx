@@ -40,6 +40,15 @@ const Page: NextPage<PageProps> = (props) => {
         <title>
           {post.title} - {siteData.title}
         </title>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta
+          property="og:url"
+          content={`${siteData.host}${router.pathname}`}
+        />
+        {post.summary && (
+          <meta property="og:description" content={post.summary} />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
