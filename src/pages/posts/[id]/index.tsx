@@ -42,10 +42,7 @@ const Page: NextPage<PageProps> = (props) => {
         </title>
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
-        <meta
-          property="og:url"
-          content={`${siteData.host}${router.pathname}`}
-        />
+        <meta property="og:url" content={`${siteData.host}${router.asPath}`} />
         {post.summary && (
           <meta property="og:description" content={post.summary} />
         )}

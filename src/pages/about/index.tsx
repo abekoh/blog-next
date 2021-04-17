@@ -22,10 +22,7 @@ const Page: NextPage<PageProps> = ({ aboutList }) => {
         <title>About - {siteData.title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:title" content="About" />
-        <meta
-          property="og:url"
-          content={`${siteData.host}${router.pathname}`}
-        />
+        <meta property="og:url" content={`${siteData.host}${router.asPath}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
