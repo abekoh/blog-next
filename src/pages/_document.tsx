@@ -30,7 +30,7 @@ class Document extends NextDocument<void> {
           />
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.10.1/devicon.min.css"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.11.0/devicon.min.css"
           />
           <link
             rel="apple-touch-icon"
