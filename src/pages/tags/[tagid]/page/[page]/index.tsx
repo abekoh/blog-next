@@ -7,7 +7,6 @@ import {
   NextPage,
 } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import PaginationLinks from '../../../../../components/molecules/PagenationLinks';
 import PageTitle from '../../../../../components/molecules/PageTitle';

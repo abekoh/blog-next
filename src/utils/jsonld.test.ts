@@ -1,4 +1,3 @@
-import { JsonLdObj } from 'jsonld/jsonld-spec';
 import { generateJsonld } from './jsonld';
 
 describe('generateJsonld JSON-LDタグの要素生成', () => {
@@ -11,6 +10,6 @@ describe('generateJsonld JSON-LDタグの要素生成', () => {
         dateModified: new Date(),
       },
     ]);
-    expect(actual).not.toEqual('')
+    expect(actual).not.toEqual('');
   });
 });
