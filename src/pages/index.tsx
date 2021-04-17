@@ -1,5 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import PageTitle from '../components/molecules/PageTitle';
 import PostCardList from '../components/organisms/PostCardList';
@@ -15,11 +16,18 @@ type StaticProps = {
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = (props) => {
+  const router = useRouter();
   const { postList } = props;
   return (
     <>
       <Head>
         <title>{siteData.title}</title>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={siteData.title} />
+        <meta
+          property="og:url"
+          content={`${siteData.host}${router.pathname}`}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
