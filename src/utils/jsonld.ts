@@ -5,7 +5,7 @@ export type ListItemProperty = {
   type: 'ListItem';
   position: number;
   name: string;
-  item: string;
+  path?: string;
 };
 
 export type BreadcrumbListProperty = {
@@ -78,7 +78,7 @@ export const generateJsonld: (properties: JsonldProperty[]) => string = (
               '@type': item.type,
               position: item.position,
               name: item.name,
-              item: item.item,
+              item: item.path && `${siteData.host}${item.path}`,
             };
           }),
         };

@@ -49,6 +49,22 @@ const Page: NextPage<PageProps> = (props) => {
                 headline: post.title,
                 datePublished: post.publishedAt,
               },
+              {
+                type: 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    type: 'ListItem',
+                    position: 1,
+                    name: 'Posts',
+                    path: '/posts',
+                  },
+                  {
+                    type: 'ListItem',
+                    position: 2,
+                    name: post.title || '',
+                  },
+                ],
+              },
             ]),
           }}
         />
