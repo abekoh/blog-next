@@ -8,6 +8,7 @@ import TagList from '../../components/molecules/TagList';
 import { siteData } from '../../data/site';
 import { TagListResponse } from '../../types/tag';
 import { client } from '../../utils/api';
+import { generateJsonld } from '../../utils/jsonld';
 
 type StaticProps = {
   tagList: TagListResponse;
@@ -20,6 +21,16 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
     <>
       <Head>
         <title>Tags - {siteData.title}</title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: generateJsonld([
+              {
+                type: 'WebSite',
+              },
+            ]),
+          }}
+        />
       </Head>
       <section>
         <PageTitle title="Tags" />

@@ -16,6 +16,7 @@ import { PostListResponse } from '../../../../../types/post';
 import { TagResponse } from '../../../../../types/tag';
 import { client } from '../../../../../utils/api';
 import { strToInteger } from '../../../../../utils/isNumber';
+import { generateJsonld } from '../../../../../utils/jsonld';
 import { toStringId } from '../../../../../utils/toStringId';
 
 const PER_PAGE = 10;
@@ -36,6 +37,29 @@ const Page: NextPage<PageProps> = (props) => {
         <title>
           Posts of {tag.name} - {siteData.title}
         </title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: generateJsonld([
+              {
+                type: 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    type: 'ListItem',
+                    position: 1,
+                    name: 'Tags',
+                    path: '/tags',
+                  },
+                  {
+                    type: 'ListItem',
+                    position: 2,
+                    name: tag.name || '',
+                  },
+                ],
+              },
+            ]),
+          }}
+        />
       </Head>
       <section>
         <PageTitle title={`Posts of ${tag.name}`} />

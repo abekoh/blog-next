@@ -5,6 +5,7 @@ import About from '../../components/organisms/About';
 import { siteData } from '../../data/site';
 import { AboutListResponse } from '../../types/about';
 import { client } from '../../utils/api';
+import { generateJsonld } from '../../utils/jsonld';
 
 type StaticProps = {
   aboutList: AboutListResponse;
@@ -17,6 +18,16 @@ const Page: NextPage<PageProps> = ({ aboutList }) => {
     <>
       <Head>
         <title>About - {siteData.title}</title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: generateJsonld([
+              {
+                type: 'WebSite',
+              },
+            ]),
+          }}
+        />
       </Head>
       <section>
         {aboutList.contents.map((about) => (
