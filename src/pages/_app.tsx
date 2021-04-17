@@ -40,6 +40,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
         <title>{siteData.title}</title>
         <meta property="og:site_name" content={siteData.title} />
         <meta property="og:locale" content="ja_JP" />
+        <meta property="fb:app_id" content="587885512182115" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="theme-color" content={theme.palette.primary.light} />
         <meta
