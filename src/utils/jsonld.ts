@@ -41,9 +41,9 @@ export type JsonldProperty =
   | WebSiteJsonldProperty
   | BreadcrumbListProperty;
 
-export const generateJsonld: (properties: JsonldProperty[]) => string = (
-  properties,
-) => {
+export const generateJsonld: (
+  properties: JsonldProperty[],
+) => string = (properties) => {
   const results = properties.map((property: JsonldProperty) => {
     switch (property.type) {
       case 'Article':
@@ -86,5 +86,5 @@ export const generateJsonld: (properties: JsonldProperty[]) => string = (
         };
     }
   });
-  return JSON.stringify(results, undefined, 2);
+  return JSON.stringify(results.length === 1 ? results[0] : results, undefined, 2);
 };
