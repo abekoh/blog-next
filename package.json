@@ -22,6 +22,7 @@
     "@material-ui/icons": "^4.11.2",
     "@types/moment": "^2.13.0",
     "@types/prismjs": "^1.16.5",
+    "jsonld": "^5.2.0",
     "moment": "^2.29.1",
     "next": "10.0.9",
     "prismjs": "^1.23.0",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@types/google.analytics": "^0.0.41",
     "@types/jest": "^26.0.21",
+    "@types/jsonld": "^1.5.5",
     "@types/material-ui": "^0.21.8",
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",
