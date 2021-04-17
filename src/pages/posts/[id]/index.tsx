@@ -47,7 +47,9 @@ const Page: NextPage<PageProps> = (props) => {
               {
                 type: 'Article',
                 headline: post.title,
+                description: post.summary,
                 datePublished: post.publishedAt,
+                dateModified: post.modifiedAt,
               },
               {
                 type: 'BreadcrumbList',
@@ -113,7 +115,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   try {
     const post = await client.v1.posts._id(id).$get({
       query: {
-        fields: 'id,title,body,htmlBody,isHtml,tags,categories,publishedAt',
+        fields:
+          'id,title,summary,body,htmlBody,isHtml,tags,categories,publishedAt,modifiedAt',
         ...draftKey,
       },
     });
