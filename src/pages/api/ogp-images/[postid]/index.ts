@@ -33,11 +33,10 @@ const generateOgpImage = async (
 
   // background
   const margin = 32;
-  ctx.fillStyle = theme.palette.background.paper;
-  ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = theme.palette.primary.light;
   ctx.fillRect(0, 0, width, height);
-  ctx.clearRect(margin, margin, width - margin * 2, height - margin * 2);
+  ctx.fillStyle = theme.palette.background.paper;
+  ctx.fillRect(margin, margin, width - margin * 2, height - margin * 2);
 
   // sitename
   const padding = 10;
