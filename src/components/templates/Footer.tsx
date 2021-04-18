@@ -2,6 +2,7 @@ import React from 'react';
 
 import { AppBar, Grid, Icon, makeStyles, Typography } from '@material-ui/core';
 
+import { siteData } from '../../data/site';
 import Link from '../utils/Link';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,14 +42,14 @@ const Footer: React.FC<Props> = ({ copyright }) => {
       <AppBar position="relative" className={classes.appbar}>
         <Grid container justifyContent="center" spacing={2}>
           <Grid item>
-            <Link href="https://twitter.com/abekoh_bcky">
+            <Link href={`https://twitter.com/${siteData.twitterUserName}`}>
               <Icon
                 className={`devicon-twitter-original ${classes.externalLinkIcon}`}
               />
             </Link>
           </Grid>
           <Grid item>
-            <Link href="https://github.com/abekoh">
+            <Link href={`https://github.com/${siteData.githubUserName}`}>
               <Icon
                 className={`devicon-github-original ${classes.externalLinkIcon}`}
               />
