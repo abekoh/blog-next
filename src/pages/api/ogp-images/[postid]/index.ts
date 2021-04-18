@@ -77,6 +77,7 @@ const generateOgpImage = async (
   res.writeHead(200, {
     'Content-Type': 'image/png',
     'Content-Length': buffer.length,
+    'Cache-Control': 's-maxage=31536000, stale-while-revalidate',
   });
   res.end(buffer, 'binary');
 };
