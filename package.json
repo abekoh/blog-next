@@ -22,6 +22,7 @@
     "@material-ui/icons": "^4.11.2",
     "@types/moment": "^2.13.0",
     "@types/prismjs": "^1.16.5",
+    "canvas": "^2.7.0",
     "jsonld": "^5.2.0",
     "moment": "^2.29.1",
     "next": "10.0.9",
