@@ -34,6 +34,8 @@ const Page: NextPage<PageProps> = (props) => {
 
   const body = post.isHtml ? post.htmlBody : post.body;
 
+  const ogpImageUrl = `${siteData.host}/api/ogp-images/${post.id}`;
+
   return (
     <>
       <Head>
@@ -46,6 +48,7 @@ const Page: NextPage<PageProps> = (props) => {
         {post.summary && (
           <meta property="og:description" content={post.summary} />
         )}
+        <meta property="og:image" content={ogpImageUrl} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -56,6 +59,9 @@ const Page: NextPage<PageProps> = (props) => {
                 description: post.summary,
                 datePublished: post.publishedAt,
                 dateModified: post.modifiedAt,
+                image: ogpImageUrl
+                  ? [{ type: 'ImageObject', url: ogpImageUrl }]
+                  : [],
               },
               {
                 type: 'BreadcrumbList',
