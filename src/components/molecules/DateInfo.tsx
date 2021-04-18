@@ -20,7 +20,6 @@ const DateInfo: React.FC<Props> = ({ publishedAt }) => {
   const classes = useStyles();
   return (
     <Box display="flex" flexDirection="row" margin={1}>
-      {/* <CalendarTodayIcon className={classes.dateIcon} /> */}
       <Typography className={classes.dateText}>
         <time dateTime={publishedAt.toString()}>
           {dateToString(publishedAt)}
