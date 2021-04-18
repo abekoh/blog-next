@@ -12,7 +12,7 @@ const generateOgpImage = async (
   res: NextApiResponse,
 ): Promise<void> => {
   // inputs
-  const width = parseInt(getOneQueryElement(req, 'width')) || 1300;
+  const width = parseInt(getOneQueryElement(req, 'width')) || 1200;
   const height = parseInt(getOneQueryElement(req, 'height')) || 630;
   const post = await client.v1.posts
     ._id(getOneQueryElement(req, 'postid'))
@@ -77,7 +77,8 @@ const generateOgpImage = async (
   res.writeHead(200, {
     'Content-Type': 'image/png',
     'Content-Length': buffer.length,
-    'Cache-Control': 's-maxage=31536000, stale-while-revalidate',
+    // 1週間
+    'Cache-Control': 's-maxage=604800, stale-while-revalidate',
   });
   res.end(buffer, 'binary');
 };
