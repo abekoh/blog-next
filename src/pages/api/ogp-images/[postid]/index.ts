@@ -1,8 +1,9 @@
 import path from 'path';
 
-import { createCanvas, registerFont } from 'canvas';
+import { createCanvas, loadImage, registerFont } from 'canvas';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { siteData } from '../../../../data/site';
 import theme from '../../../../theme/theme';
 import { client } from '../../../../utils/api';
 
@@ -28,6 +29,7 @@ const generateOgpImage = async (
   registerFont(path.resolve('./fonts/NotoSansJP-Medium.otf'), {
     family: 'Noto Sans JP',
   });
+  const fontFamilyName = "'Noto Sans JP'";
 
   // background
   const margin = 32;
@@ -37,9 +39,28 @@ const generateOgpImage = async (
   ctx.fillRect(0, 0, width, height);
   ctx.clearRect(margin, margin, width - margin * 2, height - margin * 2);
 
+  // sitename
+  const padding = 10;
+  ctx.font = `35px ${fontFamilyName}`;
+  ctx.fillStyle = theme.palette.text.primary;
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(
+    siteData.title,
+    width - padding - margin,
+    height - padding - margin,
+  );
+
+  // logo
+  const logoImage = await loadImage(path.resolve('./public/logo.png'));
+  ctx.drawImage(
+    logoImage,
+    width - padding - margin - 380,
+    height - padding - margin - 62,
+  );
+
   // text
   const titleFontSize = 60;
-  const fontFamilyName = "'Noto Sans JP'";
   ctx.font = `${titleFontSize}px ${fontFamilyName}`;
   ctx.fillStyle = theme.palette.text.primary;
   ctx.textAlign = 'center';
