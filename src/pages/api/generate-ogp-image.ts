@@ -12,6 +12,7 @@ const generateOgpImage = async (
   // inputs
   const width = parseInt(getOneQueryElement(req, 'width')) || 1300;
   const height = parseInt(getOneQueryElement(req, 'height')) || 630;
+  const title = getOneQueryElement(req, 'title') || '';
 
   // setup
   const canvas = createCanvas(width, height);
@@ -25,15 +26,14 @@ const generateOgpImage = async (
   ctx.fillRect(0, 0, width, height);
 
   // text
-  ctx.font = "60px 'Noto Sans JP'";
+  const titleFontSize = 60;
+  const fontFamilyName = "'Noto Sans JP'";
+  ctx.font = `${titleFontSize}px ${fontFamilyName}`;
   ctx.fillStyle = theme.palette.text.primary;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(
-    insertNewLine('GitHub Actions + PlantUMLでドメインモデルの管理を楽にする'),
-    width / 2,
-    height / 2 - 60,
-  );
+  const { withNewLine, numOfNewLine } = insertNewLine(title);
+  ctx.fillText(withNewLine, width / 2, height / 2 - titleFontSize * numOfNewLine);
 
   const buffer = canvas.toBuffer();
 
@@ -61,23 +61,31 @@ const charSize: (input: string) => number = (input) =>
  * @param lengthPerLine 1行あたりの幅
  * @returns 改行が入った文字列
  */
-const insertNewLine: (input: string, lengthPerLine?: number) => string = (
+const insertNewLine: (
+  input: string,
+  lengthPerLine?: number,
+) => { withNewLine: string; numOfNewLine: number } = (
   input,
   lengthPerLine = 30,
 ) => {
   let charSizeSum = 0;
   let nextNewLineSum = lengthPerLine;
   let result = '';
+  let numOfNewLine = 0;
   for (const char of input.split('')) {
     charSizeSum += charSize(char);
     if (charSizeSum >= nextNewLineSum) {
       result += '\n' + char;
+      numOfNewLine++;
       nextNewLineSum += lengthPerLine;
     } else {
       result += char;
     }
   }
-  return result;
+  return {
+    withNewLine: result,
+    numOfNewLine,
+  };
 };
 
 /**
