@@ -22,8 +22,12 @@ const generateOgpImage = async (
   });
 
   // background
+  const margin = 32;
   ctx.fillStyle = theme.palette.background.default;
   ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = theme.palette.primary.light;
+  ctx.fillRect(0, 0, width, height);
+  ctx.clearRect(margin, margin, width - margin * 2, height - margin * 2);
 
   // text
   const titleFontSize = 60;
@@ -33,7 +37,11 @@ const generateOgpImage = async (
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   const { withNewLine, numOfNewLine } = insertNewLine(title);
-  ctx.fillText(withNewLine, width / 2, height / 2 - titleFontSize * numOfNewLine);
+  ctx.fillText(
+    withNewLine,
+    width / 2,
+    height / 2 - titleFontSize * numOfNewLine,
+  );
 
   const buffer = canvas.toBuffer();
 
