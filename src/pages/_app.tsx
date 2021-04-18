@@ -42,8 +42,14 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
         <meta property="og:locale" content="ja_JP" />
         <meta property="fb:app_id" content="587885512182115" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:site" content={siteData.twitterUserName} />
-        <meta property="twitter:creator" content={siteData.twitterUserName} />
+        <meta
+          property="twitter:site"
+          content={`@${siteData.twitterUserName}`}
+        />
+        <meta
+          property="twitter:creator"
+          content={`@${siteData.twitterUserName}`}
+        />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="theme-color" content={theme.palette.primary.light} />
         <meta
