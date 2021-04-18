@@ -42,7 +42,7 @@ const generateOgpImage = async (
   // sitename
   const padding = 10;
   ctx.font = `35px ${fontFamilyName}`;
-  ctx.fillStyle = theme.palette.text.primary;
+  ctx.fillStyle = theme.palette.text.secondary;
   ctx.textAlign = 'right';
   ctx.textBaseline = 'bottom';
   ctx.fillText(
