@@ -33,7 +33,7 @@ const generateOgpImage = async (
 
   // background
   const margin = 32;
-  ctx.fillStyle = theme.palette.background.default;
+  ctx.fillStyle = theme.palette.background.paper;
   ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = theme.palette.primary.light;
   ctx.fillRect(0, 0, width, height);
