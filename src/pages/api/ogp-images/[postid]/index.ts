@@ -3,7 +3,8 @@ import path from 'path';
 import { createCanvas, registerFont } from 'canvas';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import theme from '../../theme/theme';
+import theme from '../../../../theme/theme';
+import { client } from '../../../../utils/api';
 
 const generateOgpImage = async (
   req: NextApiRequest,
@@ -12,7 +13,14 @@ const generateOgpImage = async (
   // inputs
   const width = parseInt(getOneQueryElement(req, 'width')) || 1300;
   const height = parseInt(getOneQueryElement(req, 'height')) || 630;
-  const title = getOneQueryElement(req, 'title') || '';
+  const post = await client.v1.posts
+    ._id(getOneQueryElement(req, 'postid'))
+    .$get({
+      query: {
+        fields: 'title',
+      },
+    });
+  const title = post.title || '';
 
   // setup
   const canvas = createCanvas(width, height);
