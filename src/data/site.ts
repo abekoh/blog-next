@@ -1,5 +1,6 @@
 export const siteData = {
   title: "abekoh's tech note",
+  description: '雑多になんでも技術メモ',
   author: 'abekoh',
   twitterUserName: 'abekoh_bcky',
   githubUserName: 'abekoh',
