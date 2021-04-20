@@ -3,7 +3,7 @@ import RSS from 'rss';
 import { siteData } from '../data/site';
 import { client } from './api';
 
-export const generateFeedXml: () => string = async () => {
+export const generateFeedXml: () => Promise<string> = async () => {
   const feed = new RSS({
     title: siteData.title,
     description: siteData.description,
