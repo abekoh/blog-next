@@ -61,6 +61,11 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           href="/favicons/safari-pinned-tab.svg"
           color={theme.palette.primary.light}
         />
+        <link
+          rel="alternate"
+          href={`${siteData.host}/rss`}
+          type="application/rss+xml"
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
