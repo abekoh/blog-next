@@ -63,7 +63,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
         />
         <link
           rel="alternate"
-          href={`${siteData.host}/rss`}
+          href={`${siteData.host}/feed`}
           type="application/rss+xml"
         />
       </Head>
