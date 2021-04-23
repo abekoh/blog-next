@@ -1,13 +1,13 @@
 import { GetServerSidePropsContext } from 'next';
 
-const BUILD_DATETIME = process.env.BUILD_DATETIME || '';
+import info from '../data/info.json';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getServerSideProps = async ({
   res,
 }: GetServerSidePropsContext) => {
   const body = JSON.stringify({
-    updatedAt: BUILD_DATETIME,
+    updatedAt: info.updatedOn,
   });
   res.statusCode = 200;
   res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate'); // 24時間のキャッシュ
