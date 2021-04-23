@@ -29,7 +29,5 @@ jobs:
         run: yarn lint
       - name: Check type
         run: yarn typecheck
-      - name: Build
-        run: yarn build
       - name: Run test
         run: yarn test:ci
