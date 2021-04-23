@@ -42,7 +42,12 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const tagList = await client.v1.tags.$get({
-    query: { fields: 'id,name,icon', limit: 100, orders: 'name' },
+    query: {
+      fields: 'id,name,icon',
+      limit: 100,
+      orders: 'name',
+      filters: `noRef[not_equals]true`,
+    },
   });
   return {
     props: { tagList },
