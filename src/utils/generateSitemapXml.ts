@@ -1,10 +1,9 @@
+import info from '../data/info.json';
 import { PostResponse } from '../types/post';
 import { TagResponse } from '../types/tag';
 import { client } from './api';
 
 const APP_HOST = process.env.HOST || '';
-
-const LATEST_UPDATED_PATHS = ['/', '/posts'];
 
 const EXTRA_PATHS = ['/about', '/tags'];
 
@@ -44,19 +43,25 @@ export const generateSitemapXml: () => Promise<string> = async () => {
     `;
   });
 
-  // FIXME: 最終更新日修正
+  // 最新記事
   const latestLastMod =
     postList.contents.length > 0
       ? `<lastmod>${postList.contents[0].publishedAt}</lastmod>`
       : undefined;
-  LATEST_UPDATED_PATHS.forEach((path: string) => {
-    xml += `
+  xml += `
       <url>
-        <loc>${APP_HOST}${path}</loc>
+        <loc>${APP_HOST}/posts</loc>
         ${latestLastMod}
       </url>
-    `;
-  });
+  `;
+
+  // Home
+  xml += `
+      <url>
+        <loc>${APP_HOST}</loc>
+        ${info.updatedOn ? `<lastmod>${info.updatedOn}</lastmod>` : ''}
+      </url>
+  `;
 
   EXTRA_PATHS.forEach((path: string) => {
     xml += `
