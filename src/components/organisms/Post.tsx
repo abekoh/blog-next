@@ -69,7 +69,9 @@ const Post: React.FC<Props> = ({
       <article>
         <header>
           <Box marginTop={4} marginBottom={4}>
-            <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
+            <Box margin={1}>
+              <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
+            </Box>
             <Typography variant="h3" my={1}>
               {title}
             </Typography>

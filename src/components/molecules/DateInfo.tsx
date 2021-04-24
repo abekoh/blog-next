@@ -21,7 +21,7 @@ type Props = {
 const DateInfo: React.FC<Props> = ({ publishedAt, modifiedAt }) => {
   const classes = useStyles();
   return (
-    <Box display="flex" flexDirection="row" margin={1}>
+    <>
       <Typography className={classes.dateText}>
         <time dateTime={publishedAt.toString()}>
           {dateToString(publishedAt)}
@@ -34,7 +34,7 @@ const DateInfo: React.FC<Props> = ({ publishedAt, modifiedAt }) => {
           </time>
         </Typography>
       )}
-    </Box>
+    </>
   );
 };
 

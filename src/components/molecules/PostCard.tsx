@@ -10,6 +10,7 @@ import { grey } from '@material-ui/core/colors';
 import { TagResponse } from '../../types/tag';
 import { dateToString } from '../../utils/dateToString';
 import Link from '../utils/Link';
+import DateInfo from './DateInfo';
 import TagList from './TagList';
 
 const useStyles = makeStyles(() => ({
@@ -38,10 +39,8 @@ const PostCard: React.FC<Props> = ({ id, title, publishedAt, tags }) => {
       <Card sx={{ display: 'flex' }}>
         <CardActionArea>
           <CardContent>
+            <DateInfo publishedAt={publishedAt} />
             <Typography variant="h5">{title}</Typography>
-            <Typography variant="subtitle1" className={classes.dateText}>
-              {dateToString(publishedAt)}
-            </Typography>
             <TagList tags={tags} linkable={false} />
           </CardContent>
         </CardActionArea>
