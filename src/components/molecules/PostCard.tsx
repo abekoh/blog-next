@@ -29,17 +29,24 @@ type Props = {
   id: string;
   title: string;
   publishedAt: Date;
+  modifiedAt?: Date;
   tags: TagResponse[];
 };
 
-const PostCard: React.FC<Props> = ({ id, title, publishedAt, tags }) => {
+const PostCard: React.FC<Props> = ({
+  id,
+  title,
+  publishedAt,
+  modifiedAt,
+  tags,
+}) => {
   const classes = useStyles();
   return (
     <Link href={`/posts/${id}`} className={classes.link}>
       <Card sx={{ display: 'flex' }}>
         <CardActionArea>
           <CardContent>
-            <DateInfo publishedAt={publishedAt} />
+            <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt}/>
             <Typography variant="h5">{title}</Typography>
             <TagList tags={tags} linkable={false} />
           </CardContent>

@@ -38,7 +38,7 @@ const Page: NextPage<PageProps> = (props) => {
       </Head>
       <section>
         <PageTitle title="Recent Posts" />
-        <PostCardList posts={postList.contents} pickuped={true} />
+      <PostCardList posts={postList.contents} pickuped={true} />
       </section>
     </>
   );
@@ -47,7 +47,7 @@ const Page: NextPage<PageProps> = (props) => {
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postList = await client.v1.posts.$get({
     query: {
-      fields: 'id,title,publishedAt,tags',
+      fields: 'id,title,publishedAt,modifiedAt,tags',
       orders: '-publishedAt',
       limit: 4,
     },
