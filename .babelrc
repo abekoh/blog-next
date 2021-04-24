@@ -25,7 +25,9 @@
           "python",
           "ruby",
           "vim",
-          "yaml"
+          "yaml",
+          "jsx",
+          "tsx"
         ],
         "plugins": [],
         "theme": "okaidia",
