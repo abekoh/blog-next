@@ -99,6 +99,7 @@ const Page: NextPage<PageProps> = (props) => {
             title={post.title}
             body={body}
             publishedAt={post.publishedAt}
+            modifiedAt={post.modifiedAt}
             categories={post.categories || []}
             tags={post.tags || []}
           />

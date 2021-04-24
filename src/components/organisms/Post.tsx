@@ -48,11 +48,18 @@ type Props = {
   title: string;
   body: string;
   publishedAt: Date;
+  modifiedAt?: Date;
   categories: CategoryResponse[];
   tags: TagResponse[];
 };
 
-const Post: React.FC<Props> = ({ title, body, publishedAt, tags }) => {
+const Post: React.FC<Props> = ({
+  title,
+  body,
+  publishedAt,
+  modifiedAt,
+  tags,
+}) => {
   const classes = useStyles();
   useEffect(() => {
     Prism.highlightAll();
@@ -62,7 +69,9 @@ const Post: React.FC<Props> = ({ title, body, publishedAt, tags }) => {
       <article>
         <header>
           <Box marginTop={4} marginBottom={4}>
-            <DateInfo publishedAt={publishedAt} />
+            <Box margin={1}>
+              <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
+            </Box>
             <Typography variant="h3" my={1}>
               {title}
             </Typography>

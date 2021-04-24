@@ -8,8 +8,8 @@ import {
 import { grey } from '@material-ui/core/colors';
 
 import { TagResponse } from '../../types/tag';
-import { dateToString } from '../../utils/dateToString';
 import Link from '../utils/Link';
+import DateInfo from './DateInfo';
 import TagList from './TagList';
 
 const useStyles = makeStyles(() => ({
@@ -28,20 +28,25 @@ type Props = {
   id: string;
   title: string;
   publishedAt: Date;
+  modifiedAt?: Date;
   tags: TagResponse[];
 };
 
-const PostCard: React.FC<Props> = ({ id, title, publishedAt, tags }) => {
+const PostCard: React.FC<Props> = ({
+  id,
+  title,
+  publishedAt,
+  modifiedAt,
+  tags,
+}) => {
   const classes = useStyles();
   return (
     <Link href={`/posts/${id}`} className={classes.link}>
       <Card sx={{ display: 'flex' }}>
         <CardActionArea>
           <CardContent>
+            <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
             <Typography variant="h5">{title}</Typography>
-            <Typography variant="subtitle1" className={classes.dateText}>
-              {dateToString(publishedAt)}
-            </Typography>
             <TagList tags={tags} linkable={false} />
           </CardContent>
         </CardActionArea>

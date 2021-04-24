@@ -9,22 +9,31 @@ const useStyles = makeStyles(() => ({
   },
   dateText: {
     color: grey[500],
+    marginRight: '0.6rem',
   },
 }));
 
 type Props = {
   publishedAt: Date;
+  modifiedAt?: Date;
 };
 
-const DateInfo: React.FC<Props> = ({ publishedAt }) => {
+const DateInfo: React.FC<Props> = ({ publishedAt, modifiedAt }) => {
   const classes = useStyles();
   return (
-    <Box display="flex" flexDirection="row" margin={1}>
+    <Box display="flex" flexDirection="row">
       <Typography className={classes.dateText}>
         <time dateTime={publishedAt.toString()}>
           {dateToString(publishedAt)}
         </time>
       </Typography>
+      {modifiedAt && (
+        <Typography className={classes.dateText}>
+          <time dateTime={modifiedAt.toString()}>
+            (updated: {dateToString(modifiedAt)})
+          </time>
+        </Typography>
+      )}
     </Box>
   );
 };

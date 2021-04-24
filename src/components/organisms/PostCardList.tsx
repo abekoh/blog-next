@@ -27,6 +27,7 @@ const PostCardList: React.FC<Props> = ({ posts, pickuped = false }) => {
                   id={post.id}
                   title={post.title}
                   publishedAt={post.publishedAt}
+                  modifiedAt={post.modifiedAt}
                   tags={post.tags || []}
                 />
               </Grid>
