@@ -13,7 +13,7 @@ export const generateSitemapXml: () => Promise<string> = async () => {
 
   const postsPromise = client.v1.posts.$get({
     query: {
-      fields: 'id,publishedAt',
+      fields: 'id,publishedAt,modifiedAt',
       orders: '-publishedAt',
       limit: 200, // FIXME: totalページングでとる
     },
@@ -30,7 +30,9 @@ export const generateSitemapXml: () => Promise<string> = async () => {
     xml += `
       <url>
         <loc>${APP_HOST}/posts/${post.id}</loc>
-        <lastmod>${post.publishedAt}</lastmod>
+        <lastmod>${
+          post.modifiedAt ? post.modifiedAt : post.publishedAt
+        }</lastmod>
       </url>
     `;
   });
