@@ -8,7 +8,6 @@ import {
 import { grey } from '@material-ui/core/colors';
 
 import { TagResponse } from '../../types/tag';
-import { dateToString } from '../../utils/dateToString';
 import Link from '../utils/Link';
 import DateInfo from './DateInfo';
 import TagList from './TagList';
@@ -46,7 +45,7 @@ const PostCard: React.FC<Props> = ({
       <Card sx={{ display: 'flex' }}>
         <CardActionArea>
           <CardContent>
-            <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt}/>
+            <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
             <Typography variant="h5">{title}</Typography>
             <TagList tags={tags} linkable={false} />
           </CardContent>

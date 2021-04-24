@@ -38,7 +38,7 @@ const Page: NextPage<PageProps> = (props) => {
       </Head>
       <section>
         <PageTitle title="Recent Posts" />
-      <PostCardList posts={postList.contents} pickuped={true} />
+        <PostCardList posts={postList.contents} pickuped={true} />
       </section>
     </>
   );
