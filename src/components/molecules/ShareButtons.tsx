@@ -1,12 +1,9 @@
-import { Box, Grid, makeStyles, Badge } from '@material-ui/core';
-import { count } from 'node:console';
+import { Grid } from '@material-ui/core';
 import {
   FacebookIcon,
   FacebookShareButton,
-  FacebookShareCount,
   HatenaIcon,
   HatenaShareButton,
-  HatenaShareCount,
   InstapaperIcon,
   InstapaperShareButton,
   LineIcon,
@@ -21,8 +18,6 @@ type Props = {
   url: string;
   title: string;
 };
-
-const useStyles = makeStyles(() => ({}));
 
 const ICON_SIZE = 36;
 
@@ -59,7 +54,6 @@ const ShareButtonElements: React.FC<Props>[] = [
 ];
 
 const ShareButtons: React.FC<Props> = ({ url, title }) => {
-  const classes = useStyles();
   return (
     <>
       <Grid
