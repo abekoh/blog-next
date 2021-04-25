@@ -62,15 +62,17 @@ const ShareButtonElements: React.FC<Props>[] = [
 const ShareButtons: React.FC<Props> = ({ url, title }) => {
   const classes = useStyles();
   return (
-    <Grid container display="flex" flexDirection="row" spacing={1}>
-      {ShareButtonElements.map((Element, i) => {
-        return (
-          <Grid item key={i}>
-            <Element url={url} title={title} />
-          </Grid>
-        );
-      })}
-    </Grid>
+    <>
+      <Grid container display="flex" flexDirection="row" justifyContent="center" spacing={1}>
+        {ShareButtonElements.map((Element, i) => {
+          return (
+            <Grid item key={i}>
+              <Element url={url} title={title} />
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
   );
 };
 
