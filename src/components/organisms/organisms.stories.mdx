@@ -1,0 +1,29 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import Post from './Post';
+
+<Meta title="organisms" />
+
+# Post
+
+export const PostTemplate = (args) => <Post {...args} />;
+
+<Canvas>
+  <Story
+    name="Post"
+    args={{
+      title: 'タイトルです',
+      body: `<h2>h2見出し</h2>
+        <h3>h3見出し</h3>
+        <p>こんにちは。本文です。さようなら。</p>
+        <p>
+          <img src="https://images.microcms-assets.io/assets/4f79e018736547879adf5670ebeaccc3/cd1895f87fd642538b8bec820745d1b0/avater.png"/>
+        </p>`,
+      publishedAt: new Date(),
+      modifiedAt: new Date(),
+      tags: [],
+    }}
+  >
+    {PostTemplate.bind({})}
+  </Story>
+</Canvas>

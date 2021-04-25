@@ -1,0 +1,37 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import DateInfo from './DateInfo';
+import PageTitle from './PageTitle';
+
+<Meta title="molecules" />
+
+# DateInfo
+
+export const DateInfoTemplate = (args) => <DateInfo {...args} />;
+
+<Canvas>
+  <Story
+    name="DateInfo"
+    args={{
+      publishedAt: new Date(),
+      modifiedAt: new Date(),
+    }}
+  >
+    {DateInfoTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# PageTitle
+
+export const PageTitleTemplate = (args) => <PageTitle {...args} />;
+
+<Canvas>
+  <Story
+    name="PageTitle"
+    args={{
+      title: 'Title',
+    }}
+  >
+    {PageTitleTemplate.bind({})}
+  </Story>
+</Canvas>
