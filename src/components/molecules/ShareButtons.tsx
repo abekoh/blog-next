@@ -7,6 +7,10 @@ import {
   HatenaIcon,
   HatenaShareButton,
   HatenaShareCount,
+  InstapaperIcon,
+  InstapaperShareButton,
+  LineIcon,
+  LineShareButton,
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
@@ -20,7 +24,7 @@ type Props = {
 
 const useStyles = makeStyles(() => ({}));
 
-const ICON_SIZE = 32;
+const ICON_SIZE = 36;
 
 const ShareButtonElements: React.FC<Props>[] = [
   ({ url, title }) => (
@@ -37,33 +41,34 @@ const ShareButtonElements: React.FC<Props>[] = [
       <FacebookIcon size={ICON_SIZE} round />
     </FacebookShareButton>
   ),
-  ({ url, title }) => {
-    const ShareButton = () => (
-      <HatenaShareButton url={url} title={title}>
-        <HatenaIcon size={ICON_SIZE} round />
-      </HatenaShareButton>
-    );
-    return (
-      <HatenaShareCount url={url}>
-        {(shareCount) =>
-          shareCount && shareCount > 0 ? (
-            <Badge badgeContent={1} color="secondary">
-              <ShareButton />
-            </Badge>
-          ) : (
-            <ShareButton />
-          )
-        }
-      </HatenaShareCount>
-    );
-  },
+  ({ url, title }) => (
+    <HatenaShareButton url={url} title={title}>
+      <HatenaIcon size={ICON_SIZE} round />
+    </HatenaShareButton>
+  ),
+  ({ url, title }) => (
+    <LineShareButton url={url} title={title}>
+      <LineIcon size={ICON_SIZE} round />
+    </LineShareButton>
+  ),
+  ({ url, title }) => (
+    <InstapaperShareButton url={url} title={title}>
+      <InstapaperIcon size={ICON_SIZE} round />
+    </InstapaperShareButton>
+  ),
 ];
 
 const ShareButtons: React.FC<Props> = ({ url, title }) => {
   const classes = useStyles();
   return (
     <>
-      <Grid container display="flex" flexDirection="row" justifyContent="center" spacing={1}>
+      <Grid
+        container
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        spacing={1}
+      >
         {ShareButtonElements.map((Element, i) => {
           return (
             <Grid item key={i}>
