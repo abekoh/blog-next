@@ -35,6 +35,7 @@ const Page: NextPage<PageProps> = (props) => {
   const body = post.isHtml ? post.htmlBody : post.body;
 
   const ogpImageUrl = `${siteData.host}/api/ogp-images/${post.id}`;
+  const thisPageUrl = `${siteData.host}${router.asPath}`;
 
   return (
     <>
@@ -44,7 +45,7 @@ const Page: NextPage<PageProps> = (props) => {
         </title>
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
-        <meta property="og:url" content={`${siteData.host}${router.asPath}`} />
+        <meta property="og:url" content={thisPageUrl} />
         {post.summary && (
           <meta property="og:description" content={post.summary} />
         )}
@@ -102,6 +103,7 @@ const Page: NextPage<PageProps> = (props) => {
             modifiedAt={post.modifiedAt}
             categories={post.categories || []}
             tags={post.tags || []}
+            url={thisPageUrl}
           />
         )}
       </section>

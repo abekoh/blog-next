@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 import DateInfo from './DateInfo';
 import PageTitle from './PageTitle';
+import ShareButtons from './ShareButtons';
 
 <Meta title="molecules" />
 
@@ -33,5 +34,21 @@ export const PageTitleTemplate = (args) => <PageTitle {...args} />;
     }}
   >
     {PageTitleTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# ShareButtons
+
+export const ShareButtonsTemplate = (args) => <ShareButtons {...args} />;
+
+<Canvas>
+  <Story
+    name="ShareButtons"
+    args={{
+      url: 'https://blog.abekoh.dev/posts/build-blog-with-nextjs',
+      title: 'Next.js+Vercel+microCMSでブログをリニューアルしました',
+    }}
+  >
+    {ShareButtonsTemplate.bind({})}
   </Story>
 </Canvas>

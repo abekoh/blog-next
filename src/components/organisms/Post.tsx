@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 
-import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Box, makeStyles, Paper, Typography, Divider } from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
 import { TagResponse } from '../../types/tag';
 import DateInfo from '../molecules/DateInfo';
+import ShareButtons from '../molecules/ShareButtons';
 import TagList from '../molecules/TagList';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
@@ -42,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
       all: 'unset',
     },
   },
+  divider: {
+    marginTop: '1rem',
+    marginBottom: '1rem',
+  },
 }));
 
 type Props = {
@@ -51,6 +56,7 @@ type Props = {
   modifiedAt?: Date;
   categories: CategoryResponse[];
   tags: TagResponse[];
+  url: string;
 };
 
 const Post: React.FC<Props> = ({
@@ -59,6 +65,7 @@ const Post: React.FC<Props> = ({
   publishedAt,
   modifiedAt,
   tags,
+  url,
 }) => {
   const classes = useStyles();
   useEffect(() => {
@@ -84,6 +91,10 @@ const Post: React.FC<Props> = ({
             __html: body,
           }}
         ></section>
+        <Divider className={classes.divider} />
+        <footer>
+          <ShareButtons url={url} title={title} />
+        </footer>
       </article>
     </Paper>
   );
