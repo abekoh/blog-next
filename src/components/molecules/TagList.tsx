@@ -35,7 +35,7 @@ const TagList: React.FC<Props> = ({ tags, linkable = false }) => {
     <Grid container direction="row" my={1} spacing={1}>
       {tags.map((tag) => (
         <Grid item key={tag.id}>
-          {linkable ? (
+          {linkable && !tag.noRef ? (
             <Link href={`/tags/${tag.id}`} className={classes.tag}>
               <TagChip tag={tag} linkable={true} />
             </Link>
