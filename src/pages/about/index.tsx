@@ -2,7 +2,6 @@ import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import TagList from '../../components/molecules/TagList';
 import About from '../../components/organisms/About';
 import InterestedTags from '../../components/organisms/InterestedTags';
 import { siteData } from '../../data/site';
