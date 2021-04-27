@@ -3,18 +3,21 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import About from '../../components/organisms/About';
+import InterestedTags from '../../components/organisms/InterestedTags';
 import { siteData } from '../../data/site';
 import { AboutListResponse } from '../../types/about';
+import { InterestedTagsResponse } from '../../types/interestedTags';
 import { client } from '../../utils/api';
 import { generateJsonld } from '../../utils/jsonld';
 
 type StaticProps = {
   aboutList: AboutListResponse;
+  interestedTags: InterestedTagsResponse;
 };
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Page: NextPage<PageProps> = ({ aboutList }) => {
+const Page: NextPage<PageProps> = ({ aboutList, interestedTags }) => {
   const router = useRouter();
   return (
     <>
@@ -38,17 +41,27 @@ const Page: NextPage<PageProps> = ({ aboutList }) => {
         {aboutList.contents.map((about) => (
           <About key={about.id} title={about.title} body={about.body} />
         ))}
+        <About title="Topics">
+          <InterestedTags interestedTags={interestedTags} />
+        </About>
       </section>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const aboutList = await client.v1.about.$get({
+  const aboutListPromise = client.v1.about.$get({
     query: { fields: 'id,order,title,body', orders: 'order' },
   });
+  const interestedTagsPromise = client.v1.interested_tags.$get({
+    query: { fields: 'id,skillful,canuse,alittle,notouch' },
+  });
+  const [aboutList, interestedTags] = await Promise.all([
+    aboutListPromise,
+    interestedTagsPromise,
+  ]);
   return {
-    props: { aboutList },
+    props: { aboutList, interestedTags },
     revalidate: 60,
   };
 };
