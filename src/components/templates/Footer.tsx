@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
       transform: 'rotateZ(360deg)',
     },
   },
+  privacy: {
+    color: theme.palette.primary.contrastText,
+    fontSize: '0.8rem',
+    '&:hover': {
+      textDecoration: 'underline',
+      textUnderlinePosition: 'auto',
+    },
+  },
   rotateY: {
     transition: '.5s',
     '&:hover': {
@@ -53,6 +61,15 @@ const Footer: React.FC<Props> = ({ copyright }) => {
               <Icon
                 className={`devicon-github-original ${classes.externalLinkIcon}`}
               />
+            </Link>
+          </Grid>
+        </Grid>
+        <Grid container justifyContent="center">
+          <Grid item>
+            <Link href={`/privacy`}>
+              <Typography className={classes.privacy}>
+                Privacy Policy
+              </Typography>
             </Link>
           </Grid>
         </Grid>
