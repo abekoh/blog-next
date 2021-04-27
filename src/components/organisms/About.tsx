@@ -23,22 +23,26 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
   title: string;
-  body: string;
+  body?: string;
+  children?: JSX.Element;
 };
 
-const About: React.FC<Props> = ({ title, body }) => {
+const About: React.FC<Props> = ({ title, body, children }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.paper}>
       <header>
         <Typography variant="h4">{title}</Typography>
       </header>
-      <section
-        className={classes.body}
-        dangerouslySetInnerHTML={{
-          __html: body,
-        }}
-      />
+      {body && (
+        <section
+          className={classes.body}
+          dangerouslySetInnerHTML={{
+            __html: body,
+          }}
+        />
+      )}
+      {children && <section>{children}</section>}
     </Paper>
   );
 };
