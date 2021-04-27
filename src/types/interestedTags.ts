@@ -1,5 +1,4 @@
 import { ContentResponse, ListContentsResponse } from './api';
-import { CategoryResponse } from './category';
 import { TagResponse } from './tag';
 
 export type PostListResponse = ListContentsResponse<InterestedTagsResponse>;
