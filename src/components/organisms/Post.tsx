@@ -16,15 +16,27 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem 0',
   },
   body: {
-    ...theme.typography.body1,
+    '& p': {
+      ...theme.typography.body1,
+      lineHeight: 1.8,
+    },
+    '& ul': {
+      lineHeight: 1.8,
+    },
+    '& ol': {
+      lineHeight: 1.8,
+    },
     '& h1': {
       ...theme.typography.h4,
+      fontWeight: 700,
     },
     '& h2': {
       ...theme.typography.h5,
+      fontWeight: 700,
     },
     '& h3': {
       ...theme.typography.h6,
+      fontWeight: 600,
     },
     '& img': {
       maxWidth: '80%',
