@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react';
 
-import {
-  Box,
-  makeStyles,
-  Paper,
-  Typography,
-  Divider,
-  Collapse,
-} from '@material-ui/core';
+import { Box, makeStyles, Paper, Typography, Divider } from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
@@ -25,8 +18,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    padding: '0.5rem 1.8rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     margin: '1rem 0',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '0.8rem',
+      paddingRight: '0.8rem',
+    },
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: '1.8rem',
+      paddingRight: '1.8rem',
+    },
   },
   body: {
     '& p': {
