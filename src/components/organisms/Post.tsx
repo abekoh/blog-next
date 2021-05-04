@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#272822',
       border: 'solid 0.2em #272822',
       borderRadius: '0.3em',
+      overflowWrap: 'break-word',
     },
     '& pre code': {
       // codeのみに適用したCSSを解除
