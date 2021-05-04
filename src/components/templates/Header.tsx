@@ -10,6 +10,7 @@ import {
   List,
   ListItemText,
   ListItem,
+  Button,
 } from '@material-ui/core';
 import { ListItemIcon } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -107,13 +108,15 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
             spacing={2}
             className={classes.menuHorizonal}
           >
-            {tabList.map(({ label, link }) => (
-              <Grid item key={label}>
-                <Link href={link}>
-                  <Typography className={classes.tab}>{label}</Typography>
-                </Link>
-              </Grid>
-            ))}
+            <List sx={{ display: 'flex', flexDirection: 'row' }}>
+              {tabList.map(({ label, link, icon }) => (
+                <Grid item key={label}>
+                  <Link href={link}>
+                    <Button sx={{ color: 'white' }}>{label}</Button>
+                  </Link>
+                </Grid>
+              ))}
+            </List>
           </Grid>
           <Grid
             container
