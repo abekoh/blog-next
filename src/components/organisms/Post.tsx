@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
 
-import { Box, makeStyles, Paper, Typography, Divider } from '@material-ui/core';
+import {
+  Box,
+  makeStyles,
+  Paper,
+  Typography,
+  Divider,
+  Collapse,
+} from '@material-ui/core';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
@@ -53,6 +60,19 @@ const useStyles = makeStyles((theme) => ({
     '& pre code': {
       // codeのみに適用したCSSを解除
       all: 'unset',
+    },
+    '& table': {
+      borderCollapse: 'collapse',
+      '& th, td': {
+        border: `1px solid ${theme.palette.grey[300]}`,
+        padding: '0.4rem',
+      },
+      '& th': {
+        background: theme.palette.grey[100],
+      },
+      '& td': {
+        background: theme.palette.common.white,
+      },
     },
   },
   divider: {
