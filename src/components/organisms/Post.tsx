@@ -71,6 +71,8 @@ const useStyles = makeStyles((theme) => ({
     },
     '& table': {
       borderCollapse: 'collapse',
+      display: 'block',
+      overflow: 'auto',
       '& th, td': {
         border: `1px solid ${theme.palette.grey[300]}`,
         padding: '0.4rem',
