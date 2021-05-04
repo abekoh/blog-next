@@ -14,7 +14,7 @@ import {
 import { ListItemIcon } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import ArticleIcon from '@material-ui/icons/Article';
+import DescriptionIcon from '@material-ui/icons/Description';
 import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -57,7 +57,7 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
     {
       label: 'Posts',
       link: '/posts',
-      icon: <ArticleIcon />,
+      icon: <DescriptionIcon />,
     },
     {
       label: 'Tags',
@@ -132,7 +132,7 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
             >
               <List>
                 {tabList.map(({ label, link, icon }) => (
-                  <Link href={link} key={label}>
+                  <Link href={link} key={label} onClick={toggleDrawer(false)}>
                     <ListItem button>
                       {icon && <ListItemIcon>{icon}</ListItemIcon>}
                       <ListItemText className={classes.drawerLink}>
