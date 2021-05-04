@@ -18,6 +18,12 @@ import TagList from '../molecules/TagList';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
+  title: {
+    ...theme.typography.h3,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.9rem',
+    },
+  },
   paper: {
     padding: '0.5rem 1.8rem',
     margin: '1rem 0',
@@ -111,7 +117,7 @@ const Post: React.FC<Props> = ({
             <Box margin={1}>
               <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
             </Box>
-            <Typography variant="h3" my={1}>
+            <Typography variant="h3" my={1} className={classes.title}>
               {title}
             </Typography>
             <TagList tags={tags} linkable={true} />
