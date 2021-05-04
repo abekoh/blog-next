@@ -14,7 +14,7 @@ import PostCardList from '../../../../../components/organisms/PostCardList';
 import { siteData } from '../../../../../data/site';
 import { PostListResponse } from '../../../../../types/post';
 import { TagResponse } from '../../../../../types/tag';
-import { client } from '../../../../../utils/api';
+import { microcmsClient } from '../../../../../utils/api';
 import { strToInteger } from '../../../../../utils/isNumber';
 import { generateJsonld } from '../../../../../utils/jsonld';
 import { toStringId } from '../../../../../utils/toStringId';
@@ -95,12 +95,12 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
     throw new Error('Error: invalid page number');
   }
   const tagId = toStringId(params.tagid);
-  const tagPromise = client.v1.tags._id(tagId).$get({
+  const tagPromise = microcmsClient.v1.tags._id(tagId).$get({
     query: {
       fields: 'id,name',
     },
   });
-  const postListPromise = client.v1.posts.$get({
+  const postListPromise = microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,title,publishedAt,modifiedAt,tags',
       orders: '-publishedAt',

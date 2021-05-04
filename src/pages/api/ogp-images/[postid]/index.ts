@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { siteData } from '../../../../data/site';
 import theme from '../../../../theme/theme';
-import { client } from '../../../../utils/api';
+import { microcmsClient } from '../../../../utils/api';
 
 const generateOgpImage = async (
   req: NextApiRequest,
@@ -14,7 +14,7 @@ const generateOgpImage = async (
   // inputs
   const width = parseInt(getOneQueryElement(req, 'width')) || 1200;
   const height = parseInt(getOneQueryElement(req, 'height')) || 630;
-  const post = await client.v1.posts
+  const post = await microcmsClient.v1.posts
     ._id(getOneQueryElement(req, 'postid'))
     .$get({
       query: {

@@ -14,7 +14,7 @@ import Post from '../../../components/organisms/Post';
 import Link from '../../../components/utils/Link';
 import { siteData } from '../../../data/site';
 import { PostResponse } from '../../../types/post';
-import { client } from '../../../utils/api';
+import { microcmsClient } from '../../../utils/api';
 import { generateJsonld } from '../../../utils/jsonld';
 import { toStringId } from '../../../utils/toStringId';
 
@@ -128,7 +128,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     ? { draftKey: previewData.draftKey }
     : {};
   try {
-    const post = await client.v1.posts._id(id).$get({
+    const post = await microcmsClient.v1.posts._id(id).$get({
       query: {
         fields:
           'id,title,summary,body,htmlBody,isHtml,tags,categories,publishedAt,modifiedAt',

@@ -1,7 +1,7 @@
 import RSS from 'rss';
 
 import { siteData } from '../data/site';
-import { client } from './api';
+import { microcmsClient } from './api';
 
 export const generateFeedXml: () => Promise<string> = async () => {
   const feed = new RSS({
@@ -12,7 +12,7 @@ export const generateFeedXml: () => Promise<string> = async () => {
     language: 'ja',
   });
 
-  const posts = await client.v1.posts.$get({
+  const posts = await microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,title,summary,publishedAt',
       orders: '-publishedAt',

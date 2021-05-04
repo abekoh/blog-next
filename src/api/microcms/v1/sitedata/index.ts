@@ -1,9 +1,9 @@
 import { GetContentsQuery } from '../../../../types/api';
-import { PostResponse } from '../../../../types/post';
+import { SiteDataResponse } from '../../../../types/siteData';
 
 export type Methods = {
   get: {
     query?: GetContentsQuery;
-    resBody: PostResponse;
+    resBody: SiteDataResponse;
   };
 };
