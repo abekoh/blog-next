@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { client } from '../../utils/api';
+import { microcmsClient } from '../../utils/api';
 import { toStringId } from '../../utils/toStringId';
 
 const exitPreview = async (
@@ -8,7 +8,7 @@ const exitPreview = async (
   res: NextApiResponse,
 ): Promise<void> => {
   const id = toStringId(req.query.id);
-  const post = await client.v1.posts._id(id).$get({
+  const post = await microcmsClient.v1.posts._id(id).$get({
     query: { fields: 'id' },
   });
 

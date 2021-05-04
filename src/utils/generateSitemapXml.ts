@@ -1,7 +1,7 @@
 import info from '../data/info.json';
 import { PostResponse } from '../types/post';
 import { TagResponse } from '../types/tag';
-import { client } from './api';
+import { microcmsClient } from './api';
 
 const APP_HOST = process.env.HOST || '';
 
@@ -11,14 +11,14 @@ export const generateSitemapXml: () => Promise<string> = async () => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
-  const postsPromise = client.v1.posts.$get({
+  const postsPromise = microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,publishedAt,modifiedAt',
       orders: '-publishedAt',
       limit: 200, // FIXME: totalページングでとる
     },
   });
-  const tagsPromise = client.v1.tags.$get({
+  const tagsPromise = microcmsClient.v1.tags.$get({
     query: {
       fields: 'id',
       limit: 1000, // FIXME: totalページングでとる

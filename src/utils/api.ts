@@ -1,6 +1,6 @@
 import aspida from '@aspida/fetch';
 
-import api from '../api/$api';
+import microcmsApi from '../api/microcms/$api';
 
 const fetchConfig: Required<Parameters<typeof aspida>>[1] = {
   baseURL: process.env.MICRO_CMS_HOST,
@@ -10,4 +10,4 @@ const fetchConfig: Required<Parameters<typeof aspida>>[1] = {
   },
 };
 
-export const client = api(aspida(fetch, fetchConfig));
+export const microcmsClient = microcmsApi(aspida(fetch, fetchConfig));

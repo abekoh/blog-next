@@ -1,9 +1,9 @@
 import { GetContentsQuery } from '../../../../types/api';
-import { CategoryResponse } from '../../../../types/category';
+import { InterestedTagsResponse } from '../../../../types/interestedTags';
 
 export type Methods = {
   get: {
     query?: GetContentsQuery;
-    resBody: CategoryResponse;
+    resBody: InterestedTagsResponse;
   };
 };

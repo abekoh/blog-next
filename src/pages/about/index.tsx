@@ -7,7 +7,7 @@ import InterestedTags from '../../components/organisms/InterestedTags';
 import { siteData } from '../../data/site';
 import { AboutListResponse } from '../../types/about';
 import { InterestedTagsResponse } from '../../types/interestedTags';
-import { client } from '../../utils/api';
+import { microcmsClient } from '../../utils/api';
 import { generateJsonld } from '../../utils/jsonld';
 
 type StaticProps = {
@@ -50,10 +50,10 @@ const Page: NextPage<PageProps> = ({ aboutList, interestedTags }) => {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const aboutListPromise = client.v1.about.$get({
+  const aboutListPromise = microcmsClient.v1.about.$get({
     query: { fields: 'id,order,title,body', orders: 'order' },
   });
-  const interestedTagsPromise = client.v1.interested_tags.$get({
+  const interestedTagsPromise = microcmsClient.v1.interested_tags.$get({
     query: { fields: 'id,skillful,canuse,alittle,notouch' },
   });
   const [aboutList, interestedTags] = await Promise.all([

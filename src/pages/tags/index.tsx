@@ -7,7 +7,7 @@ import PageTitle from '../../components/molecules/PageTitle';
 import TagList from '../../components/molecules/TagList';
 import { siteData } from '../../data/site';
 import { TagListResponse } from '../../types/tag';
-import { client } from '../../utils/api';
+import { microcmsClient } from '../../utils/api';
 import { generateJsonld } from '../../utils/jsonld';
 
 type StaticProps = {
@@ -41,7 +41,7 @@ const Page: NextPage<PageProps> = ({ tagList }) => {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const tagList = await client.v1.tags.$get({
+  const tagList = await microcmsClient.v1.tags.$get({
     query: {
       fields: 'id,name,icon',
       limit: 100,
