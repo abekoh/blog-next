@@ -2,6 +2,8 @@ import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import PageTitle from '../../components/molecules/PageTitle';
+import ChangeLogElement from '../../components/organisms/ChangeLogElement';
 import { githubData } from '../../data/github';
 import { siteData } from '../../data/site';
 import { ReleaseInfo } from '../../types/release';
@@ -35,11 +37,14 @@ const Page: NextPage<PageProps> = ({ releaseInfoList }) => {
         />
       </Head>
       <section>
+        <PageTitle title="Changelog" />
         {releaseInfoList.map((releaseInfo) => (
-          <>
-            <h2>{releaseInfo.title}</h2>
-            <p>{releaseInfo.description}</p>
-          </>
+          <ChangeLogElement
+            key={releaseInfo.publishedAt.toString()}
+            title={releaseInfo.title}
+            description={releaseInfo.description}
+            publishedAt={releaseInfo.publishedAt}
+          />
         ))}
       </section>
     </>
@@ -57,13 +62,20 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       revalidate: 60,
     };
   }
-  const releaseInfoList: ReleaseInfo[] = releases.data.map((release: any) => {
-    return {
-      publishedAt: release.published_at,
-      title: release.name,
-      description: release.body,
-    };
-  });
+  const releaseInfoList: ReleaseInfo[] = releases.data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .map((release: any) => {
+      return {
+        publishedAt: release.published_at,
+        title: release.name,
+        description: release.body,
+      };
+    })
+    .sort((e1, e2) => {
+      if (e1.publishedAt > e2.publishedAt) return -1;
+      if (e1.publishedAt < e2.publishedAt) return 1;
+      return 0;
+    });
   return {
     props: { releaseInfoList },
     revalidate: 60,
