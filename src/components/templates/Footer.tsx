@@ -64,7 +64,12 @@ const Footer: React.FC<Props> = ({ copyright }) => {
             </Link>
           </Grid>
         </Grid>
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" spacing={1}>
+          <Grid item>
+            <Link href={`/changelog`}>
+              <Typography className={classes.privacy}>Changelog</Typography>
+            </Link>
+          </Grid>
           <Grid item>
             <Link href={`/privacy`}>
               <Typography className={classes.privacy}>
