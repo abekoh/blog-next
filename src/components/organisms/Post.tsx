@@ -11,9 +11,24 @@ import TagList from '../molecules/TagList';
 
 // https://next.material-ui.com/customization/default-theme/#main-content
 const useStyles = makeStyles((theme) => ({
+  title: {
+    ...theme.typography.h3,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.9rem',
+    },
+  },
   paper: {
-    padding: '0.5rem 1.8rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     margin: '1rem 0',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '0.8rem',
+      paddingRight: '0.8rem',
+    },
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: '1.8rem',
+      paddingRight: '1.8rem',
+    },
   },
   body: {
     '& p': {
@@ -49,10 +64,26 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#272822',
       border: 'solid 0.2em #272822',
       borderRadius: '0.3em',
+      overflowWrap: 'break-word',
     },
     '& pre code': {
       // codeのみに適用したCSSを解除
       all: 'unset',
+    },
+    '& table': {
+      borderCollapse: 'collapse',
+      display: 'block',
+      overflow: 'auto',
+      '& th, td': {
+        border: `1px solid ${theme.palette.grey[300]}`,
+        padding: '0.4rem',
+      },
+      '& th': {
+        background: theme.palette.grey[100],
+      },
+      '& td': {
+        background: theme.palette.common.white,
+      },
     },
   },
   divider: {
@@ -88,10 +119,10 @@ const Post: React.FC<Props> = ({
       <article>
         <header>
           <Box marginTop={4} marginBottom={4}>
-            <Box margin={1}>
+            <Box>
               <DateInfo publishedAt={publishedAt} modifiedAt={modifiedAt} />
             </Box>
-            <Typography variant="h3" my={1}>
+            <Typography variant="h3" my={1} className={classes.title}>
               {title}
             </Typography>
             <TagList tags={tags} linkable={true} />
