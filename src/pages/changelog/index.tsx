@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -38,14 +39,17 @@ const Page: NextPage<PageProps> = ({ releaseInfoList }) => {
       </Head>
       <section>
         <PageTitle title="Changelog" />
-        {releaseInfoList.map((releaseInfo) => (
-          <ChangeLogElement
-            key={releaseInfo.publishedAt.toString()}
-            title={releaseInfo.title}
-            description={releaseInfo.description}
-            publishedAt={releaseInfo.publishedAt}
-          />
-        ))}
+        <Grid container spacing={1} justifyContent="center">
+          {releaseInfoList.map((releaseInfo) => (
+            <Grid item xs={12} key={releaseInfo.publishedAt.toString()}>
+              <ChangeLogElement
+                title={releaseInfo.title}
+                description={releaseInfo.description}
+                publishedAt={releaseInfo.publishedAt}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </section>
     </>
   );
