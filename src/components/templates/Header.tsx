@@ -10,7 +10,7 @@ import {
   List,
   ListItemText,
   ListItem,
-  Button,
+  Breakpoint,
 } from '@material-ui/core';
 import { ListItemIcon } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +22,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import Link from '../utils/Link';
 
+const DRAWER_SWITCH_BREAKPOINT: Breakpoint = 'md';
+
 const useStyles = makeStyles((theme) => ({
   title: {
     color: theme.palette.primary.contrastText,
@@ -30,17 +32,43 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.contrastText,
   },
   menuHorizonal: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down(DRAWER_SWITCH_BREAKPOINT)]: {
       display: 'none',
     },
   },
   menuDrawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
       display: 'none',
     },
   },
-  drawerLink: {
-    color: theme.palette.text.primary,
+  menuList: {
+    [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
+      display: 'flex',
+      flexDirection: 'row',
+      padding: 0,
+    },
+  },
+  menuListItem: {
+    [theme.breakpoints.down(DRAWER_SWITCH_BREAKPOINT)]: {
+      minWidth: '180px',
+    },
+  },
+  menuListIcon: {
+    minWidth: '32px',
+    [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
+      color: theme.palette.primary.contrastText,
+    },
+    [theme.breakpoints.down(DRAWER_SWITCH_BREAKPOINT)]: {
+      color: theme.palette.text.primary,
+    },
+  },
+  menuListText: {
+    [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
+      color: theme.palette.primary.contrastText,
+    },
+    [theme.breakpoints.down(DRAWER_SWITCH_BREAKPOINT)]: {
+      color: theme.palette.text.primary,
+    },
   },
 }));
 
@@ -81,6 +109,24 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
     }
     setState({ drawer: open });
   };
+  const menuList = (
+    <List className={classes.menuList}>
+      {tabList.map(({ label, link, icon }) => (
+        <Link href={link} key={label} onClick={toggleDrawer(false)}>
+          <ListItem button className={classes.menuListItem}>
+            {icon && (
+              <ListItemIcon className={classes.menuListIcon}>
+                {icon}
+              </ListItemIcon>
+            )}
+            <ListItemText className={classes.menuListText}>
+              {label}
+            </ListItemText>
+          </ListItem>
+        </Link>
+      ))}
+    </List>
+  );
 
   return (
     <header>
@@ -102,50 +148,26 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
               </Typography>
             </Box>
           </Link>
-          <Grid
-            container
-            justifyContent="flex-end"
-            spacing={2}
-            className={classes.menuHorizonal}
-          >
-            <List sx={{ display: 'flex', flexDirection: 'row' }}>
-              {tabList.map(({ label, link, icon }) => (
-                <Grid item key={label}>
-                  <Link href={link}>
-                    <Button sx={{ color: 'white' }}>{label}</Button>
-                  </Link>
-                </Grid>
-              ))}
-            </List>
-          </Grid>
-          <Grid
-            container
-            justifyContent="flex-end"
-            className={classes.menuDrawer}
-          >
-            <Grid item>
-              <IconButton color="inherit" onClick={toggleDrawer(true)}>
+          <Grid container justifyContent="flex-end">
+            <Grid item className={classes.menuDrawer}>
+              <IconButton
+                color="inherit"
+                onClick={toggleDrawer(true)}
+                sx={{ minWidth: '32px' }}
+              >
                 <MenuIcon />
               </IconButton>
+              <Drawer
+                anchor="right"
+                open={state.drawer}
+                onClose={toggleDrawer(false)}
+              >
+                {menuList}
+              </Drawer>
             </Grid>
-            <Drawer
-              anchor="right"
-              open={state.drawer}
-              onClose={toggleDrawer(false)}
-            >
-              <List>
-                {tabList.map(({ label, link, icon }) => (
-                  <Link href={link} key={label} onClick={toggleDrawer(false)}>
-                    <ListItem button>
-                      {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                      <ListItemText className={classes.drawerLink}>
-                        {label}
-                      </ListItemText>
-                    </ListItem>
-                  </Link>
-                ))}
-              </List>
-            </Drawer>
+            <Grid item className={classes.menuHorizonal}>
+              {menuList}
+            </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
