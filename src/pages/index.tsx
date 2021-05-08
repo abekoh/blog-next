@@ -48,8 +48,6 @@ const Page: NextPage<PageProps> = (props) => {
         <TopProfile />
         <PageTitle title="Recent Posts" />
         <PostCardList posts={postList.contents} pickuped={true} />
-        <PageTitle title="Changelog" />
-        <ChangeLogList changeLogElements={releaseInfoList} pickuped={true} />
       </section>
     </>
   );
