@@ -18,7 +18,7 @@ const PostCardList: React.FC<Props> = ({ posts, pickuped = false }) => {
   } = pickuped ? { md: 6, sm: 12 } : { xs: 12 };
   return (
     <>
-      <Grid container spacing={1} justifyContent="flex=start">
+      <Grid container spacing={1} justifyContent="flex-start">
         {posts.map((post) => {
           return (
             post.title && (

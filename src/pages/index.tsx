@@ -1,9 +1,12 @@
+import React from 'react';
+
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import PageTitle from '../components/molecules/PageTitle';
 import PostCardList from '../components/organisms/PostCardList';
+import TopProfile from '../components/organisms/TopProfile';
 import { siteData } from '../data/site';
 import { PostListResponse } from '../types/post';
 import { microcmsClient } from '../utils/api';
@@ -37,6 +40,8 @@ const Page: NextPage<PageProps> = (props) => {
         />
       </Head>
       <section>
+        <PageTitle title="About" />
+        <TopProfile />
         <PageTitle title="Recent Posts" />
         <PostCardList posts={postList.contents} pickuped={true} />
       </section>
@@ -52,6 +57,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       limit: 4,
     },
   });
+
   return {
     props: { postList },
     revalidate: 60,
