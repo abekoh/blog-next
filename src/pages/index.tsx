@@ -16,7 +16,6 @@ import { generateJsonld } from '../utils/jsonld';
 
 type StaticProps = {
   postList: PostListResponse;
-  releaseInfoList: ReleaseInfo[];
 };
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
@@ -53,20 +52,16 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const postListPromise = microcmsClient.v1.posts.$get({
+  const postList = await microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,title,publishedAt,modifiedAt,tags',
       orders: '-publishedAt',
       limit: 4,
     },
   });
-  const releaseInfoPromise = getReleaseInfo();
-  const [postList, releaseInfoList] = await Promise.all([
-    postListPromise,
-    releaseInfoPromise,
-  ]);
+
   return {
-    props: { postList, releaseInfoList },
+    props: { postList },
     revalidate: 60,
   };
 };
