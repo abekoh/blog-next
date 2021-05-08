@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import PageTitle from '../components/molecules/PageTitle';
-import ChangeLogList from '../components/organisms/ChangeLogList';
 import PostCardList from '../components/organisms/PostCardList';
 import TopProfile from '../components/organisms/TopProfile';
 import { siteData } from '../data/site';
@@ -24,7 +23,7 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = (props) => {
   const router = useRouter();
-  const { postList, releaseInfoList } = props;
+  const { postList } = props;
   return (
     <>
       <Head>
