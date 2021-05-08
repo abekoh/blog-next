@@ -9,9 +9,7 @@ import PostCardList from '../components/organisms/PostCardList';
 import TopProfile from '../components/organisms/TopProfile';
 import { siteData } from '../data/site';
 import { PostListResponse } from '../types/post';
-import { ReleaseInfo } from '../types/release';
 import { microcmsClient } from '../utils/api';
-import { getReleaseInfo } from '../utils/githubClient';
 import { generateJsonld } from '../utils/jsonld';
 
 type StaticProps = {
