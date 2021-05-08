@@ -21,6 +21,7 @@ export const getReleaseInfo: () => Promise<ReleaseInfo[]> = async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((release: any) => {
       return {
+        id: release.id,
         publishedAt: release.published_at,
         title: release.name,
         description: release.body,
