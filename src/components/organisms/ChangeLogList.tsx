@@ -18,7 +18,7 @@ const ChangeLogList: React.FC<Props> = ({
     md?: GridSize;
     lg?: GridSize;
     xl?: GridSize;
-  } = pickuped ? { md: 3, sm: 6 } : { xs: 12 };
+  } = pickuped ? { md: 4, sm: 6 } : { xs: 12 };
   return (
     <>
       <Grid container spacing={1} justifyContent="flex-start">

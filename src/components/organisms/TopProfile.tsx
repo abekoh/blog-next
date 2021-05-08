@@ -1,31 +1,19 @@
 import React from 'react';
 
 import {
-  makeStyles,
-  Typography,
-  Paper,
-  Card,
-  Grid,
-  CardMedia,
-  CardContent,
-  Button,
-  CardActions,
-  Box,
   Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography,
 } from '@material-ui/core';
 
 import Link from '../utils/Link';
 
-const useStyles = makeStyles((theme) => ({}));
-
-type Props = {
-  title: string;
-  body?: string;
-  children?: JSX.Element;
-};
-
-const TopProfile: React.FC<Props> = ({ title, body, children }) => {
-  const classes = useStyles();
+const TopProfile: React.FC = () => {
   return (
     <Card>
       <Grid container>

@@ -1,35 +1,30 @@
 import React from 'react';
 
-import {
-  Avatar,
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import PageTitle from '../components/molecules/PageTitle';
+import ChangeLogList from '../components/organisms/ChangeLogList';
 import PostCardList from '../components/organisms/PostCardList';
 import TopProfile from '../components/organisms/TopProfile';
 import { siteData } from '../data/site';
 import { PostListResponse } from '../types/post';
+import { ReleaseInfo } from '../types/release';
 import { microcmsClient } from '../utils/api';
+import { getReleaseInfo } from '../utils/githubClient';
 import { generateJsonld } from '../utils/jsonld';
 
 type StaticProps = {
   postList: PostListResponse;
+  releaseInfoList: ReleaseInfo[];
 };
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Page: NextPage<PageProps> = (props) => {
   const router = useRouter();
-  const { postList } = props;
+  const { postList, releaseInfoList } = props;
   return (
     <>
       <Head>
@@ -54,21 +49,27 @@ const Page: NextPage<PageProps> = (props) => {
         <PageTitle title="Recent Posts" />
         <PostCardList posts={postList.contents} pickuped={true} />
         <PageTitle title="Changelog" />
+        <ChangeLogList changeLogElements={releaseInfoList} pickuped={true} />
       </section>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const postList = await microcmsClient.v1.posts.$get({
+  const postListPromise = microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,title,publishedAt,modifiedAt,tags',
       orders: '-publishedAt',
       limit: 4,
     },
   });
+  const releaseInfoPromise = getReleaseInfo();
+  const [postList, releaseInfoList] = await Promise.all([
+    postListPromise,
+    releaseInfoPromise,
+  ]);
   return {
-    props: { postList },
+    props: { postList, releaseInfoList },
     revalidate: 60,
   };
 };
