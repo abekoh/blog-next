@@ -1,9 +1,21 @@
+import React from 'react';
+
+import {
+  Avatar,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import PageTitle from '../components/molecules/PageTitle';
 import PostCardList from '../components/organisms/PostCardList';
+import TopProfile from '../components/organisms/TopProfile';
 import { siteData } from '../data/site';
 import { PostListResponse } from '../types/post';
 import { microcmsClient } from '../utils/api';
@@ -37,8 +49,11 @@ const Page: NextPage<PageProps> = (props) => {
         />
       </Head>
       <section>
+        <PageTitle title="About" />
+        <TopProfile />
         <PageTitle title="Recent Posts" />
         <PostCardList posts={postList.contents} pickuped={true} />
+        <PageTitle title="Changelog" />
       </section>
     </>
   );
