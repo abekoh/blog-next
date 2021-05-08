@@ -3,7 +3,7 @@ import React from 'react';
 import { makeStyles, Typography, Paper } from '@material-ui/core';
 import marked from 'marked';
 
-import DateInfo from '../molecules/DateInfo';
+import DateInfo from './DateInfo';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

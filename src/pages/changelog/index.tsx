@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import PageTitle from '../../components/molecules/PageTitle';
-import ChangeLogElement from '../../components/organisms/ChangeLogElement';
+import ChangeLogElement from '../../components/molecules/ChangeLogElement';
 import { githubData } from '../../data/github';
 import { siteData } from '../../data/site';
 import { ReleaseInfo } from '../../types/release';
