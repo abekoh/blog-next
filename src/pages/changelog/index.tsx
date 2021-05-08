@@ -3,8 +3,9 @@ import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import PageTitle from '../../components/molecules/PageTitle';
 import ChangeLogElement from '../../components/molecules/ChangeLogElement';
+import PageTitle from '../../components/molecules/PageTitle';
+import ChangeLogList from '../../components/organisms/ChangeLogList';
 import { githubData } from '../../data/github';
 import { siteData } from '../../data/site';
 import { ReleaseInfo } from '../../types/release';
@@ -39,17 +40,7 @@ const Page: NextPage<PageProps> = ({ releaseInfoList }) => {
       </Head>
       <section>
         <PageTitle title="Changelog" />
-        <Grid container spacing={1} justifyContent="center">
-          {releaseInfoList.map((releaseInfo) => (
-            <Grid item xs={12} key={releaseInfo.publishedAt.toString()}>
-              <ChangeLogElement
-                title={releaseInfo.title}
-                description={releaseInfo.description}
-                publishedAt={releaseInfo.publishedAt}
-              />
-            </Grid>
-          ))}
-        </Grid>
+        <ChangeLogList changeLogElements={releaseInfoList} />
       </section>
     </>
   );

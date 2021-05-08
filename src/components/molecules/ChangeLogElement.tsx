@@ -8,7 +8,6 @@ import DateInfo from './DateInfo';
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: '1.2rem',
-    margin: '1rem 0',
   },
   body: {
     '& p': {
