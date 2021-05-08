@@ -7,7 +7,7 @@ type Props = {
 const PageTitle: React.FC<Props> = ({ title }) => {
   return (
     <>
-      <Typography variant="h4" m={1.5}>
+      <Typography variant="h5" m={1.0}>
         {title}
       </Typography>
     </>
