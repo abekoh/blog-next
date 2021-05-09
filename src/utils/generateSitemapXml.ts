@@ -5,7 +5,7 @@ import { microcmsClient } from './api';
 
 const APP_HOST = process.env.HOST || '';
 
-const EXTRA_PATHS = ['/about', '/tags'];
+const EXTRA_PATHS = ['/profile', '/tags', '/changelog', '/privacy', '/contact'];
 
 export const generateSitemapXml: () => Promise<string> = async () => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>`;
