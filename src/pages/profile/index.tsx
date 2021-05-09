@@ -57,7 +57,7 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
             <Grid item xs={12} md={10}>
               <Box>
                 <ul>
-                  <li>名前: abekoh</li>
+                  <li>名前: abekoh (Kotaro Abe, 阿部 耕太郎)</li>
                   <li>出身: 福岡県</li>
                   <li>所在地: 東京都</li>
                   <li>趣味: アニメ、ゲーム、技術書漁り</li>
