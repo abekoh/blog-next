@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import MyAvatar from '../../components/atoms/MyAvatar';
@@ -67,6 +68,7 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
                   <li>出身: 福岡県</li>
                   <li>所在地: 東京都</li>
                   <li>趣味: アニメ、ゲーム、技術書漁り</li>
+                  <li>特技: トロンボーン</li>
                 </ul>
               </Box>
             </Grid>
@@ -96,6 +98,29 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
         <About title="Topics">
           <InterestedTags interestedTags={interestedTags} />
         </About>
+        <About title="Links">
+          <ul>
+            <li>
+              <a href={`https://twitter.com/${siteData.twitterUserName}`}>
+                Twitter
+              </a>
+            </li>
+            <li>
+              <a href={`https://github.com/${siteData.githubUserName}`}>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href={`https://qiita.com/abekoh`}>Qiita</a>
+            </li>
+            <li>
+              <a href={`https://zenn.dev/abekoh`}>Zenn</a>
+            </li>
+          </ul>
+        </About>
+        <p>
+          お問い合わせについては<Link href="/contact">こちら</Link>
+        </p>
       </section>
     </>
   );
