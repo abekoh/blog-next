@@ -9,8 +9,16 @@ import { generateJsonld } from '../../utils/jsonld';
 
 const contentList = [
   {
-    body:
-      '<p>当ブログでは、利用状況を把握するために<a style="color:#212121" href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener noreferrer">Google Analytics</a>を利用しております 。Google AnalyticsはCookieを利用して利用者の情報を収集します。Google Analyticsにおいてデータが収集 、処理される仕組みについては、<a style="color:#212121" href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">こちら</a>をご参照ください。</p>',
+    body: `<p>お問い合わせは次のいずれかでよろしくお願いします。</p>
+    <ul>
+      <li>
+        TwitterのDM:
+        <a href="https://twitter.com/messages/compose?recipient_id=806874881908346880" class="twitter-dm-button" data-screen-name="@abekoh_bcky">
+          Message @abekoh_bcky
+        </a>
+      </li>
+      <li><a href="mailto:abekoh.bcky@gmail.com">abekoh.bcky@gmail.com</a></li>
+    </ul>`,
   },
 ];
 
@@ -19,10 +27,11 @@ const Page: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Privacy Policy - {siteData.title}</title>
+        <title>Contact - {siteData.title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:title" content="About" />
         <meta property="og:url" content={`${siteData.host}${router.asPath}`} />
+        <script async src="https://platform.twitter.com/widgets.js" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -35,7 +44,7 @@ const Page: NextPage = () => {
         />
       </Head>
       <section>
-        <PageTitle title="Privacy Policy" />
+        <PageTitle title="Contact" />
         {contentList.map((content, i) => (
           <About key={i} body={content.body} />
         ))}

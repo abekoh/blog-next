@@ -77,6 +77,11 @@ const Footer: React.FC<Props> = ({ copyright }) => {
               </Typography>
             </Link>
           </Grid>
+          <Grid item>
+            <Link href={`/contact`}>
+              <Typography className={classes.privacy}>Contact</Typography>
+            </Link>
+          </Grid>
         </Grid>
         <Grid container justifyContent="center">
           <Grid item>

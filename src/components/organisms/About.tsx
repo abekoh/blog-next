@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  title: string;
+  title?: string;
   body?: string;
   children?: JSX.Element;
 };
@@ -31,9 +31,11 @@ const About: React.FC<Props> = ({ title, body, children }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.paper}>
-      <header>
-        <Typography variant="h4">{title}</Typography>
-      </header>
+      {title && (
+        <header>
+          <Typography variant="h4">{title}</Typography>
+        </header>
+      )}
       {body && (
         <section
           className={classes.body}
