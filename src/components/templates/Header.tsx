@@ -16,9 +16,9 @@ import { ListItemIcon } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import DescriptionIcon from '@material-ui/icons/Description';
-import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
 
 import Link from '../utils/Link';
 
@@ -79,9 +79,9 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
   const classes = useStyles();
   const tabList = [
     {
-      label: 'About',
-      link: '/about',
-      icon: <InfoIcon />,
+      label: 'Profile',
+      link: '/profile',
+      icon: <PersonIcon />,
     },
     {
       label: 'Posts',

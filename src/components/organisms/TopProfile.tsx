@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  Avatar,
   Box,
   Button,
   Card,
@@ -11,6 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import MyAvatar from '../atoms/MyAvatar';
 import Link from '../utils/Link';
 
 const TopProfile: React.FC = () => {
@@ -24,12 +24,7 @@ const TopProfile: React.FC = () => {
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <Box sx={{ padding: '1.0rem' }}>
-            <Avatar
-              src="/logo.png"
-              title="abekoh"
-              variant="square"
-              sx={{ width: 64, height: 64 }}
-            />
+            <MyAvatar />
           </Box>
         </Grid>
         <Grid item xs={12} md={10}>
@@ -50,8 +45,8 @@ const TopProfile: React.FC = () => {
                 justifyContent: 'flex-end',
               }}
             >
-              <Link href="/about">
-                <Button size="small">{'>>'} More</Button>
+              <Link href="/profile">
+                <Button size="small">{'>>'} Profile</Button>
               </Link>
             </CardActions>
           </Box>
