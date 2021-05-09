@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
     '& h2': {
       ...theme.typography.h5,
     },
-    '& img': {
-      maxWidth: '80%',
-    },
   },
 }));
 
@@ -44,7 +41,7 @@ const About: React.FC<Props> = ({ title, body, children }) => {
           }}
         />
       )}
-      {children && <section>{children}</section>}
+      {children && <section className={classes.body}>{children}</section>}
     </Paper>
   );
 };
