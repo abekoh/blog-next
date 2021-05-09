@@ -15,6 +15,21 @@ const useStyles = makeStyles((theme) => ({
     '& h2': {
       ...theme.typography.h5,
     },
+    '& table': {
+      borderCollapse: 'collapse',
+      display: 'block',
+      overflow: 'auto',
+      '& th, td': {
+        border: `1px solid ${theme.palette.grey[300]}`,
+        padding: '0.4rem',
+      },
+      '& th': {
+        background: theme.palette.grey[100],
+      },
+      '& td': {
+        background: theme.palette.common.white,
+      },
+    },
   },
 }));
 
