@@ -71,6 +71,11 @@ const Footer: React.FC<Props> = ({ copyright }) => {
             </Link>
           </Grid>
           <Grid item>
+            <Link href={`/feed`}>
+              <Typography className={classes.privacy}>RSS</Typography>
+            </Link>
+          </Grid>
+          <Grid item>
             <Link href={`/privacy`}>
               <Typography className={classes.privacy}>
                 Privacy Policy
