@@ -31,7 +31,7 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
   return (
     <>
       <Head>
-        <title>Privacy Policy - {siteData.title}</title>
+        <title>Profile - {siteData.title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:title" content="About" />
         <meta property="og:url" content={`${siteData.host}${router.asPath}`} />
