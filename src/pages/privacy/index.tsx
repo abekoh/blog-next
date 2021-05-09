@@ -37,7 +37,7 @@ const Page: NextPage = () => {
       <section>
         <PageTitle title="Privacy Policy" />
         {contentList.map((content, i) => (
-          <About key={i} title={content.title} body={content.body} />
+          <About key={i} body={content.body} />
         ))}
       </section>
     </>

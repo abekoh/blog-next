@@ -46,7 +46,7 @@ const Page: NextPage = () => {
       <section>
         <PageTitle title="Contact" />
         {contentList.map((content, i) => (
-          <About key={i} title={content.title} body={content.body} />
+          <About key={i} body={content.body} />
         ))}
       </section>
     </>
