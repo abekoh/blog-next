@@ -46,8 +46,8 @@ const TopProfile: React.FC = () => {
                 justifyContent: 'flex-end',
               }}
             >
-              <Link href="/about">
-                <Button size="small">{'>>'} More</Button>
+              <Link href="/profile">
+                <Button size="small">{'>>'} Profile</Button>
               </Link>
             </CardActions>
           </Box>
