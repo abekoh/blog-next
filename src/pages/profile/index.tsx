@@ -1,11 +1,4 @@
-import {
-  Box,
-  Grid,
-  TableBody,
-  td,
-  TableContainer,
-  TableRow,
-} from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -88,8 +81,8 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
             </a>
             に所属。画像系を中心にパターン認識、機械学習について学ぶ。
             <br />
-            修士時代の研究テーマは"Generative Adversarial
-            Networks(GAN)を用いたフォント生成に関する研究"
+            修士時代の研究テーマは&quot;Generative Adversarial
+            Networks(GAN)を用いたフォント生成に関する研究&quot;
           </p>
           <h3>卒業後～</h3>
           <p>ヤフー株式会社 (2018-)</p>
