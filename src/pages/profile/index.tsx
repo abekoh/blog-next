@@ -88,7 +88,7 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
           <p>ヤフー株式会社 (2018-)</p>
           <p>Web広告システムの審査システムの開発・運用・保守に携わる。</p>
         </About>
-        <About title="Topics">
+        <About title="Skills">
           <InterestedTags interestedTags={interestedTags} />
         </About>
         <About title="Links">
