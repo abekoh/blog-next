@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pagination, PaginationItem } from '@material-ui/core';
+import { Box, Pagination, PaginationItem } from '@material-ui/core';
 
 import Link from '../utils/Link';
 
@@ -16,8 +16,9 @@ const PaginationLinks: React.FC<Props> = ({
   prefix,
 }) => {
   return (
-    <>
+    <Box display="flex" justifyContent="center" sx={{ margin: '0.3rem 0' }}>
       <Pagination
+        size="large"
         page={currentPage}
         count={totalPage}
         renderItem={(item) => (
@@ -28,7 +29,7 @@ const PaginationLinks: React.FC<Props> = ({
           />
         )}
       />
-    </>
+    </Box>
   );
 };
 
