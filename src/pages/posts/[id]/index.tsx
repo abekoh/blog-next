@@ -117,7 +117,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async ({params }) => {
+export const getStaticProps: GetStaticProps<StaticProps> = async ({
+  params,
+}) => {
   if (!params?.id) {
     throw new Error('Error: not found');
   }
