@@ -20,12 +20,11 @@ import { toStringId } from '../../../utils/toStringId';
 
 type StaticProps = {
   post: PostResponse;
-  draftKey?: string;
 };
 type PageProps = InferGetServerSidePropsType<typeof getStaticProps>;
 
-const Page: NextPage<PageProps> = (props) => {
-  const { post, draftKey } = props;
+const Page: NextPage<PageProps> = (props: StaticProps) => {
+  const { post } = props;
   const router = useRouter();
 
   if (router.isFallback) {
@@ -84,7 +83,7 @@ const Page: NextPage<PageProps> = (props) => {
           }}
         />
       </Head>
-      {draftKey && (
+      {false && (
         <Box my={1}>
           <Alert severity="info">
             <Typography variant="body1">プレビューモードで表示中</Typography>
@@ -118,25 +117,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
-  const { params, previewData } = context;
+export const getStaticProps: GetStaticProps<StaticProps> = async ({params }) => {
   if (!params?.id) {
     throw new Error('Error: not found');
   }
   const id = toStringId(params.id);
-  const draftKey = previewData?.draftKey
-    ? { draftKey: previewData.draftKey }
-    : {};
   try {
     const post = await microcmsClient.v1.posts._id(id).$get({
       query: {
         fields:
           'id,title,summary,body,htmlBody,isHtml,tags,categories,publishedAt,modifiedAt',
-        ...draftKey,
       },
     });
     return {
-      props: { post, ...draftKey },
+      props: { post },
       revalidate: 60,
     };
   } catch (e) {
