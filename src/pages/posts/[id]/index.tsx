@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Alert, Box, Button, Typography } from '@material-ui/core';
+import marked from 'marked';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -17,7 +18,6 @@ import { PostResponse } from '../../../types/post';
 import { microcmsClient } from '../../../utils/api';
 import { generateJsonld } from '../../../utils/jsonld';
 import { toStringId } from '../../../utils/toStringId';
-import marked from 'marked';
 
 type StaticProps = {
   post: PostResponse;
