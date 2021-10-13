@@ -17,6 +17,7 @@ import { PostResponse } from '../../../types/post';
 import { microcmsClient } from '../../../utils/api';
 import { generateJsonld } from '../../../utils/jsonld';
 import { toStringId } from '../../../utils/toStringId';
+import marked from 'marked';
 
 type StaticProps = {
   post: PostResponse;
@@ -31,7 +32,7 @@ const Page: NextPage<PageProps> = (props: StaticProps) => {
     return <div>Loading...</div>;
   }
 
-  const body = post.isHtml ? post.htmlBody : post.body;
+  const body = post.isHtml ? post.htmlBody : marked(post.body || '');
 
   const ogpImageUrl = `${siteData.host}/api/ogp-images/${post.id}`;
   const thisPageUrl = `${siteData.host}${router.asPath}`;
