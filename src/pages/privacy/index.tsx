@@ -9,8 +9,7 @@ import { generateJsonld } from '../../utils/jsonld';
 
 const contentList = [
   {
-    body:
-      '<p>当ブログでは、利用状況を把握するために<a style="color:#212121" href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener noreferrer">Google Analytics</a>を利用しております 。Google AnalyticsはCookieを利用して利用者の情報を収集します。Google Analyticsにおいてデータが収集 、処理される仕組みについては、<a style="color:#212121" href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">こちら</a>をご参照ください。</p>',
+    body: '<p>当ブログでは、利用状況を把握するために<a style="color:#212121" href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener noreferrer">Google Analytics</a>を利用しております 。Google AnalyticsはCookieを利用して利用者の情報を収集します。Google Analyticsにおいてデータが収集 、処理される仕組みについては、<a style="color:#212121" href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">こちら</a>をご参照ください。</p>',
   },
 ];
 
