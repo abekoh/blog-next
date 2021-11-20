@@ -68,27 +68,41 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
           </Grid>
         </About>
         <About title="History">
-          <>
-            <h3>大学～大学院</h3>
-            <p>
-              九州大学工学部電気情報工学科 (学士・2012-2016)
-              <br />
-              九州大学大学院システム情報科学府情報知能工学専攻 (修士・2016-2018)
-            </p>
-            <p>
-              研究室は
-              <a href="http://human.ait.kyushu-u.ac.jp/">
-                ヒューマンインタフェース研究室(内田研究室)
-              </a>
-              に所属。画像系を中心にパターン認識、機械学習について学ぶ。
-              <br />
-              修士時代の研究テーマは&quot;Generative Adversarial
-              Networks(GAN)を用いたフォント生成に関する研究&quot;
-            </p>
-            <h3>卒業後～</h3>
-            <p>ヤフー株式会社 (2018-)</p>
-            <p>Web広告システムの審査システムの開発・運用・保守に携わる。</p>
-          </>
+          <ul>
+            <li>
+              2012- 九州大学工学部電気情報工学科
+              <ul>
+                <li>
+                  学部4年より
+                  <a href="http://human.ait.kyushu-u.ac.jp/">
+                    ヒューマンインタフェース研究室(内田研究室)
+                  </a>
+                  に所属
+                </li>
+                <li>画像系を中心にパターン認識、機械学習について研究</li>
+              </ul>
+            </li>
+            <li>
+              2016- 九州大学大学院システム情報科学府情報知能工学専攻
+              <ul>
+                <li>研究室は変わらず</li>
+                <li>
+                  修論テーマは&quot;Generative Adversarial
+                  Networks(GAN)を用いたフォント生成に関する研究&quot;
+                </li>
+              </ul>
+            </li>
+            <li>
+              2018- ヤフー株式会社
+              <ul>
+                <li>Web広告システムの審査システムの開発・運用・保守に携わる</li>
+                <li>
+                  よく触っていたもの: Java, Spring, Oracle Database, Kubernetes
+                </li>
+              </ul>
+            </li>
+            <li>2021- 株式会社MICIN</li>
+          </ul>
         </About>
         <About title="Skills">
           <InterestedTags interestedTags={interestedTags} />
