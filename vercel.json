@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "pages/api/ogp-images/[postid]/index.ts": {
+      "includeFiles": "assets/**"
+    }
+  }
+}

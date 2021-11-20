@@ -26,7 +26,7 @@ const generateOgpImage = async (
   // setup
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
-  registerFont(path.resolve('./fonts/NotoSansJP-Medium.otf'), {
+  registerFont(path.resolve(process.cwd(), 'assets', 'NotoSansJP-Medium.otf'), {
     family: 'Noto Sans JP',
   });
   const fontFamilyName = "'Noto Sans JP'";
@@ -51,7 +51,9 @@ const generateOgpImage = async (
   );
 
   // logo
-  const logoImage = await loadImage(path.resolve('./public/logo.png'));
+  const logoImage = await loadImage(
+    path.resolve(process.cwd(), 'assets', 'logo.png'),
+  );
   ctx.drawImage(
     logoImage,
     width - padding - margin - 380,
