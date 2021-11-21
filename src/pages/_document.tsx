@@ -4,7 +4,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
 import { GA_TRACKING_ID } from '../utils/gtag';
-import createEmotionCache from './createEmotionCache';
+import createEmotionCache from '../utils/createEmotionCache';
 
 class Document extends NextDocument {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

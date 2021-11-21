@@ -15,7 +15,7 @@ import Layout from '../components/templates/Layout';
 import { siteData } from '../data/site';
 import theme from '../theme/theme';
 import * as gtag from '../utils/gtag';
-import createEmotionCache from './createEmotionCache';
+import createEmotionCache from '../utils/createEmotionCache';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
