@@ -19,9 +19,7 @@ const StyledLink = styled(Link)(() => ({
   [`& .${classes.title}`]: {},
 
   [`&.${classes.link}`]: {
-    '&:hover': {
-      textDecoration: 'none',
-    },
+    textDecoration: 'none',
   },
 
   [`& .${classes.dateText}`]: {

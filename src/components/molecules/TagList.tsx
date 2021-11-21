@@ -12,9 +12,7 @@ const classes = {
 
 const StyledGrid = styled(Grid)(() => ({
   [`& .${classes.tag}`]: {
-    '&:hover': {
-      textDecoration: 'none',
-    },
+    textDecoration: 'none',
   },
 }));
 
