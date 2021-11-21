@@ -6,4 +6,3 @@ echo "migrate $*"
 
 npx @mui/codemod v5.0.0/preset-safe $*
 npx @mui/codemod v5.0.0/jss-to-styled $*
-yarn lint:fix
