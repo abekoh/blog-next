@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Alert, Box, Button, Typography } from '@mui/material';
-import marked from 'marked';
+import { marked } from 'marked';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -32,7 +32,7 @@ const Page: NextPage<PageProps> = (props: StaticProps) => {
     return <div>Loading...</div>;
   }
 
-  const body = post.isHtml ? post.htmlBody : marked(post.body || '');
+  const body = post.isHtml ? post.htmlBody : marked.parse(post.body || '');
 
   const ogpImageUrl = `${siteData.host}/api/ogp-images/${post.id}`;
   const thisPageUrl = `${siteData.host}${router.asPath}`;
