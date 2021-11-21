@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import {
+  CssBaseline,
+  ThemeProvider,
+  Theme,
+  StyledEngineProvider,
+} from '@mui/material';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -10,6 +15,11 @@ import Layout from '../components/templates/Layout';
 import { siteData } from '../data/site';
 import theme from '../theme/theme';
 import * as gtag from '../utils/gtag';
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -67,12 +77,14 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           type="application/rss+xml"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </StyledEngineProvider>
     </>
   );
 };
