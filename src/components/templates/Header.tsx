@@ -1,59 +1,76 @@
 import React, { useState } from 'react';
 
+import DescriptionIcon from '@mui/icons-material/Description';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
+import { ListItemIcon } from '@mui/material';
 import {
   AppBar,
   Box,
   Grid,
   Drawer,
-  makeStyles,
   IconButton,
   List,
   ListItemText,
   ListItem,
   Breakpoint,
-} from '@material-ui/core';
-import { ListItemIcon } from '@material-ui/core';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import DescriptionIcon from '@material-ui/icons/Description';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-import MenuIcon from '@material-ui/icons/Menu';
-import PersonIcon from '@material-ui/icons/Person';
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 import Link from '../utils/Link';
 
-const DRAWER_SWITCH_BREAKPOINT: Breakpoint = 'md';
+const PREFIX = 'Header';
 
-const useStyles = makeStyles((theme) => ({
-  title: {
+const classes = {
+  title: `${PREFIX}-title`,
+  tab: `${PREFIX}-tab`,
+  menuHorizonal: `${PREFIX}-menuHorizonal`,
+  menuDrawer: `${PREFIX}-menuDrawer`,
+  menuList: `${PREFIX}-menuList`,
+  menuListItem: `${PREFIX}-menuListItem`,
+  menuListIcon: `${PREFIX}-menuListIcon`,
+  menuListText: `${PREFIX}-menuListText`,
+};
+
+const Root = styled('header')(({ theme }) => ({
+  [`& .${classes.title}`]: {
     color: theme.palette.primary.contrastText,
   },
-  tab: {
+
+  [`& .${classes.tab}`]: {
     color: theme.palette.primary.contrastText,
   },
-  menuHorizonal: {
+
+  [`& .${classes.menuHorizonal}`]: {
     [theme.breakpoints.down(DRAWER_SWITCH_BREAKPOINT)]: {
       display: 'none',
     },
   },
-  menuDrawer: {
+
+  [`& .${classes.menuDrawer}`]: {
     [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
       display: 'none',
     },
   },
-  menuList: {
+
+  [`& .${classes.menuList}`]: {
     [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
       display: 'flex',
       flexDirection: 'row',
       padding: 0,
     },
   },
-  menuListItem: {
+
+  [`& .${classes.menuListItem}`]: {
     [theme.breakpoints.down(DRAWER_SWITCH_BREAKPOINT)]: {
       minWidth: '180px',
     },
   },
-  menuListIcon: {
+
+  [`& .${classes.menuListIcon}`]: {
     minWidth: '32px',
     [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
       color: theme.palette.primary.contrastText,
@@ -62,7 +79,8 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.primary,
     },
   },
-  menuListText: {
+
+  [`& .${classes.menuListText}`]: {
     [theme.breakpoints.up(DRAWER_SWITCH_BREAKPOINT)]: {
       color: theme.palette.primary.contrastText,
     },
@@ -72,11 +90,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const DRAWER_SWITCH_BREAKPOINT: Breakpoint = 'md';
+
 type Props = {
   blogTitle: string;
 };
 const Header: React.FC<Props> = ({ blogTitle }) => {
-  const classes = useStyles();
   const tabList = [
     {
       label: 'Profile',
@@ -129,7 +148,7 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
   );
 
   return (
-    <header>
+    <Root>
       <AppBar position="static">
         <Toolbar>
           <Link href={`/`}>
@@ -154,6 +173,7 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
                 color="inherit"
                 onClick={toggleDrawer(true)}
                 sx={{ minWidth: '32px' }}
+                size="large"
               >
                 <MenuIcon />
               </IconButton>
@@ -171,7 +191,7 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
           </Grid>
         </Toolbar>
       </AppBar>
-    </header>
+    </Root>
   );
 };
 
