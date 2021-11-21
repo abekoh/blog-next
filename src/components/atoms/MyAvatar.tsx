@@ -1,4 +1,4 @@
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 
 const MyAvatar: React.FC = () => {
   return (
