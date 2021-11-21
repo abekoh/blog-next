@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import {
+  CssBaseline,
+  StyledEngineProvider,
+  ThemeProvider,
+} from '@mui/material';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -67,12 +71,14 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           type="application/rss+xml"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </StyledEngineProvider>
     </>
   );
 };

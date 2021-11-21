@@ -8,7 +8,7 @@ import {
   CardContent,
   Grid,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import MyAvatar from '../atoms/MyAvatar';
 import Link from '../utils/Link';

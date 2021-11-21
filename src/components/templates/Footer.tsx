@@ -1,16 +1,28 @@
 import React from 'react';
 
-import { AppBar, Grid, Icon, makeStyles, Typography } from '@material-ui/core';
+import { AppBar, Grid, Icon, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import { siteData } from '../../data/site';
 import Link from '../utils/Link';
 
-const useStyles = makeStyles((theme) => ({
-  appbar: {
+const PREFIX = 'Footer';
+
+const classes = {
+  appbar: `${PREFIX}-appbar`,
+  externalLinkIcon: `${PREFIX}-externalLinkIcon`,
+  rotateZ: `${PREFIX}-rotateZ`,
+  privacy: `${PREFIX}-privacy`,
+  rotateY: `${PREFIX}-rotateY`,
+};
+
+const Root = styled('footer')(({ theme }) => ({
+  [`& .${classes.appbar}`]: {
     top: 'auto',
     bottom: 0,
   },
-  externalLinkIcon: {
+
+  [`& .${classes.externalLinkIcon}`]: {
     color: theme.palette.primary.contrastText,
     boxSizing: 'content-box',
     fontSize: '1.2rem',
@@ -18,13 +30,15 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 5,
     paddingTop: 7,
   },
-  rotateZ: {
+
+  [`& .${classes.rotateZ}`]: {
     transition: '.5s',
     '&:hover': {
       transform: 'rotateZ(360deg)',
     },
   },
-  privacy: {
+
+  [`& .${classes.privacy}`]: {
     color: theme.palette.primary.contrastText,
     fontSize: '0.8rem',
     '&:hover': {
@@ -32,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
       textUnderlinePosition: 'auto',
     },
   },
-  rotateY: {
+
+  [`& .${classes.rotateY}`]: {
     transition: '.5s',
     '&:hover': {
       transform: 'rotateY(360deg)',
@@ -44,9 +59,8 @@ type Props = {
   copyright: string;
 };
 const Footer: React.FC<Props> = ({ copyright }) => {
-  const classes = useStyles();
   return (
-    <footer>
+    <Root>
       <AppBar position="relative" className={classes.appbar}>
         <Grid container justifyContent="center" spacing={2}>
           <Grid item>
@@ -94,7 +108,7 @@ const Footer: React.FC<Props> = ({ copyright }) => {
           </Grid>
         </Grid>
       </AppBar>
-    </footer>
+    </Root>
   );
 };
 

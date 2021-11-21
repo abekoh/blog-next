@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@material-ui/core';
-import { blue, deepPurple, purple } from '@material-ui/core/colors';
+import { createTheme } from '@mui/material';
+import { blue, deepPurple, purple } from '@mui/material/colors';
 
 // defaults: https://next.material-ui.com/customization/default-theme/#main-content
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: deepPurple,
     secondary: purple,

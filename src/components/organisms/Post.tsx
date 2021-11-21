@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { Box, makeStyles, Paper, Typography, Divider } from '@material-ui/core';
+import { Box, Divider, Paper, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import Prism from 'prismjs';
 
 import { CategoryResponse } from '../../types/category';
@@ -9,19 +10,28 @@ import DateInfo from '../molecules/DateInfo';
 import ShareButtons from '../molecules/ShareButtons';
 import TagList from '../molecules/TagList';
 
-// https://next.material-ui.com/customization/default-theme/#main-content
-const useStyles = makeStyles((theme) => ({
-  title: {
+const PREFIX = 'Post';
+
+const classes = {
+  title: `${PREFIX}-title`,
+  paper: `${PREFIX}-paper`,
+  body: `${PREFIX}-body`,
+  divider: `${PREFIX}-divider`,
+};
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  [`& .${classes.title}`]: {
     ...theme.typography.h3,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: '1.9rem',
     },
   },
-  paper: {
+
+  [`&.${classes.paper}`]: {
     paddingTop: '0.5rem',
     paddingBottom: '0.5rem',
     margin: '1rem 0',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       paddingLeft: '0.8rem',
       paddingRight: '0.8rem',
     },
@@ -30,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: '1.8rem',
     },
   },
-  body: {
+
+  [`& .${classes.body}`]: {
     '& p': {
       ...theme.typography.body1,
       lineHeight: 1.8,
@@ -86,7 +97,8 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  divider: {
+
+  [`& .${classes.divider}`]: {
     marginTop: '1rem',
     marginBottom: '1rem',
   },
@@ -110,12 +122,11 @@ const Post: React.FC<Props> = ({
   tags,
   url,
 }) => {
-  const classes = useStyles();
   useEffect(() => {
     Prism.highlightAll();
   }, []);
   return (
-    <Paper className={classes.paper}>
+    <StyledPaper className={classes.paper}>
       <article>
         <header>
           <Box marginTop={4} marginBottom={4}>
@@ -139,7 +150,7 @@ const Post: React.FC<Props> = ({
           <ShareButtons url={url} title={title} />
         </footer>
       </article>
-    </Paper>
+    </StyledPaper>
   );
 };
 

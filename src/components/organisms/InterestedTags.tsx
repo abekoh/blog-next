@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 import { InterestedTagsResponse } from '../../types/interestedTags';
 import TagList from '../molecules/TagList';

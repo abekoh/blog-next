@@ -1,15 +1,24 @@
 import React from 'react';
 
-import { makeStyles, Typography, Paper } from '@material-ui/core';
+import { Paper, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import marked from 'marked';
 
 import DateInfo from './DateInfo';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
+const PREFIX = 'ChangeLogElement';
+
+const classes = {
+  paper: `${PREFIX}-paper`,
+  body: `${PREFIX}-body`,
+};
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  [`&.${classes.paper}`]: {
     padding: '1.2rem',
   },
-  body: {
+
+  [`& .${classes.body}`]: {
     '& p': {
       ...theme.typography.body1,
     },
@@ -36,9 +45,8 @@ const ChangeLogElement: React.FC<Props> = ({
   title,
   description,
 }) => {
-  const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <StyledPaper className={classes.paper}>
       <header>
         <DateInfo publishedAt={publishedAt} />
         <Typography variant="h5">{title}</Typography>
@@ -51,7 +59,7 @@ const ChangeLogElement: React.FC<Props> = ({
           }}
         />
       )}
-    </Paper>
+    </StyledPaper>
   );
 };
 

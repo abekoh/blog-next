@@ -1,25 +1,28 @@
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
+import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import { grey } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
 
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';
 import DateInfo from './DateInfo';
 import TagList from './TagList';
 
-const useStyles = makeStyles(() => ({
-  title: {},
-  link: {
-    '&:hover': {
-      textDecoration: 'none',
-    },
+const PREFIX = 'PostCard';
+
+const classes = {
+  title: `${PREFIX}-title`,
+  link: `${PREFIX}-link`,
+  dateText: `${PREFIX}-dateText`,
+};
+
+const StyledLink = styled(Link)(() => ({
+  [`& .${classes.title}`]: {},
+
+  [`&.${classes.link}`]: {
+    textDecoration: 'none',
   },
-  dateText: {
+
+  [`& .${classes.dateText}`]: {
     color: grey[500],
   },
 }));
@@ -39,9 +42,8 @@ const PostCard: React.FC<Props> = ({
   modifiedAt,
   tags,
 }) => {
-  const classes = useStyles();
   return (
-    <Link href={`/posts/${id}`} className={classes.link}>
+    <StyledLink href={`/posts/${id}`} className={classes.link}>
       <Card sx={{ display: 'flex' }}>
         <CardActionArea>
           <CardContent>
@@ -51,7 +53,7 @@ const PostCard: React.FC<Props> = ({
           </CardContent>
         </CardActionArea>
       </Card>
-    </Link>
+    </StyledLink>
   );
 };
 

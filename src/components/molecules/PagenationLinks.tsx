@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Pagination, PaginationItem } from '@material-ui/core';
+import { Box, Pagination, PaginationItem } from '@mui/material';
 
 import Link from '../utils/Link';
 
