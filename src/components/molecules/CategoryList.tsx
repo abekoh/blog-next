@@ -1,4 +1,4 @@
-import { Box, Chip } from '@material-ui/core';
+import { Box, Chip } from '@mui/material';
 
 import { CategoryResponse } from '../../types/category';
 

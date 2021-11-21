@@ -1,10 +1,17 @@
-import { Chip, Grid, Icon, makeStyles } from '@material-ui/core';
+import { Chip, Grid, Icon } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import { TagResponse } from '../../types/tag';
 import Link from '../utils/Link';
 
-const useStyles = makeStyles(() => ({
-  tag: {
+const PREFIX = 'TagList';
+
+const classes = {
+  tag: `${PREFIX}-tag`,
+};
+
+const StyledGrid = styled(Grid)(() => ({
+  [`& .${classes.tag}`]: {
     '&:hover': {
       textDecoration: 'none',
     },
@@ -30,9 +37,8 @@ const TagChip: React.FC<{ tag: TagResponse; linkable: boolean }> = ({
 };
 
 const TagList: React.FC<Props> = ({ tags, linkable = false }) => {
-  const classes = useStyles();
   return (
-    <Grid container direction="row" my={1} spacing={1}>
+    <StyledGrid container direction="row" my={1} spacing={1}>
       {tags.map((tag) => (
         <Grid item key={tag.id}>
           {linkable && !tag.noRef ? (
@@ -44,7 +50,7 @@ const TagList: React.FC<Props> = ({ tags, linkable = false }) => {
           )}
         </Grid>
       ))}
-    </Grid>
+    </StyledGrid>
   );
 };
 
