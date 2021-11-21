@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 
 import {
   CssBaseline,
-  ThemeProvider,
-  Theme,
   StyledEngineProvider,
+  ThemeProvider,
 } from '@mui/material';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
