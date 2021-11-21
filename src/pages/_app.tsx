@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import {
   CssBaseline,
   StyledEngineProvider,
@@ -13,9 +14,21 @@ import { useRouter } from 'next/router';
 import Layout from '../components/templates/Layout';
 import { siteData } from '../data/site';
 import theme from '../theme/theme';
+import createEmotionCache from '../utils/createEmotionCache';
 import * as gtag from '../utils/gtag';
 
-const App: NextPage<AppProps> = ({ Component, pageProps }) => {
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+const App: NextPage<MyAppProps> = ({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}) => {
   const router = useRouter();
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -39,7 +52,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   }, [router.events]);
 
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>{siteData.title}</title>
         <meta property="og:site_name" content={siteData.title} />
@@ -79,7 +92,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           </Layout>
         </ThemeProvider>
       </StyledEngineProvider>
-    </>
+    </CacheProvider>
   );
 };
 
