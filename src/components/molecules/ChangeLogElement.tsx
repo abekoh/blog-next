@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Paper, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import marked from 'marked';
+import { marked } from 'marked';
 
 import DateInfo from './DateInfo';
 
@@ -55,7 +55,7 @@ const ChangeLogElement: React.FC<Props> = ({
         <section
           className={classes.body}
           dangerouslySetInnerHTML={{
-            __html: marked(description),
+            __html: marked.parse(description),
           }}
         />
       )}
