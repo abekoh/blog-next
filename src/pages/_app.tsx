@@ -16,11 +16,6 @@ import { siteData } from '../data/site';
 import theme from '../theme/theme';
 import * as gtag from '../utils/gtag';
 
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
-
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
   useEffect(() => {
