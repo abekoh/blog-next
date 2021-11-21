@@ -1,4 +1,4 @@
-import { Grid, GridSize } from '@material-ui/core';
+import { Grid, GridSize } from '@mui/material';
 
 import { ReleaseInfo } from '../../types/release';
 import ChangeLogElement from '../molecules/ChangeLogElement';

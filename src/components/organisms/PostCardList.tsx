@@ -1,4 +1,4 @@
-import { Grid, GridSize } from '@material-ui/core';
+import { Grid, GridSize } from '@mui/material';
 
 import { PostResponse } from '../../types/post';
 import PostCard from '../molecules/PostCard';

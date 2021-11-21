@@ -1,13 +1,22 @@
 import React from 'react';
 
-import { makeStyles, Typography, Paper } from '@material-ui/core';
+import { Paper, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
+const PREFIX = 'About';
+
+const classes = {
+  paper: `${PREFIX}-paper`,
+  body: `${PREFIX}-body`,
+};
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  [`&.${classes.paper}`]: {
     padding: '1.8rem',
     margin: '1rem 0',
   },
-  body: {
+
+  [`& .${classes.body}`]: {
     ...theme.typography.body1,
     '& h1': {
       ...theme.typography.h4,
@@ -40,9 +49,8 @@ type Props = {
 };
 
 const About: React.FC<Props> = ({ title, body, children }) => {
-  const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <StyledPaper className={classes.paper}>
       {title && (
         <header>
           <Typography variant="h4">{title}</Typography>
@@ -57,7 +65,7 @@ const About: React.FC<Props> = ({ title, body, children }) => {
         />
       )}
       {children && <section className={classes.body}>{children}</section>}
-    </Paper>
+    </StyledPaper>
   );
 };
 
