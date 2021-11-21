@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alert, Box, Button, Typography } from '@material-ui/core';
+import { Alert, Box, Button, Typography } from '@mui/material';
 import marked from 'marked';
 import {
   GetStaticPaths,
