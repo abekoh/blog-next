@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { CacheProvider, EmotionCache } from '@emotion/react';
+import { CacheProvider } from '@emotion/react';
 import {
   CssBaseline,
   StyledEngineProvider,
