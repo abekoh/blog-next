@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { CacheProvider } from '@emotion/react';
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import {
   CssBaseline,
   StyledEngineProvider,
@@ -20,9 +20,16 @@ import * as gtag from '../utils/gtag';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-const App: NextPage<AppProps> = ({ Component, pageProps }) => {
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+const App: NextPage<MyAppProps> = ({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}) => {
   const router = useRouter();
-  const emotionCache = clientSideEmotionCache;
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
