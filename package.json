@@ -21,7 +21,6 @@
     "@aspida/fetch": "^1.6.3",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
-    "@material-ui/core": "^5.0.0-alpha.28",
     "@mui/icons-material": "^5.1.1",
     "@mui/material": "^5.1.1",
     "@mui/styles": "^5.1.1",
