@@ -14,8 +14,8 @@ import { useRouter } from 'next/router';
 import Layout from '../components/templates/Layout';
 import { siteData } from '../data/site';
 import theme from '../theme/theme';
-import * as gtag from '../utils/gtag';
 import createEmotionCache from '../utils/createEmotionCache';
+import * as gtag from '../utils/gtag';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
