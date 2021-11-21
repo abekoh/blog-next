@@ -116,18 +116,17 @@ const Header: React.FC<Props> = ({ blogTitle }) => {
   const [state, setState] = useState({
     drawer: false,
   });
-  const toggleDrawer = (open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
-  ) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-    setState({ drawer: open });
-  };
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      setState({ drawer: open });
+    };
   const menuList = (
     <List className={classes.menuList}>
       {tabList.map(({ label, link, icon }) => (
