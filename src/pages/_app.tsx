@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import {
-  CssBaseline,
-  StyledEngineProvider,
-  ThemeProvider,
-} from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -80,14 +76,12 @@ function App(props: MyAppProps) {
           type="application/rss+xml"
         />
       </Head>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </StyledEngineProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </CacheProvider>
   );
 }
