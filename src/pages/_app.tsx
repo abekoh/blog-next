@@ -6,7 +6,6 @@ import {
   StyledEngineProvider,
   ThemeProvider,
 } from '@mui/material';
-import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -24,11 +23,8 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
-const App: NextPage<MyAppProps> = ({
-  Component,
-  pageProps,
-  emotionCache = clientSideEmotionCache,
-}) => {
+function App(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -94,6 +90,6 @@ const App: NextPage<MyAppProps> = ({
       </StyledEngineProvider>
     </CacheProvider>
   );
-};
+}
 
 export default App;
