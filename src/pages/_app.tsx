@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import {
-  CssBaseline,
-  StyledEngineProvider,
-  ThemeProvider,
-} from '@mui/material';
-import { NextPage } from 'next';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -24,11 +19,8 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
-const App: NextPage<MyAppProps> = ({
-  Component,
-  pageProps,
-  emotionCache = clientSideEmotionCache,
-}) => {
+function App(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -84,16 +76,14 @@ const App: NextPage<MyAppProps> = ({
           type="application/rss+xml"
         />
       </Head>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </StyledEngineProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Layout blogTitle={siteData.title} copyright={siteData.copyright}>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </CacheProvider>
   );
-};
+}
 
 export default App;
