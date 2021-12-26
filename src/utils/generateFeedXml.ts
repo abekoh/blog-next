@@ -15,6 +15,7 @@ export const generateFeedXml: () => Promise<string> = async () => {
   const posts = await microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,title,summary,publishedAt',
+      filters: `isDraft[equals]false`,
       orders: '-publishedAt',
       limit: 200, // FIXME: totalページングでとる
     },

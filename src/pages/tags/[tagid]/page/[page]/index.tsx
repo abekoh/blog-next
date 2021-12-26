@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
       orders: '-publishedAt',
       limit: PER_PAGE,
       offset: (page - 1) * PER_PAGE,
-      filters: `tags[contains]${tagId}`,
+      filters: `tags[contains]${tagId}[and]isDraft[equals]false`,
     },
   });
   const [tag, postList] = await Promise.all([tagPromise, postListPromise]);

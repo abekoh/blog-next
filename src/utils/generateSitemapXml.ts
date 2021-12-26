@@ -14,6 +14,7 @@ export const generateSitemapXml: () => Promise<string> = async () => {
   const postsPromise = microcmsClient.v1.posts.$get({
     query: {
       fields: 'id,publishedAt,modifiedAt',
+      filters: `isDraft[equals]false`,
       orders: '-publishedAt',
       limit: 200, // FIXME: totalページングでとる
     },
