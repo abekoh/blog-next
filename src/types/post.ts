@@ -14,4 +14,5 @@ export type PostResponse = ContentResponse<{
   tags?: TagResponse[];
   publishedAt?: Date;
   modifiedAt?: Date;
+  isDraft?: boolean;
 }>;
