@@ -36,3 +36,4 @@ yarn-error.log*
 migration/*.csv
 
 .envrc
+draft/
