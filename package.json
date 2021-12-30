@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
-    "now-build": "scripts/update_info.sh && yum install libuuid-devel libmount-devel zlib && cp /lib64/{libuuid,libmount,libblkid,libz}.so.1 node_modules/canvas/build/Release/ && yarn build",
+    "now-build": "scripts/update_info.sh && yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid,libz}.so.1 node_modules/canvas/build/Release/ && yarn build",
     "build": "next build",
     "start": "next start",
     "lint": "eslint 'src/**/*.{ts,tsx}' && prettier --check '**/*.{js,ts,tsx,json}'",
@@ -27,7 +27,7 @@
     "@octokit/rest": "^18.12.0",
     "@types/moment": "^2.13.0",
     "@types/prismjs": "^1.16.6",
-    "canvas": "^2.8.0",
+    "canvas": "2.6.1",
     "jsonld": "^5.2.0",
     "moment": "^2.29.1",
     "next": "12.0.5",
