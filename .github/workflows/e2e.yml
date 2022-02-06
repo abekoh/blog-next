@@ -1,20 +1,17 @@
-name: test Next.js
+name: e2e
 on:
-  pull_request:
-    branches:
-      - main
+  issue_comment:
+    types: [edited]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 14.x
+      - uses: microsoft/playwright-github-action@v1
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
@@ -25,9 +22,9 @@ jobs:
             ${{ runner.OS }}-
       - name: Install dependencies
         run: yarn
-      - name: Check lint
-        run: yarn lint
-      - name: Check type
-        run: yarn typecheck
-      - name: Run test
-        run: yarn test:ci
+      - uses: aaimio/vercel-preview-url-action@v1
+        id: vercel_preview_url
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run E2E test
+        run: BASE_URL="${{ steps.vercel_preview_url.outputs.vercel_preview_url }}" yarn test:e2e
