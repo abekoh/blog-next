@@ -3,7 +3,7 @@ on:
   issue_comment:
     types: [edited]
 jobs:
-  build:
+  e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,9 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - name: Install dependencies
-        run: yarn
+        run: |
+          yarn
+          npx playwright install
       - uses: aaimio/vercel-preview-url-action@v1
         id: vercel_preview_url
         with:
