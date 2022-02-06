@@ -33,7 +33,7 @@ jobs:
       - name: Run test
         run: yarn test:ci
       - name: vercel-preview-url
-        uses: zentered/vercel-preview-url@v1.0.6
+        uses: zentered/vercel-preview-url@v1.0.7
         id: vercel_preview_url
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
