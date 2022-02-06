@@ -21,6 +21,6 @@ test.describe('home', () => {
 test.describe('ogp', () => {
   test('home is shown correctly', async ({ page }) => {
     await page.goto(`${BASE_URL}/api/ogp-images/start-blog`);
-    expect(await page.screenshot()).toMatchSnapshot('data/start-blog.png');
+    expect(await page.screenshot()).toMatchSnapshot('start-blog.png');
   });
 });
