@@ -34,7 +34,7 @@ jobs:
         run: yarn test:ci
       - name: Capture Vercel preview URL
         id: vercel_preview_url
-        uses: aaron-binary/vercel-preview-url-action@latest
+        uses: aaron-binary/vercel-preview-url-action@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run E2E test
