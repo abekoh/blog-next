@@ -37,3 +37,4 @@ migration/*.csv
 
 .envrc
 draft/
+test-results/
