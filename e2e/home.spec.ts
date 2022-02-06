@@ -3,8 +3,8 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = process.env.BASE_URL || '';
 
 test.describe('home', () => {
-  test.beforeAll(async () => {
-    await expect(BASE_URL).not.toBe('');
+  test.beforeAll(() => {
+    expect(BASE_URL).not.toBe('');
   });
 
   test('home is shown correctly', async ({ page }) => {
