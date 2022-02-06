@@ -31,3 +31,10 @@ jobs:
         run: yarn typecheck
       - name: Run test
         run: yarn test:ci
+      - name: Capture Vercel preview URL
+        id: vercel_preview_url
+        uses: aaron-binary/vercel-preview-url-action@latest
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run E2E test
+        run: BASE_URL=${{ steps.vercel_preview_url.outputs.vercel_preview_url }} yarn test:e2e
