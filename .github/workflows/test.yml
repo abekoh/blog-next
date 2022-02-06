@@ -32,10 +32,13 @@ jobs:
         run: yarn typecheck
       - name: Run test
         run: yarn test:ci
-      - name: Capture Vercel preview URL
+      - name: vercel-preview-url
+        uses: zentered/vercel-preview-url@v1.0.6
         id: vercel_preview_url
-        uses: aaimio/vercel-preview-url-action@v1
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          vercel_team_id: abekoh
+          vercel_project_id: blog-next
       - name: Run E2E test
-        run: BASE_URL=${{ steps.vercel_preview_url.outputs.vercel_preview_url }} yarn test:e2e
+        run: BASE_URL="https://${{ steps.vercel_preview_url.outputs.preview_url }}" yarn test:e2e
