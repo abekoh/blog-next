@@ -32,6 +32,13 @@ jobs:
         run: yarn typecheck
       - name: Run test
         run: yarn test:ci
+      - name: debug
+        run: |
+          curl "https://api.vercel.com/v5/now/deployments?teamId=abekoh&projectId=" \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            -H "Content-Type: application/json"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       - name: vercel-preview-url
         uses: zentered/vercel-preview-url@v1.0.7
         id: vercel_preview_url
