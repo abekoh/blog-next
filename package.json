@@ -14,7 +14,7 @@
     "test": "jest && playwright test",
     "test:watch": "jest --watch",
     "test:e2e": "playwright test",
-    "test:ci": "jest --ci && playwright test",
+    "test:ci": "jest --ci",
     "api:build": "aspida"
   },
   "dependencies": {
