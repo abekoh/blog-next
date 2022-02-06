@@ -11,8 +11,10 @@
     "lint": "eslint 'src/**/*.{ts,tsx}' && prettier --check '**/*.{js,ts,tsx,json}'",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' && prettier --write '**/*.{js,ts,tsx,json}'",
     "typecheck": "tsc --pretty --noEmit",
-    "test": "jest --watch",
-    "test:ci": "jest --ci",
+    "test": "jest && playwright test",
+    "test:watch": "jest --watch",
+    "test:e2e": "playwright test",
+    "test:ci": "jest --ci && playwright test",
     "api:build": "aspida"
   },
   "dependencies": {
