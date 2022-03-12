@@ -47,33 +47,34 @@ function App(props: MyAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>{siteData.title}</title>
-        <meta property="og:site_name" content={siteData.title} />
-        <meta property="og:locale" content="ja_JP" />
-        <meta property="fb:app_id" content="587885512182115" />
-        <meta property="twitter:card" content="summary_large_image" />
+        <meta name='description' content={siteData.description} />
+        <meta property='og:site_name' content={siteData.title} />
+        <meta property='og:locale' content='ja_JP' />
+        <meta property='fb:app_id' content='587885512182115' />
+        <meta property='twitter:card' content='summary_large_image' />
         <meta
-          property="twitter:site"
+          property='twitter:site'
           content={`@${siteData.twitterUserName}`}
         />
         <meta
-          property="twitter:creator"
+          property='twitter:creator'
           content={`@${siteData.twitterUserName}`}
         />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta name="theme-color" content={theme.palette.primary.light} />
+        <meta name='viewport' content='initial-scale=1, width=device-width' />
+        <meta name='theme-color' content={theme.palette.primary.light} />
         <meta
-          name="msapplication-TileColor"
+          name='msapplication-TileColor'
           content={theme.palette.primary.light}
         />
         <link
-          rel="mask-icon"
-          href="/favicons/safari-pinned-tab.svg"
+          rel='mask-icon'
+          href='/favicons/safari-pinned-tab.svg'
           color={theme.palette.primary.light}
         />
         <link
-          rel="alternate"
+          rel='alternate'
           href={`${siteData.host}/feed`}
-          type="application/rss+xml"
+          type='application/rss+xml'
         />
       </Head>
       <ThemeProvider theme={theme}>
