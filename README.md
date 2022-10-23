@@ -9,5 +9,5 @@ abekoh's tech note with Next.js
 ```
 export GITHUB_TOKEN=
 export MICRO_CMS_API_KEY=
-export MICRO_CMS_HOST=
+export MICRO_CMS_HOST=https://xxx.microcms.io/api/
 ```
