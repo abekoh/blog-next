@@ -1,5 +1,5 @@
 import { Box, Grid } from '@mui/material';
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,17 +8,9 @@ import MyAvatar from '../../components/atoms/MyAvatar';
 import PageTitle from '../../components/molecules/PageTitle';
 import About from '../../components/organisms/About';
 import { siteData } from '../../data/site';
-import { InterestedTagsResponse } from '../../types/interestedTags';
-import { microcmsClient } from '../../utils/api';
 import { generateJsonld } from '../../utils/jsonld';
 
-type StaticProps = {
-  interestedTags: InterestedTagsResponse;
-};
-
-type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
-
-const Page: NextPage<PageProps> = ({ interestedTags }) => {
+const Page: NextPage<void> = () => {
   const router = useRouter();
   return (
     <>
@@ -85,16 +77,6 @@ const Page: NextPage<PageProps> = ({ interestedTags }) => {
       </section>
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const interestedTags = await microcmsClient.v1.interested_tags.$get({
-    query: { fields: 'id,skillful,canuse,alittle,notouch' },
-  });
-  return {
-    props: { interestedTags },
-    revalidate: 60,
-  };
 };
 
 export default Page;
