@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import MyAvatar from '../../components/atoms/MyAvatar';
 import PageTitle from '../../components/molecules/PageTitle';
 import About from '../../components/organisms/About';
-import InterestedTags from '../../components/organisms/InterestedTags';
 import { siteData } from '../../data/site';
 import { InterestedTagsResponse } from '../../types/interestedTags';
 import { microcmsClient } from '../../utils/api';
